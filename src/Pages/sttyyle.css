@@ -1,0 +1,23 @@
+.otherpage{
+    background: lightgray;
+    padding: 10px;
+    border-radius: 10px;
+}
+.fontts{
+        font-weight: 700;
+}
+.ttextfielsd{
+    border: 3px solid rgb(97, 58, 180);
+    width: 600px;
+    border-radius: 10px;
+    font-size: 18px;
+    height: 50px;
+    padding: 10px;
+    /* background: linear-gradient(to right, #e50914 -0.08%, #c94ff5 81.14%, #5b79f1 99.92%); */
+}
+.text{
+    padding: 10px;
+}
+.hour{
+    text-align: center;
+}
