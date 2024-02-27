@@ -1,0 +1,403 @@
+[
+        {
+            "adult": false,
+            "backdrop_path": "/3CZkoreoWflCGmpXLm7CTX1vBrT.jpg",
+            "genre_ids": [
+                28,
+                12,
+                16,
+                35,
+                10751
+            ],
+            "id": 1011985,
+            "original_language": "en",
+            "original_title": "Kung Fu Panda 4",
+            "overview": "Po is gearing up to become the spiritual leader of his Valley of Peace, but also needs someone to take his place as Dragon Warrior. As such, he will train a new kung fu practitioner for the spot and will encounter a villain called the Chameleon who conjures villains from the past.",
+            "popularity": 235.19,
+            "poster_path": "/kDp1vUBnMpe8ak4rjgl3cLELqjU.jpg",
+            "release_date": "2024-03-06",
+            "title": "Kung Fu Panda 4",
+            "video": false,
+            "vote_average": 0.0,
+            "vote_count": 0
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/wQotaner8FU5SBnYvyFJADPGlzS.jpg",
+            "genre_ids": [
+                35,
+                10749
+            ],
+            "id": 1232943,
+            "original_language": "pl",
+            "original_title": "Zabij mnie, kochanie",
+            "overview": "A winning lottery ticket has grave consequences for a married couple when they start hatching plans to kill each other for the prize money.",
+            "popularity": 154.633,
+            "poster_path": "/ajGJmcLNgFNTHN2IkOwoQDHqXv0.jpg",
+            "release_date": "2024-02-13",
+            "title": "Kill Me If You Dare",
+            "video": false,
+            "vote_average": 4.8,
+            "vote_count": 35
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/siSlEv6zRUU1kUSKfPoK2zWDQIK.jpg",
+            "genre_ids": [
+                27
+            ],
+            "id": 999087,
+            "original_language": "zh",
+            "original_title": "女鬼橋2：怨鬼樓",
+            "overview": "According to legend, Yangminshan’s Chinese Culture University sits where the realms of the living and dead collide. The architecture was originally given an auspicious “bagua” design to ward off evil, but was instead maliciously changed into an “inverse bagua”. Countless apparition sightings and paranormal incidents have plagued the university ever since. Three years ago, a student developing an augmented reality horror game at the university fell into a coma following a mysterious elevator accident. To complete the game, his younger sister begins testing the various urban legend-inspired AR challenges with the help of her friends, leading them down a path of increasingly bizarre and terrifying encounters…",
+            "popularity": 297.636,
+            "poster_path": "/xhvmUcBl3q8LHkMkX8sLx8gs2qy.jpg",
+            "release_date": "2023-10-13",
+            "title": "The Bridge Curse: Ritual",
+            "video": false,
+            "vote_average": 5.6,
+            "vote_count": 14
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/x7uqogI8pIdXPUg5Z9RrbnFFFdb.jpg",
+            "genre_ids": [
+                10751,
+                14
+            ],
+            "id": 955659,
+            "original_language": "it",
+            "original_title": "Me contro Te: Il film - Missione giungla",
+            "overview": "After their adventures in Ancient Egypt, Luì and Sofì just want to rest, but a new threat looms over the Earth. A magical spring hidden in the jungle holds the key to undoing all the world's spells, but if tainted, it can turn the Earth into a barren, lifeless wasteland. Viperiana has discovered this and with the help of her faithful Serpe servant has already started mixing enchanted potions in the spring that turn the water purple; it will only take a few days for everything to be irreversibly poisoned. A fight against time begins for Luì and Sofì who, together with Pongo's assistant and accompanied by the guide Serenino and Tara, daughter of the Pesantosi tribal chief, will have to decipher the map that will lead them to the magical spring and foil Viperiana's diabolical plan . But they have to be careful, because an unexpected enemy lurks among them.",
+            "popularity": 153.029,
+            "poster_path": "/5JnO4RzvECGd1QG3bZaP0FdrlWF.jpg",
+            "release_date": "2023-01-19",
+            "title": "Me contro Te: Il film - Missione giungla",
+            "video": false,
+            "vote_average": 8.2,
+            "vote_count": 9
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/35z8hWuzfFUZQaYog8E9LsXW3iI.jpg",
+            "genre_ids": [
+                12,
+                28
+            ],
+            "id": 335977,
+            "original_language": "en",
+            "original_title": "Indiana Jones and the Dial of Destiny",
+            "overview": "Finding himself in a new era, and approaching retirement, Indy wrestles with fitting into a world that seems to have outgrown him. But as the tentacles of an all-too-familiar evil return in the form of an old rival, Indy must don his hat and pick up his whip once more to make sure an ancient and powerful artifact doesn't fall into the wrong hands.",
+            "popularity": 147.209,
+            "poster_path": "/Af4bXE63pVsb2FtbW8uYIyPBadD.jpg",
+            "release_date": "2023-06-28",
+            "title": "Indiana Jones and the Dial of Destiny",
+            "video": false,
+            "vote_average": 6.613,
+            "vote_count": 2840
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/fOy2Jurz9k6RnJnMUMRDAgBwru2.jpg",
+            "genre_ids": [
+                16,
+                10751,
+                35,
+                14
+            ],
+            "id": 508947,
+            "original_language": "en",
+            "original_title": "Turning Red",
+            "overview": "Thirteen-year-old Mei is experiencing the awkwardness of being a teenager with a twist – when she gets too excited, she transforms into a giant red panda.",
+            "popularity": 177.39,
+            "poster_path": "/qsdjk9oAKSQMWs0Vt5Pyfh6O4GZ.jpg",
+            "release_date": "2022-03-10",
+            "title": "Turning Red",
+            "video": false,
+            "vote_average": 7.408,
+            "vote_count": 4777
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/2X5nnvkWvYRFmTspXY7lsJqDzog.jpg",
+            "genre_ids": [
+                10749,
+                18,
+                35
+            ],
+            "id": 988078,
+            "original_language": "es",
+            "original_title": "A través del mar",
+            "overview": "After a year of long-distance, Raquel and Ares reunite on a steamy beach trip. Faced with fresh flirtations and insecurities, will their love prevail?",
+            "popularity": 278.769,
+            "poster_path": "/6GyzbZf1MsXfrDWTnNXrzwr6G9q.jpg",
+            "release_date": "2023-06-23",
+            "title": "Through My Window: Across the Sea",
+            "video": false,
+            "vote_average": 6.531,
+            "vote_count": 663
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/ktHEdqmMWC1wdfPRMRCTZe2OISL.jpg",
+            "genre_ids": [
+                27,
+                9648,
+                53
+            ],
+            "id": 1071215,
+            "original_language": "en",
+            "original_title": "Thanksgiving",
+            "overview": "After a Black Friday riot ends in tragedy, a mysterious Thanksgiving-inspired killer terrorizes Plymouth, Massachusetts - the birthplace of the holiday. Picking off residents one by one, what begins as random revenge killings are soon revealed to be part of a larger, sinister holiday plan.",
+            "popularity": 168.971,
+            "poster_path": "/9KRLgkJ9FufHBh6mEj0WCIfOME8.jpg",
+            "release_date": "2023-11-16",
+            "title": "Thanksgiving",
+            "video": false,
+            "vote_average": 6.631,
+            "vote_count": 713
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/5YZbUmjbMa3ClvSW1Wj3D6XGolb.jpg",
+            "genre_ids": [
+                878,
+                12,
+                28
+            ],
+            "id": 447365,
+            "original_language": "en",
+            "original_title": "Guardians of the Galaxy Vol. 3",
+            "overview": "Peter Quill, still reeling from the loss of Gamora, must rally his team around him to defend the universe along with protecting one of their own. A mission that, if not completed successfully, could quite possibly lead to the end of the Guardians as we know them.",
+            "popularity": 168.629,
+            "poster_path": "/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg",
+            "release_date": "2023-05-03",
+            "title": "Guardians of the Galaxy Vol. 3",
+            "video": false,
+            "vote_average": 8.0,
+            "vote_count": 5966
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/rVJfabCz1ViynQCEz54MRqdZig1.jpg",
+            "genre_ids": [
+                16,
+                878,
+                28
+            ],
+            "id": 1155089,
+            "original_language": "en",
+            "original_title": "Justice League: Crisis on Infinite Earths Part One",
+            "overview": "Death is coming. Worse than death: oblivion. Not just for our Earth, but for everyone, everywhere, in every universe! Against this ultimate destruction, the mysterious Monitor has gathered the greatest team of Super Heroes ever assembled. But what can the combined might of Superman, Wonder Woman, Batman, The Flash, Green Lantern and hundreds of Super Heroes from multiple Earths even do to save all of reality from an unstoppable antimatter armageddon?!",
+            "popularity": 165.158,
+            "poster_path": "/zR6C66EDklgTPLHRSmmMt5878MR.jpg",
+            "release_date": "2024-01-09",
+            "title": "Justice League: Crisis on Infinite Earths Part One",
+            "video": false,
+            "vote_average": 7.7,
+            "vote_count": 155
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/xFYpUmB01nswPgbzi8EOCT1ZYFu.jpg",
+            "genre_ids": [
+                12,
+                28,
+                18
+            ],
+            "id": 980489,
+            "original_language": "en",
+            "original_title": "Gran Turismo",
+            "overview": "The ultimate wish-fulfillment tale of a teenage Gran Turismo player whose gaming skills won him a series of Nissan competitions to become an actual professional racecar driver.",
+            "popularity": 165.248,
+            "poster_path": "/51tqzRtKMMZEYUpSYkrUE7v9ehm.jpg",
+            "release_date": "2023-08-09",
+            "title": "Gran Turismo",
+            "video": false,
+            "vote_average": 7.9,
+            "vote_count": 2036
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/xzdOIL7261CWehsHOk3lnP0xqam.jpg",
+            "genre_ids": [
+                28,
+                878,
+                12
+            ],
+            "id": 565770,
+            "original_language": "en",
+            "original_title": "Blue Beetle",
+            "overview": "Recent college grad Jaime Reyes returns home full of aspirations for his future, only to find that home is not quite as he left it. As he searches to find his purpose in the world, fate intervenes when Jaime unexpectedly finds himself in possession of an ancient relic of alien biotechnology: the Scarab.",
+            "popularity": 168.659,
+            "poster_path": "/mXLOHHc1Zeuwsl4xYKjKh2280oL.jpg",
+            "release_date": "2023-08-16",
+            "title": "Blue Beetle",
+            "video": false,
+            "vote_average": 6.854,
+            "vote_count": 2210
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/nvW0QfRJ7ga9TK8DKwBfAPA8ywP.jpg",
+            "genre_ids": [
+                28,
+                18,
+                80
+            ],
+            "id": 944401,
+            "original_language": "en",
+            "original_title": "Dogman",
+            "overview": "A boy, bruised by life, finds his salvation through the love of his dogs.",
+            "popularity": 210.043,
+            "poster_path": "/rmRkZZ2aZq72dDTjbPnSLtPQcmJ.jpg",
+            "release_date": "2023-09-27",
+            "title": "Dogman",
+            "video": false,
+            "vote_average": 7.324,
+            "vote_count": 293
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/zX9m8h33pHXcES7ttO8v0ThiYj7.jpg",
+            "genre_ids": [
+                18,
+                28,
+                53
+            ],
+            "id": 1053592,
+            "original_language": "es",
+            "original_title": "Todos los nombres de Dios",
+            "overview": "After being implicated in a terrorist attack, Santi, a taxi driver, is taken hostage by one of the perpetrators.",
+            "popularity": 162.688,
+            "poster_path": "/n15gfcgwV0LVPSobrayZcFHcwN6.jpg",
+            "release_date": "2023-09-15",
+            "title": "All the Names of God",
+            "video": false,
+            "vote_average": 6.632,
+            "vote_count": 57
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/hziiv14OpD73u9gAak4XDDfBKa2.jpg",
+            "genre_ids": [
+                12,
+                14
+            ],
+            "id": 671,
+            "original_language": "en",
+            "original_title": "Harry Potter and the Philosopher's Stone",
+            "overview": "Harry Potter has lived under the stairs at his aunt and uncle's house his whole life. But on his 11th birthday, he learns he's a powerful wizard—with a place waiting for him at the Hogwarts School of Witchcraft and Wizardry. As he learns to harness his newfound powers with the help of the school's kindly headmaster, Harry uncovers the truth about his parents' deaths—and about the villain who's to blame.",
+            "popularity": 182.781,
+            "poster_path": "/wuMc08IPKEatf9rnMNXvIDxqP4W.jpg",
+            "release_date": "2001-11-16",
+            "title": "Harry Potter and the Philosopher's Stone",
+            "video": false,
+            "vote_average": 7.915,
+            "vote_count": 26161
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/uVu2fBc114un7F1GD76RBouWyBP.jpg",
+            "genre_ids": [
+                16,
+                10751,
+                18,
+                12,
+                14
+            ],
+            "id": 1022789,
+            "original_language": "en",
+            "original_title": "Inside Out 2",
+            "overview": "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone.",
+            "popularity": 150.642,
+            "poster_path": "/q1P71jvmGuHjee9I4PgQKMCB1c9.jpg",
+            "release_date": "2024-06-13",
+            "title": "Inside Out 2",
+            "video": false,
+            "vote_average": 0.0,
+            "vote_count": 0
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/zgQQF04u3OgNBJqClRNby1FPz9s.jpg",
+            "genre_ids": [
+                16,
+                10751,
+                28,
+                878,
+                35,
+                18,
+                12
+            ],
+            "id": 893723,
+            "original_language": "en",
+            "original_title": "PAW Patrol: The Mighty Movie",
+            "overview": "A magical meteor crash lands in Adventure City and gives the PAW Patrol pups superpowers, transforming them into The Mighty Pups.",
+            "popularity": 169.506,
+            "poster_path": "/aTvePCU7exLepwg5hWySjwxojQK.jpg",
+            "release_date": "2023-09-21",
+            "title": "PAW Patrol: The Mighty Movie",
+            "video": false,
+            "vote_average": 7.086,
+            "vote_count": 348
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/uovH5k4BAEPqXqxgwVrTtqH169g.jpg",
+            "genre_ids": [
+                878,
+                28
+            ],
+            "id": 373571,
+            "original_language": "en",
+            "original_title": "Godzilla: King of the Monsters",
+            "overview": "Follows the heroic efforts of the crypto-zoological agency Monarch as its members face off against a battery of god-sized monsters, including the mighty Godzilla, who collides with Mothra, Rodan, and his ultimate nemesis, the three-headed King Ghidorah. When these ancient super-species, thought to be mere myths, rise again, they all vie for supremacy, leaving humanity's very existence hanging in the balance.",
+            "popularity": 131.397,
+            "poster_path": "/fQ40gmFM4p03tXwMxQQKh2cCBW4.jpg",
+            "release_date": "2019-05-29",
+            "title": "Godzilla: King of the Monsters",
+            "video": false,
+            "vote_average": 6.681,
+            "vote_count": 5719
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/msU3F9DVNFvCsQVxhxliyWSO03D.jpg",
+            "genre_ids": [
+                28,
+                12,
+                14
+            ],
+            "id": 10196,
+            "original_language": "en",
+            "original_title": "The Last Airbender",
+            "overview": "The story follows the adventures of Aang, a young successor to a long line of Avatars, who must put his childhood ways aside and stop the Fire Nation from enslaving the Water, Earth and Air nations.",
+            "popularity": 174.048,
+            "poster_path": "/zgwRTYWEEPivTwjB9S03HtmMcbM.jpg",
+            "release_date": "2010-06-30",
+            "title": "The Last Airbender",
+            "video": false,
+            "vote_average": 4.649,
+            "vote_count": 3778
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/46Os8U0DEPmI0OnvKDxucl6SLVZ.jpg",
+            "genre_ids": [
+                27,
+                53
+            ],
+            "id": 1008042,
+            "original_language": "en",
+            "original_title": "Talk to Me",
+            "overview": "When a group of friends discover how to conjure spirits using an embalmed hand, they become hooked on the new thrill, until one of them goes too far and unleashes terrifying supernatural forces.",
+            "popularity": 143.812,
+            "poster_path": "/kdPMUMJzyYAc4roD52qavX0nLIC.jpg",
+            "release_date": "2023-07-26",
+            "title": "Talk to Me",
+            "video": false,
+            "vote_average": 7.195,
+            "vote_count": 2323
+        }
+    ]

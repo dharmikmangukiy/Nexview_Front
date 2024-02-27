@@ -30,6 +30,13 @@ import Privacy from "./Pages/Privacy";
 import About from "./Pages/About";
 import FAQ from "./Pages/FAQ";
 import UpComming from "./ClientSite/Global/Trending today/UpComming";
+import ForgetPassword from "./Forms/ForgetPassword";
+import Step4 from "./Forms/Step4";
+import Step5Card from "./Forms/Step5Card";
+import Step6 from "./Forms/Step6";
+import Step5Upi from "./Forms/Step5Upi";
+import UserReqList from "./Dashboard/UserReqList";
+import Total from "./Dashboard/Total";
 
 
 function useScrollToTop() {
@@ -89,6 +96,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login setLogin={setLogin} />} />
         <Route path="/Registration" element={<Registration />} />
+        <Route path="forget_password" element={<ForgetPassword />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     );
@@ -99,13 +107,24 @@ function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
           <Route path="/" element={<Dashboard />} />
           <Route path="/use_table" element={<UserTable />} />
+          <Route path="/user_req" element={<UserReqList />} />
+          <Route path="/total" element={<Total />} />
+          <Route path="/terms_of_use" element={<TermsOfUse />} />
+          <Route path="/Privacy" element={<Privacy />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/FAQ" element={<FAQ />} />
           <Route path="/AppClient" element={<AppClient />} />
+          <Route path="/Trending_Today" element={<Trending_Today />} />
+          <Route path="/up_comming" element={<UpComming />} />
+          <Route path="/PlanForm" element={<PlanForm />} />
+          <Route path="/" element={<Step1 />} />
+          <Route path="/step3" element={<Step3 />} />
+          <Route path="/step4" element={<Step4 />} />
+          <Route path="/final_pay" element={<Step6 />} />
+          <Route path="/step5_upi" element={<Step5Upi />} />
+          <Route path="/step5_card" element={<Step5Card />} />
           <Route path="/Explore/:mediaType" element={<Explore />} />
           <Route path="/:mediaType/:id" element={<Details />} />
-          <Route path="/Trending_Today" element={<Trending_Today />} />
-          <Route path="/PlanForm" element={<PlanForm />} />
-          <Route path="/step1" element={<Step1 />} />
-          <Route path="/step3" element={<Step3 />} />
         </Routes>
       </div>
     );
@@ -125,6 +144,10 @@ function App() {
           <Route path="/PlanForm" element={<PlanForm />} />
           <Route path="/" element={<Step1 />} />
           <Route path="/step3" element={<Step3 />} />
+          <Route path="/step4" element={<Step4 />} />
+          <Route path="/final_pay" element={<Step6 />} />
+          <Route path="/step5_upi" element={<Step5Upi />} />
+          <Route path="/step5_card" element={<Step5Card />} />
           <Route path="/Explore/:mediaType" element={<Explore />} />
           <Route path="/:mediaType/:id" element={<Details />} />
         </Routes>

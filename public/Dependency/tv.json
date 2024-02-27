@@ -1,0 +1,421 @@
+ [
+        {
+            "adult": false,
+            "backdrop_path": "/adiaXh7wX5nkaMi1J8ELs0FRbro.jpg",
+            "genre_ids": [
+                10764
+            ],
+            "id": 37757,
+            "origin_country": [
+                "GR"
+            ],
+            "original_language": "el",
+            "original_name": "MasterChef Greece",
+            "overview": "MasterChef Greece is a Greek competitive cooking game show. It's an adaptation of the British show MasterChef.",
+            "popularity": 1566.232,
+            "poster_path": "/h0MR8xGqddeeJHgqDuW14jW25ov.jpg",
+            "first_air_date": "2010-10-03",
+            "name": "MasterChef Greece",
+            "vote_average": 5.571,
+            "vote_count": 6
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/fRzSn59mtc4BV3cckdHntRKaufM.jpg",
+            "genre_ids": [
+                35,
+                18,
+                10751
+            ],
+            "id": 84791,
+            "origin_country": [
+                "HK"
+            ],
+            "original_language": "cn",
+            "original_name": "愛·回家",
+            "overview": "MA FU, a retired employee of the HK Correctional Services Department, moved back to live with his son after retirement. MA FU treats and disciplines everyone in his family as if they were the offenders he works with in his job. His youngest son MA CHONG feels like he's in jail when he gets home, and his father is even often involved with his job as a paralegal. The father and son get into disputes daily and his elder brother MA KEUNG and his wife LO LAI SEUNG are often stuck in between and have to settle the disputes. The couple also holds the heavy responsibility of raising their kids. Three generations in the MA family all live together and encounter different situations, experiences and system of values.",
+            "popularity": 742.714,
+            "poster_path": "/nQwKCmgbpjb3wIf816t4WNgxzcR.jpg",
+            "first_air_date": "2012-05-14",
+            "name": "Come Home Love",
+            "vote_average": 8.0,
+            "vote_count": 1
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/6HBi1vfb70PfeTx78BKv2md42mm.jpg",
+            "genre_ids": [
+                18,
+                35
+            ],
+            "id": 18495,
+            "origin_country": [
+                "KR"
+            ],
+            "original_language": "ko",
+            "original_name": "논스톱",
+            "overview": "Nonstop is a South Korean slice-of-life sitcom that broadcast its first season in 2000 on MBC. It continued with 5 more seasons. The series was popular for its cast of teen idols, many who debuted through the show..",
+            "popularity": 1124.441,
+            "poster_path": "/elXJzhz1dM0lO7fK2BfO2pVtC7l.jpg",
+            "first_air_date": "2000-05-15",
+            "name": "Nonstop",
+            "vote_average": 4.5,
+            "vote_count": 4
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/7t4NLSq6rsdPh5uwkQWyMowzVyK.jpg",
+            "genre_ids": [
+                16,
+                35
+            ],
+            "id": 57775,
+            "origin_country": [
+                "JP"
+            ],
+            "original_language": "ja",
+            "original_name": "ちびまる子ちゃん",
+            "overview": "Momoko Sakura is an elementary school student who likes popular  idol Momoe Yamaguchi and mangas. She is often called \"Chibi Maruko-chan\"  due to her young age and small size. She lives together with her  parents, her grandparents and her elder sister in a little town. In  school, she has many friends with whom she studies and plays together  everyday, including her close pal, Tama-chan; the student committee  members, Maruo-kun and Migiwa-san; and the B-class trio: 'little master'  Hanawa-kun, Hamaji-Bu Taro and Sekiguchi-kun.",
+            "popularity": 1191.689,
+            "poster_path": "/r82VxNSbsIkgukLjjSlQ9wx77jj.jpg",
+            "first_air_date": "1990-01-07",
+            "name": "Chibi Maruko-chan",
+            "vote_average": 8.1,
+            "vote_count": 13
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/sVCxblgBovmCptuv4cR0XNH5JX6.jpg",
+            "genre_ids": [
+                18
+            ],
+            "id": 239559,
+            "origin_country": [
+                "MX"
+            ],
+            "original_language": "es",
+            "original_name": "El Maleficio",
+            "overview": "",
+            "popularity": 1543.884,
+            "poster_path": "/zIRapTGSOrlfhgIf4DjV0OgXxsX.jpg",
+            "first_air_date": "2023-11-13",
+            "name": "El Maleficio",
+            "vote_average": 7.069,
+            "vote_count": 29
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/mZsTrylVWYYPkoY793G5G7nBbAa.jpg",
+            "genre_ids": [
+                10764,
+                35
+            ],
+            "id": 70672,
+            "origin_country": [
+                "KR"
+            ],
+            "original_language": "ko",
+            "original_name": "아는 형님",
+            "overview": "Male celebs play make-believe as high schoolers, welcoming star transfer students every week and engaging in battles of witty humor and slapstick.",
+            "popularity": 1355.981,
+            "poster_path": "/2jIi55JtYKJTL1km8qHMuUilOWo.jpg",
+            "first_air_date": "2015-12-05",
+            "name": "Men on a Mission",
+            "vote_average": 7.4,
+            "vote_count": 30
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/w6SFPNZJScvO47QjGyFlaUvriKX.jpg",
+            "genre_ids": [
+                18,
+                35
+            ],
+            "id": 15844,
+            "origin_country": [
+                "HK"
+            ],
+            "original_language": "cn",
+            "original_name": "真情",
+            "overview": "A Kindred Spirit was a television drama series that was broadcast on TVB Jade in Hong Kong from 15 May 1995 to 13 November 1999. It is one of the longest running drama shows in Hong Kong television history. Its exceptional longevity still amazes people in a city where scripted TV drama programs typically only last around 20 episodes. The total number of episodes is 1,128. Each episode airs a few days in each week.\n\nThe show centres on a family who operates a barbecue pork restaurant in Happy Valley, Hong Kong, and their life.",
+            "popularity": 830.864,
+            "poster_path": "/fpOAhBePSowxPsRUUT0ov9tMXwc.jpg",
+            "first_air_date": "1995-05-15",
+            "name": "A Kindred Spirit",
+            "vote_average": 0.0,
+            "vote_count": 0
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/7LFFtIKFwowTTbasjqNpYCQHxB6.jpg",
+            "genre_ids": [
+                10767
+            ],
+            "id": 29082,
+            "origin_country": [
+                "NL"
+            ],
+            "original_language": "nl",
+            "original_name": "De Wereld Draait Door",
+            "overview": "Talk show hosted by Matthijs van Nieuwkerk containing a mixture of news, information, television bloopers and general entertainment.",
+            "popularity": 918.823,
+            "poster_path": "/usDvOyAmTaLXV25hL5zoCUS0Rz4.jpg",
+            "first_air_date": "2005-10-10",
+            "name": "De Wereld Draait Door",
+            "vote_average": 5.6,
+            "vote_count": 5
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/5MWFjQ3NuNtNeOE9FdrVLeNMNPs.jpg",
+            "genre_ids": [
+                16,
+                35,
+                10751,
+                10765
+            ],
+            "id": 1877,
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Phineas and Ferb",
+            "overview": "Each day, two kindhearted suburban stepbrothers on summer vacation embark on some grand new project, which annoys their controlling sister, Candace, who tries to bust them. Meanwhile, their pet platypus plots against evil Dr. Doofenshmirtz.",
+            "popularity": 917.356,
+            "poster_path": "/oSLwJMOOQGAsyJNMi4Y3MO44iAJ.jpg",
+            "first_air_date": "2007-08-17",
+            "name": "Phineas and Ferb",
+            "vote_average": 7.8,
+            "vote_count": 752
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/6eqpbUW3gTrox29w0VPkYaIpyHa.jpg",
+            "genre_ids": [],
+            "id": 69438,
+            "origin_country": [
+                "KR"
+            ],
+            "original_language": "ko",
+            "original_name": "보통의 연애",
+            "overview": "\"Ordinary Love\" is about a psychiatrist who treats patients, while having many problems himself. He meets a woman who teaches him that love does not have to be complicated.",
+            "popularity": 1055.625,
+            "poster_path": "/qN67Nr0XhxUp9wzlypWMaINMM11.jpg",
+            "first_air_date": "2012-02-29",
+            "name": "Ordinary Love",
+            "vote_average": 8.0,
+            "vote_count": 2
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/krUKAuARVP0LGbK4u98Ihb0rdVa.jpg",
+            "genre_ids": [
+                10751,
+                35
+            ],
+            "id": 92481,
+            "origin_country": [
+                "FR"
+            ],
+            "original_language": "fr",
+            "original_name": "Maguy",
+            "overview": "",
+            "popularity": 644.143,
+            "poster_path": "/4b74mdp4XijVmLaFzefzTlvxKcK.jpg",
+            "first_air_date": "1985-09-08",
+            "name": "Maguy",
+            "vote_average": 3.0,
+            "vote_count": 2
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [
+                10751
+            ],
+            "id": 39921,
+            "origin_country": [
+                "DE"
+            ],
+            "original_language": "de",
+            "original_name": "Die Anrheiner",
+            "overview": "Die Anrheiner is a German television soap opera series, broadcast on WDR-TV since March 21, 1998. The series is set and filmed in Cologne.",
+            "popularity": 757.783,
+            "poster_path": null,
+            "first_air_date": "1998-03-21",
+            "name": "Die Anrheiner",
+            "vote_average": 0.0,
+            "vote_count": 0
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/l7LRGYJY3NzIGBlpvHpMsNXHbm5.jpg",
+            "genre_ids": [
+                10751,
+                35
+            ],
+            "id": 218145,
+            "origin_country": [
+                "SK"
+            ],
+            "original_language": "sk",
+            "original_name": "Mama na prenájom",
+            "overview": "Abandoned by his wife, Martin is lying to his daughter not to be upset. But as Hanka grows, these lies become unbearable. Martin meets Nada unexpectedly, asked her to be a rent-a-mother and all lives are completely changed.",
+            "popularity": 1477.385,
+            "poster_path": "/fH7PP2Rkdlo414IHvZABBHhtoqd.jpg",
+            "first_air_date": "2023-01-09",
+            "name": "Mom for rent",
+            "vote_average": 5.0,
+            "vote_count": 25
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/lswRmm6czR4QTnwXRtacMfyxgJ0.jpg",
+            "genre_ids": [
+                10759,
+                18,
+                10764
+            ],
+            "id": 46707,
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "WWE Main Event",
+            "overview": "WWE Main Event is a professional wrestling television program produced by WWE that airs on the Ion Television network and streams on Hulu Plus in the United States. The show features WWE wrestlers and complements WWE's primary programs Raw and SmackDown.",
+            "popularity": 987.423,
+            "poster_path": "/yVZdqmVMI09F7GzFvDJCc36oBkT.jpg",
+            "first_air_date": "2012-10-03",
+            "name": "WWE Main Event",
+            "vote_average": 7.8,
+            "vote_count": 37
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/xzsMycOplSyWzV2HStNDdmPGax0.jpg",
+            "genre_ids": [
+                10759,
+                16
+            ],
+            "id": 118453,
+            "origin_country": [
+                "JP"
+            ],
+            "original_language": "ja",
+            "original_name": "巨人の星",
+            "overview": "In 1969, at the press conference of Nagashima Shigeo who was joining a professional baseball team, Yomiurhi Kyojin, a ball was thrown at him by a boy. He was Hoshi Hyuma, and a thrown ball meant a letter of challenge. His father, Hoshi Ittetsu, had trained Huma since he had been very young to achieve his dream to make him a professional baseball player.",
+            "popularity": 1333.581,
+            "poster_path": "/3AvF4Z6v9ScbwCGDKKGfGSF5xU2.jpg",
+            "first_air_date": "1968-03-30",
+            "name": "Star of the Giants",
+            "vote_average": 7.8,
+            "vote_count": 2
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/tJF9M5niAnb4fm881PGc2GwS0e1.jpg",
+            "genre_ids": [
+                16,
+                10759,
+                35,
+                10751,
+                10762
+            ],
+            "id": 80885,
+            "origin_country": [
+                "JP"
+            ],
+            "original_language": "ja",
+            "original_name": "忍者ハットリくん",
+            "overview": "11-year-old Kenichi Mitsuba is an average kid who goes to secondary school and struggles with his studies, he is very stubborn and is very lazy and therefore always ends up frustrating his parents and teacher. He loves to find an easy way of things. He befriends Hattori Kanzo, a ninja from the Iga Clan, and he becomes part of the Mitsuba family along with his brother, Shinzo and his ninja dog, Shishimaru. Hattori helps Kenichi with his problems, and constantly keeps an eye on him, as a good friend. The main antagonist Kemumaki, a Koga ninja and his ninja cat, Kagechiyo always troubles Kenichi, mainly because of their feud over one girl, Yumeko. Kenichi asks Hattori to take revenge as a recurring storyline in many episodes. Although Hattori is a good friend, Kenichi sometimes fights with Hattori due to misunderstandings created by Kemumaki. Sometimes Jippou, Togejirou and Tsubame help him.",
+            "popularity": 1461.671,
+            "poster_path": "/9PUkpvq0wJnJ2M00dtgxKn6LptB.jpg",
+            "first_air_date": "1981-09-28",
+            "name": "Ninja Hattori-kun",
+            "vote_average": 6.846,
+            "vote_count": 26
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/yZPbJt8DCLijy3rTr0CX1z470CK.jpg",
+            "genre_ids": [
+                10766
+            ],
+            "id": 236291,
+            "origin_country": [
+                "ZA"
+            ],
+            "original_language": "af",
+            "original_name": "Villa Rosa",
+            "overview": "In Bloemfontein there is a guest house where the walls have ears and where there is daily drama, intrigue and also a lot of comedy.",
+            "popularity": 780.256,
+            "poster_path": "/rtnaqwaUYWjMTWuBE3updqydkRN.jpg",
+            "first_air_date": "2004-10-04",
+            "name": "Villa Rosa",
+            "vote_average": 6.0,
+            "vote_count": 1
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/mefD1LpHSyXrUqx2szACTDdEq0P.jpg",
+            "genre_ids": [
+                10751,
+                10762
+            ],
+            "id": 6207,
+            "origin_country": [
+                "GB"
+            ],
+            "original_language": "en",
+            "original_name": "Pipkins",
+            "overview": "Pipkins was a British children's TV programme. Hartley Hare, Pig, Topov and the gang were the stars of ATV's pre-school series which ran from January 1973 to 29 December 1981.",
+            "popularity": 611.022,
+            "poster_path": "/94NQY6eS1O3SxqPFbeysGEPgiTv.jpg",
+            "first_air_date": "1973-01-01",
+            "name": "Pipkins",
+            "vote_average": 6.5,
+            "vote_count": 2
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/zVnbHIJLT5myh9q8vBVNz7d7Qgg.jpg",
+            "genre_ids": [
+                35,
+                10751
+            ],
+            "id": 1027,
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "The Carol Burnett Show",
+            "overview": "The Carol Burnett Show is an American variety/sketch comedy television show starring Carol Burnett, Harvey Korman, Vicki Lawrence, Lyle Waggoner, and Tim Conway. It originally ran on CBS from September 11, 1967, to March 29, 1978, for 278 episodes and originated from CBS Television City's Studio 33. The series won 25 prime time Emmy Awards, was ranked No. 16 on TV Guide's 50 Greatest TV Shows of All Time in 2002 and in 2007 was listed as one of Time magazine's \"100 Best TV Shows of All Time.\"",
+            "popularity": 812.161,
+            "poster_path": "/dGd9pG4PGzpJbdbPEnFxKrJ24z8.jpg",
+            "first_air_date": "1967-09-11",
+            "name": "The Carol Burnett Show",
+            "vote_average": 7.5,
+            "vote_count": 53
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/ikS12cRIPV1ZDVmCVKMNfMmow9Y.jpg",
+            "genre_ids": [
+                35,
+                10767
+            ],
+            "id": 1554,
+            "origin_country": [
+                "GB"
+            ],
+            "original_language": "en",
+            "original_name": "QI",
+            "overview": "Comedy quiz show full of quirky facts, in which contestants are rewarded more if their answers are 'quite interesting'.",
+            "popularity": 1401.382,
+            "poster_path": "/hieAAv1MVYzRuX12ttVmlq7kGn9.jpg",
+            "first_air_date": "2003-09-11",
+            "name": "QI",
+            "vote_average": 7.964,
+            "vote_count": 222
+        }
+    ]

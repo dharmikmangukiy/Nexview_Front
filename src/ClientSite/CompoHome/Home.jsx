@@ -19,7 +19,7 @@ const Home = () => {
   useEffect(() => {
     const bg =
       url.backdrop +
-      data?.[Math.floor(Math.random() * 40)]?.backdrop_path;
+      data?.[Math.floor(Math.random() * 280)]?.backdrop_path;
     setBackground(bg);
   }, [data]);
   const onChange = (selectedItems, action) => {

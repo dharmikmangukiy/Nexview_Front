@@ -6,9 +6,13 @@ const Sidebar = () => {
         <>
             <aside>
                 <p>  </p>
-                <NavLink to="/">
+                <NavLink to="/total">
                     <i class="fa fa-user-o" aria-hidden="true"></i>
-                    My drive
+                    Dashboard
+                </NavLink>
+                <NavLink to="/user_req">
+                    <i class="fa fa-user-o" aria-hidden="true"></i>
+                   User Request
                 </NavLink>
                 <NavLink to="/">
                     <i class="fa fa-laptop" aria-hidden="true"></i>
@@ -17,10 +21,6 @@ const Sidebar = () => {
                 <NavLink to="/use_table">
                     <i class="fa fa-clone" aria-hidden="true"></i>
                     User
-                </NavLink>
-                <NavLink to="/">
-                    <i class="fa fa-clone" aria-hidden="true"></i>
-                    Prime
                 </NavLink>
             
             </aside>

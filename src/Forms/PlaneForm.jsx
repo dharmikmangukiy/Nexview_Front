@@ -7,8 +7,8 @@ import { NavLink } from "react-router-dom";
 function PlanForm() {
   return (
     <>
-      <div className="client_conteint">
-        <Header />
+      <div className="client_conteint" >
+        {/* <Header /> */}
         <div
           className="text-white container contentWrapper"
           style={{ paddingTop: "100px", paddingBottom: "50px" }}
@@ -136,7 +136,7 @@ function PlanForm() {
       </NavLink>
         </div>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   );

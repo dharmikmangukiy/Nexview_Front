@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
 
-
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import PosterFallback from "../../../../public/Images/no-poster.png"
 import ContentWrapper from "../../contentWrapper/ContentWrapper";
 import useFetch from "../../../Componants/hooks/useFetch";
@@ -13,6 +13,7 @@ import Img from "../../../Componants/lazyLoadImage/Img";
 import { PlayIcon } from "./Playbtn";
 import VideoPopup from "../../videoPopup/VideoPopup";
 import useFetch2 from "../../../Componants/hooks/useFetch2";
+import StarsIcon from '@mui/icons-material/Stars';
 
 const DetailsBanner = ({ video, crew }) => {
   const [show, setShow] = useState(false);
@@ -242,7 +243,14 @@ const DetailsBanner = ({ video, crew }) => {
                           } (${dayjs(
                             data?.release_date
                           ).format("YYYY")})`}
+                        <StarsIcon style={{
+                          color: "#ffc107",
+                          marginLeft: '8px',
+                          fontSize: '40px'
+                        }} />
+
                       </div>
+
                       <div className="subtitle">
                         {data.tagline}
                       </div>
@@ -272,6 +280,10 @@ const DetailsBanner = ({ video, crew }) => {
                       <div className="overview">
                         <div className="heading">Overview</div>
                         <div className="description">{data.overview}</div>
+                        <div>
+                          <button className="btn_custom">Add to <FavoriteBorderIcon /></button>
+                          <button className="btn_custom_r1">Remove to <FavoriteBorderIcon /></button>
+                        </div>
                       </div>
 
                       <div className="info">

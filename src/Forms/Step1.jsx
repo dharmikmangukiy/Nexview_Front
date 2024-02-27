@@ -8,8 +8,8 @@ import { NavLink } from "react-router-dom";
 function Step1() {
   return (
     <>
-      <div className="client_conteint">
-        <Header />
+      <div className="client_conteint" style={{height:"100vh"}}>
+        {/* <Header /> */}
         <div
           className="text-white container contentWrapper text-center"
           style={{ paddingTop: "150px", paddingBottom: "100px" }}
@@ -65,7 +65,7 @@ function Step1() {
             </NavLink>
           </div>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   );

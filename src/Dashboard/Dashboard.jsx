@@ -115,6 +115,15 @@ function Dashboard() {
   const [delte, setdelte] = React.useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
+
+  const genreIds = [36, 10751, 10770, 16, 10402, 53, 28, 14, 27, 12, 35, 18, 80, 9648, 99, 10749, 37, 10752, 878];
+  const getRandomElements = (array, numberOfElements) => {
+    const shuffledArray = array.sort(() => Math.random() - 0.5);
+    return shuffledArray.slice(0, numberOfElements);
+  };
+  const randomGenreIds = getRandomElements(genreIds, 3);
+  
+  
   const [AddMovies, setAddMovies] = useState({
     original_title: "",
     id: "",
@@ -125,12 +134,12 @@ function Dashboard() {
     overview: "",
     release_date: "",
     original_language: "",
-    genre_ids: [ 36, 10751, 10770, 16, 10402, 53, 28, 14, 27, 12, 35, 18, 80, 9648, 99, 10749, 37, 10752, 878],
+    genre_ids: randomGenreIds,
     status: "Released",
     tagline: "Unite or fall.",
     director: "Johny Since",
     writer: "Lena Anderson",
-    genres: [,
+    genres: [
       { id: 36, name: 'History' },
       { id: 10751, name: 'Family' }
       ,
@@ -186,7 +195,7 @@ function Dashboard() {
     vote_average: "",
     overview: "",
     original_language: "",
-    genre_ids: [ 36, 10751, 10770, 16, 10402, 53, 28, 14, 27, 12, 35, 18, 80, 9648, 99, 10749, 37, 10752, 878],
+    genre_ids: randomGenreIds,
     status: "Released",
     tagline: "Unite or fall.",
     director: "-",
@@ -366,7 +375,7 @@ function Dashboard() {
           overview: res.data.overview,
           release_date: res.data.release_date,
           original_language: res.data.original_language,
-          genre_ids: [ 36, 10751, 10770, 16, 10402, 53, 28, 14, 27, 12, 35, 18, 80, 9648, 99, 10749, 37, 10752, 878],
+          genre_ids: randomGenreIds,
           status: "Released",
           tagline: "Unite or fall.",
           director: "Johny Since",
@@ -437,7 +446,7 @@ function Dashboard() {
           vote_average: res.data.vote_average,
           overview: res.data.overview,
           original_language: res.data.original_language,
-          genre_ids: [ 36, 10751, 10770, 16, 10402, 53, 28, 14, 27, 12, 35, 18, 80, 9648, 99, 10749, 37, 10752, 878],
+          genre_ids: randomGenreIds,
           status: "Released",
           tagline: "Unite or fall.",
           director: "-",

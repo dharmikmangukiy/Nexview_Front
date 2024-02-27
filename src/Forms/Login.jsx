@@ -137,7 +137,7 @@ const Login = () => {
                 </div>
                 <div className="group pt-2">
                   <div style={{ marginLeft: "5%" }} className="foot-lnk">
-                    <a>Forgot Password ? </a>
+                    <NavLink to="forget_password">Forgot Password ? </NavLink >
                   </div>
                 </div>
                 <div className="group">

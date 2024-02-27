@@ -8,8 +8,8 @@ import { NavLink } from "react-router-dom";
 function Step3() {
   return (
     <>
-      <div className="client_conteint">
-        <Header />
+      <div className="client_conteint" style={{height:"100vh"}}>
+        {/* <Header /> */}
         <div
           className="text-white container contentWrapper text-center"
           style={{ paddingTop: "150px", paddingBottom: "100px" }}
@@ -21,21 +21,23 @@ function Step3() {
               height="75"
             />
           </div>
-          <div className="pt-5">STEP 2 OF 3</div>
-          <h3>Finish setting up your account</h3> 
+          <div className="pt-5">STEP 2 OF 2</div>
+          <h3>One last thing</h3> 
           <div className="p-3">
             <span>
-            NEXVIEW is personalised for you. Create <br /> a password to watch
-              on any device at <br /> any time.
+            Before we restart your membership,<br /> you'll need to set up a payment method.
+            </span><br /><br />
+            <span>
+            As always, you can cancel online at any time.
             </span>
           </div>
           <div className="text-center pt-2">
-            <NavLink to="/home">
+            <NavLink to="/step4">
               <button className="Next_button">NEXT</button>
             </NavLink>
           </div>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   );

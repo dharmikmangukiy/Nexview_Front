@@ -2,7 +2,7 @@ import React from 'react';
 import ContentWrapper from '../ClientSite/contentWrapper/ContentWrapper';
 import Footer from '../ClientSite/Global/Footer';
 import Header from '../ClientSite/Global/Header';
-import video_animattion from "../../public/Video/Netflix Logo 2023.mp4"
+import video_animattion from "../../public/Video/Dark Season 3 _ Official Trailer _ Netflix.mp4"
 import "./sttyyle.css"
 import { NavLink } from 'react-router-dom';
 const About = () => {
