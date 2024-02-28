@@ -11,6 +11,7 @@ import DialogContent from "@mui/material/DialogContent";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import Video_onff from "../../../../public/Video/Netflix New Logo Animation 2019.mp4";
+import Home from "../../CompoHome/Home";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -116,6 +117,7 @@ const Trending_Today = () => {
   return (
     <>
       <Header />
+      <Home/>
       <div className="heroBanner" style={{ height: "750px" }}>
         <div className="backdrop-img">
           <Img src={Background.Back} />
@@ -205,6 +207,7 @@ const Trending_Today = () => {
         </div>
       </div>
       <div className="client_conteint pb-1 pt-2">
+       
         <Trending />
       </div>
       <Footer />

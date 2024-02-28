@@ -150,12 +150,7 @@ const Explore = () => {
           <div className="pageHeader">
             <div className="pageTitle">
               {mediaType === "tv" ? "Explore TV Shows" : "Explore Movies"} <br />
-              <input
-                type="text"
-                className="ttextt_search"
-                placeholder="Search"
-                value={searchQuery}
-                onChange={handleSearch} />
+            
             </div>
             <div className="filters">
               <Select
@@ -181,6 +176,12 @@ const Explore = () => {
                 className="react-select-container sortbyDD"
                 classNamePrefix="react-select"
               />
+                <input
+                type="text"
+                className="ttextt_search"
+                placeholder="Search"
+                value={searchQuery}
+                onChange={handleSearch} />
             </div>
 
           </div>

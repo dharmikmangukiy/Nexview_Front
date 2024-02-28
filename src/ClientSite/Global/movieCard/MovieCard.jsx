@@ -25,7 +25,7 @@ const MovieCard = ({ data, fromSearch, mediaType }) => {
             <CircleRating rating={data.vote_average.toFixed(1)} />
             <Genres data={data.genre_ids} />
             <img src="https://v3img.voot.com/v3Storage/menu/jv/premium_icon.svg" alt="" style={{
-              zIndex: "11", position: "absolute",
+             position: "absolute",
               top: "10px",
               right: "15px"
             }} />

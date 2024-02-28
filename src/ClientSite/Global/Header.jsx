@@ -175,7 +175,7 @@ const Header = () => {
             TV Shows
           </li>
           <li className="menuItem">
-            <FavoriteBorderIcon />
+            <FavoriteBorderIcon onClick={() => navigate("/favorite")}/>
           </li>
           <Box display="flex" alignItems="center" gap={1} className="for_hide">
             <IconButton>

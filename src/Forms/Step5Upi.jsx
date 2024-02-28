@@ -16,12 +16,18 @@ function Step5Upi() {
                         <img
                             src="https://assets.nflxext.com/ffe/siteui/acquisition/simplicity/Lock.png"
                             alt=""
-                            height="75"
+                            height="50"
                         />
                     </div>
                     <div className="pt-1 text-center">STEP 2 OF 2</div>
                     <div className="py-3">
-
+                    <div className="text-center">
+                    <img
+                            src="../../public/Images/QrCode.jpg"
+                            alt=""
+                            height="135"
+                        />
+                    </div>
                         <div className="payment-title">
                             <h2><b>Configuring UPI AutoPay</b></h2>
                         </div>
@@ -50,7 +56,10 @@ function Step5Upi() {
                             <label htmlFor="palne">Enter UPI ID</label> <br />
                         <input type="text" className="form-control p-3"/>
                         </div>
-                  
+                        <div>
+                            <label htmlFor="palne">Enter Transaction ID</label> <br />
+                        <input type="text" className="form-control p-3"/>
+                        </div>
                         <br />
                         <div>
                             <p className="text-secondary">Any payment above ₹ 2000 shall need additional authentication.</p>

@@ -37,6 +37,8 @@ import Step6 from "./Forms/Step6";
 import Step5Upi from "./Forms/Step5Upi";
 import UserReqList from "./Dashboard/UserReqList";
 import Total from "./Dashboard/Total";
+import Favorite from "./ClientSite/Favorite/Favorite";
+import FHome from "./ClientSite/Favorite/FHome";
 
 
 function useScrollToTop() {
@@ -144,6 +146,8 @@ function App() {
           <Route path="/PlanForm" element={<PlanForm />} />
           <Route path="/" element={<Step1 />} />
           <Route path="/step3" element={<Step3 />} />
+          <Route path="/favorite" element={<FHome />} />
+
           <Route path="/step4" element={<Step4 />} />
           <Route path="/final_pay" element={<Step6 />} />
           <Route path="/step5_upi" element={<Step5Upi />} />

@@ -10,6 +10,7 @@ import Trending from "./Trending";
 import Popular from "./Popular";
 import TopRated from "./TopRated";
 import Select from "react-select";
+import Coursol from "./Coursol";
 
 const Home = () => {
   const [background, setBackground] = useState("");
@@ -29,6 +30,8 @@ const Home = () => {
   };
   return (
     <>
+      
+
       <ToastContainer />
       <div className="heroBanner">
         {!loading && (
@@ -40,7 +43,7 @@ const Home = () => {
         <div className="opacity-layer"></div>
         <ContentWrapper>
           <div className="heroBannerContent">
-            <span className="title">Welcome.</span>
+            <span className="title">Tranding Movies.</span>
             <span className="subTitle">
               Millions of movies, TV shows and people to discover. Explore now.
             </span>
@@ -62,9 +65,7 @@ const Home = () => {
           </div>
         </ContentWrapper>
       </div>
-      <Trending />
-      <Popular />
-      <TopRated />
+ 
     </>
   );
 };
