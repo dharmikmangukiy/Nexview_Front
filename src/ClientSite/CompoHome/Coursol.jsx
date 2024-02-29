@@ -12,8 +12,12 @@ function Coursol() {
   const sliderRef = useRef(null);
   const thumbnailRef = useRef(null);
   const carouselRef = useRef(null);
-
-  const shuffledData = data ? [...data].sort(() => Math.random() - 0.5).slice(0, 10) : [];
+  const [first, setfirst] = useState();
+  useEffect(() => {
+    setfirst(
+      data ? [...data].sort(() => Math.random() - 0.5).slice(0, 10) : []
+    );
+  }, [loading]);
 
   useEffect(() => {
     const runNextAuto = setTimeout(() => {
@@ -33,38 +37,51 @@ function Coursol() {
       carouselRef.current.classList.add("next");
     } else {
       sliderRef.current.prepend(SliderItemsDom[SliderItemsDom.length - 1]);
-      thumbnailRef.current.prepend(thumbnailItemsDom[thumbnailItemsDom.length - 1]);
+      thumbnailRef.current.prepend(
+        thumbnailItemsDom[thumbnailItemsDom.length - 1]
+      );
       carouselRef.current.classList.add("prev");
     }
 
     setTimeout(() => {
       carouselRef.current.classList.remove("next");
       carouselRef.current.classList.remove("prev");
-    }, 2000);
+      clearTimeout(runNextAuto);
+    }, 5000);
 
     // clearTimeout(runNextAuto);
     const runNextAutoTimeout = setTimeout(() => {
       showSlider("next");
     }, 7000);
-    setCurrentIndex((prevIndex) => (type === "next" ? (prevIndex + 1) % shuffledData.length : (prevIndex - 1 + shuffledData.length) % shuffledData.length));
+    // setCurrentIndex((prevIndex) =>
+    //   type === "next"
+    //     ? (prevIndex + 1) % first.length
+    //     : (prevIndex - 1 + first.length) % first.length
+    // );
   };
-  
-  
 
   return (
     <>
       <div className="carousell" ref={carouselRef}>
         <div className="list" ref={sliderRef}>
-          {shuffledData.map((item, index) => (
-            <div className={`item ${index === currentIndex ? "active" : ""}`} key={item.id}>
-              <img src={`${url.backdrop}${item.backdrop_path}`} alt={item.original_title} />
+          {first?.map((item, index) => (
+            <div
+              className={`item ${index === currentIndex ? "active" : ""}`}
+              key={item.id}
+            >
+              <img
+                src={`${url.backdrop}${item.backdrop_path}`}
+                alt={item.original_title}
+              />
               <div className="content">
                 <div className="author">NEXVIEW</div>
                 <div className="title">{item.original_title}</div>
                 <div className="topic">{item.release_date}</div>
                 <div className="des">{item.overview}</div>
                 <div className="buttons">
-                  <button onClick={() => navigate(`/movie/${item.id}`)}>SEE MORE</button>
+                  <button onClick={() => navigate(`/movie/${item.id}`)}>
+                    SEE MORE
+                  </button>
                   <button>SUBSCRIBE</button>
                 </div>
               </div>
@@ -73,9 +90,15 @@ function Coursol() {
         </div>
 
         <div className="thumbnail" ref={thumbnailRef}>
-          {shuffledData.map((item, index) => (
-            <div className={`item ${index === currentIndex ? "active" : ""}`} key={item.id}>
-              <img src={`${url.backdrop}${item.poster_path}`} alt={item.original_title} />
+          {first?.map((item, index) => (
+            <div
+              className={`item ${index === currentIndex ? "active" : ""}`}
+              key={item.id}
+            >
+              <img
+                src={`${url.backdrop}${item.poster_path}`}
+                alt={item.original_title}
+              />
               <div className="content">
                 <div className="title">{item.original_title}</div>
                 <div className="description">Description</div>

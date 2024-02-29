@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import useFetch from "../../Componants/hooks/useFetch";
@@ -25,15 +25,27 @@ const Favorite = () => {
   const navigate = useNavigate();
   const { url } = useSelector((state) => state.home);
   const { data, loading } = useFetch("/discover/movie");
-  const shuffledData = data
-    ? [...data].sort(() => Math.random() - 0.5).slice(0, 5)
-    : [];
+  const [first, setfirst] = useState();
 
+  useEffect(() => {
+    setfirst(
+      data ? [...data].sort(() => Math.random() - 0.5).slice(0, 10) : []
+    );
+  }, [loading]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      nextSlide();
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+  
   return (
     <div className="back-blue">
       <div className="containerr">
         <div className="slide" ref={slideRef}>
-          {shuffledData.map((item) => (
+          {first?.map((item) => (
             <div
               className="item"
               style={{ backgroundImage: `url(${url.backdrop}${item.poster_path})` }}

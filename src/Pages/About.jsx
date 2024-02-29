@@ -5,6 +5,7 @@ import Header from '../ClientSite/Global/Header';
 import video_animattion from "../../public/Video/Dark Season 3 _ Official Trailer _ Netflix.mp4"
 import "./sttyyle.css"
 import { NavLink } from 'react-router-dom';
+import AboutExtra from './AboutExtra';
 const About = () => {
     return (
         <>
@@ -35,6 +36,7 @@ const About = () => {
                     </div>
                 </ContentWrapper>
             </div>
+            <AboutExtra/>
             <Footer />
         </>
     );

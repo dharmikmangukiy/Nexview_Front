@@ -13,6 +13,10 @@
     background-color: #04152d;
 padding-top:25%;
 }
+.bodyy_profile{
+    background-color: #04152d;
+
+}
 .containerr .slide .item{
     width: 200px;
     height: 300px;
@@ -60,7 +64,7 @@ padding-top:25%;
     position: absolute;
     top: 50%;
     left: 100px;
-    width: 300px;
+    width: 500px;
     text-align: left;
     color: #eee;
     transform: translate(0, -50%);
