@@ -31,6 +31,7 @@ import Spinner from "../ClientSite/Global/spinner/Spinner";
 import useFetch from "../Componants/hooks/useFetch";
 import axios from "axios";
 import Sidebar from "./Sidebar";
+import { Checkbox, FormControlLabel } from "@mui/material";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -122,13 +123,12 @@ function Dashboard() {
     return shuffledArray.slice(0, numberOfElements);
   };
   const randomGenreIds = getRandomElements(genreIds, 3);
-  
-  
   const [AddMovies, setAddMovies] = useState({
     original_title: "",
     id: "",
     poster_path: "",
     backdrop_path: "",
+    isPrime: false,
     runtime: "",
     vote_average: "",
     overview: "",
@@ -191,6 +191,7 @@ function Dashboard() {
     id: "",
     poster_path: "",
     backdrop_path: "",
+    isPrime: false,
     runtime: "",
     vote_average: "",
     overview: "",
@@ -296,6 +297,7 @@ function Dashboard() {
       AddMovies.overview !== "" &&
       AddMovies.runtime !== "" &&
       AddMovies.backdrop_path !== "" &&
+      AddMovies.isPrime !== "" &&
       AddMovies.release_date !== "" &&
       AddMovies.original_language !== "" &&
       AddMovies.id !== ""
@@ -318,6 +320,7 @@ function Dashboard() {
         AddMovies.overview == "",
         AddMovies.runtime == "",
         AddMovies.backdrop_path == "",
+        AddMovies.isPrime == false,
         AddMovies.release_date == "",
         AddMovies.original_language == ""
       );
@@ -333,6 +336,7 @@ function Dashboard() {
       TVSeries.overview !== "" &&
       TVSeries.runtime !== "" &&
       TVSeries.backdrop_path !== "" &&
+      TVSeries.isPrime !== "" &&
       TVSeries.original_language !== "" &&
       TVSeries.id !== ""
     ) {
@@ -354,6 +358,7 @@ function Dashboard() {
         TVSeries.overview == "",
         TVSeries.runtime == "",
         TVSeries.backdrop_path == "",
+        TVSeries.isPrime == false,
         TVSeries.original_language == ""
       );
     } else {
@@ -370,6 +375,7 @@ function Dashboard() {
           original_title: res.data.original_title,
           poster_path: res.data.poster_path,
           backdrop_path: res.data.backdrop_path,
+          isPrime: res.data.isPrime || false,
           runtime: res.data.runtime,
           vote_average: res.data.vote_average,
           overview: res.data.overview,
@@ -401,28 +407,28 @@ function Dashboard() {
             { id: 12, name: 'Adventure' }
             ,
             { id: 35, name: 'Comedy' }
-      
+
             ,
             { id: 18, name: 'Drama' }
-      
+
             ,
             { id: 80, name: 'Crime' }
-      
+
             ,
             { id: 9648, name: 'Mystery' }
-      
+
             ,
             { id: 99, name: 'Documentary' }
-      
+
             ,
             { id: 10749, name: 'Romance' }
-      
+
             ,
             { id: 37, name: 'Western' }
-      
+
             ,
             { id: 10752, name: 'War' }
-      
+
             ,
             { id: 878, name: 'Science Fiction' }
           ],
@@ -442,6 +448,7 @@ function Dashboard() {
           original_name: res.data.original_name,
           poster_path: res.data.poster_path,
           backdrop_path: res.data.backdrop_path,
+          isPrime: res.data.isPrime || false,
           runtime: res.data.runtime,
           vote_average: res.data.vote_average,
           overview: res.data.overview,
@@ -472,28 +479,28 @@ function Dashboard() {
             { id: 12, name: 'Adventure' }
             ,
             { id: 35, name: 'Comedy' }
-      
+
             ,
             { id: 18, name: 'Drama' }
-      
+
             ,
             { id: 80, name: 'Crime' }
-      
+
             ,
             { id: 9648, name: 'Mystery' }
-      
+
             ,
             { id: 99, name: 'Documentary' }
-      
+
             ,
             { id: 10749, name: 'Romance' }
-      
+
             ,
             { id: 37, name: 'Western' }
-      
+
             ,
             { id: 10752, name: 'War' }
-      
+
             ,
             { id: 878, name: 'Science Fiction' }
           ],
@@ -511,6 +518,7 @@ function Dashboard() {
       AddMovies.overview !== "" &&
       AddMovies.runtime !== "" &&
       AddMovies.backdrop_path !== "" &&
+      AddMovies.isPrime !== "" &&
       AddMovies.release_date !== "" &&
       AddMovies.original_language !== ""
     ) {
@@ -519,6 +527,7 @@ function Dashboard() {
         .then((res) => {
           console.log("Update request successful:", res.data);
           toast.success("Movie Update successfully");
+
         })
         .catch((error) => {
           console.error("Error making Update request:", error);
@@ -531,6 +540,7 @@ function Dashboard() {
         AddMovies.overview == "",
         AddMovies.runtime == "",
         AddMovies.backdrop_path == "",
+        AddMovies.isPrime == false,
         AddMovies.release_date == "",
         AddMovies.original_language == ""
       );
@@ -546,6 +556,7 @@ function Dashboard() {
       TVSeries.overview !== "" &&
       TVSeries.runtime !== "" &&
       TVSeries.backdrop_path !== "" &&
+      TVSeries.isPrime !== "" &&
       TVSeries.original_language !== ""
     ) {
       axios
@@ -565,6 +576,7 @@ function Dashboard() {
         TVSeries.overview == "",
         TVSeries.runtime == "",
         TVSeries.backdrop_path == "",
+        TVSeries.isPrime == false,
         TVSeries.original_language == ""
       );
     } else {
@@ -581,9 +593,29 @@ function Dashboard() {
       };
     });
   };
+  const inputCheckBox = (e) => {
+    let name = e.target.name;
+    let value = e.target.checked;
+    setAddMovies((prevalue) => {
+      return {
+        ...prevalue,
+        [name]: value,
+      };
+    });
+  };
   const TVinput = (e) => {
     let name = e.target.name;
     let value = e.target.value;
+    setTVSeries((prevalue) => {
+      return {
+        ...prevalue,
+        [name]: value,
+      };
+    });
+  };
+  const tvInputCheckBox = (e) => {
+    let name = e.target.name;
+    let value = e.target.checked;
     setTVSeries((prevalue) => {
       return {
         ...prevalue,
@@ -636,6 +668,19 @@ function Dashboard() {
                 value={AddMovies.backdrop_path}
                 onChange={input}
                 name="backdrop_path"
+              />
+              {console.log('AddMovies.isPrime', AddMovies.isPrime)}
+              <FormControlLabel
+                sx={{ mx: "2%", width: "300px", marginTop: '10px' }}
+                control={
+                  <Checkbox
+                    id="standard-basic"
+                    label="prime"
+                    variant="standard"
+                    checked={AddMovies.isPrime}
+                    onChange={inputCheckBox}
+                    name="isPrime" />}
+                label="Prime Movie"
               />
 
               <TextField
@@ -743,7 +788,20 @@ function Dashboard() {
                 onChange={TVinput}
                 name="backdrop_path"
               />
+              {console.log('AddMovies.isPrime', TVSeries.isPrime)}
 
+              <FormControlLabel
+                sx={{ mx: "2%", width: "300px", marginTop: '10px' }}
+                control={
+                  <Checkbox
+                    id="standard-basic"
+                    label="prime"
+                    variant="standard"
+                    checked={TVSeries.isPrime}
+                    onChange={tvInputCheckBox}
+                    name="isPrime" />}
+                label="Prime Tv Series"
+              />
               <TextField
                 sx={{ mx: "2%", width: "48%" }}
                 id="standard-basic"
@@ -823,6 +881,19 @@ function Dashboard() {
                 value={AddMovies.backdrop_path}
                 onChange={input}
                 name="backdrop_path"
+              />
+              {console.log('AddMovies.isPrime', AddMovies.isPrime)}
+              <FormControlLabel
+                sx={{ mx: "2%", width: "300px", marginTop: '10px' }}
+                control={
+                  <Checkbox
+                    id="standard-basic"
+                    label="prime"
+                    variant="standard"
+                    checked={AddMovies.isPrime}
+                    onChange={inputCheckBox}
+                    name="isPrime" />}
+                label="Prime Movie"
               />
             </div>
             <div className="d-flex ">
@@ -917,6 +988,20 @@ function Dashboard() {
                 value={TVSeries.backdrop_path}
                 onChange={TVinput}
                 name="backdrop_path"
+              />
+              {console.log('AddMovies.isPrime', TVSeries.isPrime)}
+
+              <FormControlLabel
+                sx={{ mx: "2%", width: "300px", marginTop: '10px' }}
+                control={
+                  <Checkbox
+                    id="standard-basic"
+                    label="prime"
+                    variant="standard"
+                    checked={TVSeries.isPrime}
+                    onChange={tvInputCheckBox}
+                    name="isPrime" />}
+                label="Prime Tv Series"
               />
             </div>
             <div className="d-flex ">
