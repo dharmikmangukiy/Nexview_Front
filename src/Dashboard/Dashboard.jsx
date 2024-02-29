@@ -1117,6 +1117,12 @@ function Dashboard() {
       selector: (row) => row.status,
     },
     {
+      name: 'Prime',
+      selector: (row) => (
+        row.isPrime ? <span style={{ color: 'green' }}>Prime</span> : <span style={{ color: 'red' }}>Non Prime</span>
+      ),
+    },
+    {
       name: "Release Date",
       selector: (row) => row.release_date,
     },
@@ -1180,6 +1186,12 @@ function Dashboard() {
     {
       name: "Status",
       selector: (row) => row.status,
+    },
+    {
+      name: 'Prime',
+      selector: (row) => (
+        row.isPrime ? <span style={{ color: 'green' }}>Prime</span> : <span style={{ color: 'red' }}>Non Prime</span>
+      ),
     },
     {
       name: "Runtime",
