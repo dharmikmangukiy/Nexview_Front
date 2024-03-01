@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "../../../public/style.css";
 import useFetch from "../../Componants/hooks/useFetch";
+import Img from "../../Componants/lazyLoadImage/Img";
 
 function Coursol() {
   const navigate = useNavigate();
@@ -95,7 +96,7 @@ function Coursol() {
               className={`item ${index === currentIndex ? "active" : ""}`}
               key={item.id}
             >
-              <img
+              <Img
                 src={`${url.backdrop}${item.poster_path}`}
                 alt={item.original_title}
               />

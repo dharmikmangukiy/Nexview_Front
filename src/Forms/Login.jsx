@@ -5,11 +5,12 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 import KeyIcon from "@mui/icons-material/Key";
-import { NavLink, Navigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
+  const navigate=useNavigate()
   const [data, setdata] = useState({
     email: "",
     password: "",

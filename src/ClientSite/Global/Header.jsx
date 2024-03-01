@@ -256,7 +256,7 @@ const Header = () => {
           </MenuItem> */}
           <MenuItem
             onClick={() => {
-              navigate("/step1");
+              navigate("/PlanForm");
               handleClose();
             }}
           >

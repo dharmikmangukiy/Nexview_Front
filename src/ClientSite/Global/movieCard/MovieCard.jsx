@@ -24,16 +24,24 @@ const MovieCard = ({ data, fromSearch, mediaType }) => {
           <React.Fragment>
             <CircleRating rating={data.vote_average.toFixed(1)} />
             <Genres data={data.genre_ids} />
-            <img src="https://v3img.voot.com/v3Storage/menu/jv/premium_icon.svg" alt="" style={{
-             position: "absolute",
-              top: "10px",
-              right: "15px"
-            }} />
+            {data.isPrime == true && (
+              <img
+                src="https://v3img.voot.com/v3Storage/menu/jv/premium_icon.svg"
+                alt=""
+                style={{
+                  position: "absolute",
+                  top: "10px",
+                  right: "15px",
+                }}
+              />
+            )}
           </React.Fragment>
         )}
       </div>
       <div className="textBlock">
-        <span className="title">{data.original_title || data.original_name}</span>
+        <span className="title">
+          {data.original_title || data.original_name}
+        </span>
         <span className="date">
           {dayjs(data.release_date).format("MMM D, YYYY")}
         </span>

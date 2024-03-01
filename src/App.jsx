@@ -10,7 +10,8 @@ import Dashboard from "./Dashboard/Dashboard";
 import Explore from "./ClientSite/Global/explore/Explore";
 import Login from "./Forms/Login";
 import AppClient from "./AppClient";
-
+// import { Auth } from "./FaceScanning/components/Auth"
+// import { AuthContainer } from "./FaceScanning/containers/AuthContainer"
 import { fetchDataFromApi } from "../src/Componants/utils/api";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -37,7 +38,6 @@ import Step6 from "./Forms/Step6";
 import Step5Upi from "./Forms/Step5Upi";
 import UserReqList from "./Dashboard/UserReqList";
 import Total from "./Dashboard/Total";
-import Favorite from "./ClientSite/Favorite/Favorite";
 import FHome from "./ClientSite/Favorite/FHome";
 import Profile from "./Pages/Profile";
 
@@ -84,15 +84,15 @@ function App() {
     dispatch(getGenres(data[1]));
   };
   const [GetUser, setGetUser] = useState();
-  useEffect(() => {
-    axios
-      .post("http://localhost:5001/me", {
-        _id: JSON.parse(sessionStorage.getItem('User_id')),
-      })
-      .then((res) => {
-        setGetUser(res.data);
-      })
-  }, [])
+  // useEffect(() => {
+  //   axios
+  //     .post("http://localhost:5001/me", {
+  //       _id: JSON.parse(sessionStorage.getItem('User_id')),
+  //     })
+  //     .then((res) => {
+  //       setGetUser(res.data);
+  //     })
+  // }, [])
   // console.log(Author);
   if (login === "true" || login === null || login === 0) {
     return (
@@ -101,6 +101,8 @@ function App() {
         <Route path="/Registration" element={<Registration />} />
         <Route path="forget_password" element={<ForgetPassword />} />
         <Route path="*" element={<Navigate to="/" replace />} />
+					{/* <Route path='/camera' element={<AuthContainer><Auth /></AuthContainer>} /> */}
+
       </Routes>
     );
   } else if (Author == "admin") {
@@ -120,7 +122,7 @@ function App() {
           <Route path="/Trending_Today" element={<Trending_Today />} />
           <Route path="/up_comming" element={<UpComming />} />
           <Route path="/PlanForm" element={<PlanForm />} />
-          <Route path="/" element={<Step1 />} />
+          {/* <Route path="/" element={<Step1 />} /> */}
           <Route path="/step3" element={<Step3 />} />
           <Route path="/favorite" element={<FHome />} />
           <Route path="/Profile" element={<Profile />} />

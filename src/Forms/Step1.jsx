@@ -6,6 +6,7 @@ import DoneAllRoundedIcon from "@mui/icons-material/DoneAllRounded";
 import { NavLink } from "react-router-dom";
 
 function Step1() {
+
   return (
     <>
       <div className="client_conteint" style={{height:"100vh"}}>
@@ -57,7 +58,8 @@ function Step1() {
             </div>
           </div>
           <div className="text-center pt-4">
-          <NavLink to="/home">
+          {/* to="/home" */}
+          <NavLink >
               <button className="Next_button">Free Trail</button>
             </NavLink>
             <NavLink to="/PlanForm">
