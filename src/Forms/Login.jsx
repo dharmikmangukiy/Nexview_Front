@@ -46,14 +46,14 @@ const Login = () => {
       })
       .then((res) => {
         console.log(res);
-        sessionStorage.setItem('User_id', JSON.stringify(res.data._id));
-        if (data.email == res.data.email && data.password) {
+        sessionStorage.setItem('User_id', JSON.stringify(res.data.data._id));
+        if (data.email == res.data.data.email && data.password) {
           toast.success("Login successful");
           localStorage.setItem("login", false);
           localStorage.setItem("popUp", true)
-          handleLoginSuccess(res.data.role);
-        } else if (res.data.message === "Username or password is wrong!") {
-          toast.error(res.data.message);
+          handleLoginSuccess(res.data.data.role);
+        } else if (res.data.data.message === "Username or password is wrong!") {
+          toast.error(res.data.data.message);
         } else {
           toast.error("Please enter both email and password.");
         }
