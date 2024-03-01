@@ -1,4 +1,5 @@
 import React from 'react'
+import Img from '../Componants/lazyLoadImage/Img'
 import "./extra.css"
 function AboutExtra() {
   return (
@@ -30,12 +31,12 @@ function AboutExtra() {
       </p>
     </div>
     <div className="image">
-      <img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png" />
+      <Img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png" />
     </div>
   </div>
   <div className="container1">
     <div className="image">
-      <img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile.png" />
+      <Img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile.png" />
     </div>
     <div className="text">
       <h1>Download your shows to watch on the go.</h1>
@@ -51,7 +52,7 @@ function AboutExtra() {
       </p>
     </div>
     <div className="image">
-      <img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/device-pile.png" />
+      <Img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/device-pile.png" />
     </div>
   </div>
   <div className="question">

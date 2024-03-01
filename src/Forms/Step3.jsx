@@ -4,6 +4,7 @@ import Footer from "../ClientSite/Global/Footer";
 import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlineRounded";
 import DoneAllRoundedIcon from "@mui/icons-material/DoneAllRounded";
 import { NavLink } from "react-router-dom";
+import Img from "../Componants/lazyLoadImage/Img";
 
 function Step3() {
   return (
@@ -15,7 +16,7 @@ function Step3() {
           style={{ paddingTop: "150px", paddingBottom: "100px" }}
         >
           <div className="pb-2">
-            <img
+            <Img
               src="https://assets.nflxext.com/ffe/siteui/acquisition/simplicity/Devices.png"
               alt=""
               height="75"

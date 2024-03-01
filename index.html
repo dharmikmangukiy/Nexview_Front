@@ -10,37 +10,20 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    <script src="https://unpkg.com/imask"></script>
-    <script type="module" src="/public/card.js"></script>
-    <script type="text/javascript">
-      var currentLocation = window.location.href;
-        console.log('currentLocation',currentLocation)
-      window.onload = function () {
-        // Get the current URL
-        var currentLocation = window.location.href;
-        // Function to load script
-        console.log('currentLocation',currentLocation)
-        console.log('currentLocation','http://localhost:5173/step5_card'== currentLocation)
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/3.4.0/imask.min.js"></script>
 
-        function loadScript(url, callback) {
-          var script = document.createElement("script");
-          script.type = "text/javascript";
-          script.src = url;
-          script.onload = callback;
-          document.getElementsByTagName("head")[0].appendChild(script);
-        }
-  
-        setTimeout(function () {
-          if ('http://localhost:5173/step5_card'== currentLocation) {
-            console.log('ick')
-            // Load the script when the location changes
-            loadScript("/public/card.js", function () {})
-  
-            previousLocation = currentLocation; // Update the previous location
-          }
-        }, 0); // Check every second (you can adjust this interval as needed)
-      };
-    </script>
+
+    <script>
+      function loadScript() {
+          fetch('/public/card.js')
+              .then(response => response.text())
+              .then(scriptContent => {
+                  eval(scriptContent);
+              })
+              .catch(error => console.error('Error loading script:', error));
+      }
+      loadScript();
+      </script>
   </body>
   
 </html>
