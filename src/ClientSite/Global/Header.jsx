@@ -32,20 +32,25 @@ const Header = () => {
   const [OPP, setOPP] = useState(false);
   const [maxWidth, setMaxWidth] = React.useState("lg");
   useEffect(() => {
-    // Establish a connection to the backend socket server
-    const socket = io('http://localhost:5001'); // Replace 'http://localhost:5001' with your server URL
+    const socket = io('http://localhost:5001');
 
-    // Listen for 'product' event from the server
-    socket.on('product', (data) => {
-      console.log('Received product:', data);
+    // Listen for 'product' events
+    socket.on('product', (productData) => {
       // Handle the received product data here
+      console.log('Received product data:', productData);
+    });
+
+    // Listen for 'productDeleted' events
+    socket.on('productDeleted', (productId) => {
+      // Handle product deletion
+      console.log('Product deleted:', productId);
     });
 
     return () => {
-      // Clean up the socket connection when the component unmounts
       socket.disconnect();
     };
-  }, []); // Empty dependency array ensures this effect runs only once
+  }, []);
+
 
 
   useEffect(() => {
