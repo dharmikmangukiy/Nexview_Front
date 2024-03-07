@@ -12,26 +12,26 @@ thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
 let timeRunning = 3000;
 let timeAutoNext = 7000;
 
-nextDom.onclick = function(){
-    showSlider('next');    
+nextDom.onclick = function () {
+    showSlider('next');
 }
 
-prevDom.onclick = function(){
-    showSlider('prev');    
+prevDom.onclick = function () {
+    showSlider('prev');
 }
 let runTimeOut;
 let runNextAuto = setTimeout(() => {
     next.click();
 }, timeAutoNext)
-function showSlider(type){
-    let  SliderItemsDom = SliderDom.querySelectorAll('.carousell .list .item');
+function showSlider(type) {
+    let SliderItemsDom = SliderDom.querySelectorAll('.carousell .list .item');
     let thumbnailItemsDom = document.querySelectorAll('.carousell .thumbnail .item');
-    
-    if(type === 'next'){
+
+    if (type === 'next') {
         SliderDom.appendChild(SliderItemsDom[0]);
         thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
         carouselDom.classList.add('next');
-    }else{
+    } else {
         SliderDom.prepend(SliderItemsDom[SliderItemsDom.length - 1]);
         thumbnailBorderDom.prepend(thumbnailItemsDom[thumbnailItemsDom.length - 1]);
         carouselDom.classList.add('prev');

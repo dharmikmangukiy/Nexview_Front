@@ -12,7 +12,7 @@ const Sidebar = () => {
                 </NavLink>
                 <NavLink to="/user_req">
                     <i class="fa fa-user-o" aria-hidden="true"></i>
-                   User Request
+                    User Request
                 </NavLink>
                 <NavLink to="/">
                     <i class="fa fa-laptop" aria-hidden="true"></i>
@@ -22,10 +22,9 @@ const Sidebar = () => {
                     <i class="fa fa-clone" aria-hidden="true"></i>
                     User
                 </NavLink>
-            
             </aside>
 
-            </>
+        </>
     );
 };
 

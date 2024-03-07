@@ -30,38 +30,38 @@ const ForgetPassword = () => {
     };
     const sign_in = (e) => {
         e.preventDefault();
-      
-        if (data.email === "" || data.password === "" || data.cpassword === "") {
-          toast.error("Please enter all details.");
-          return;
-        }else  if (data.password !== data.cpassword) {
-          toast.error("Password and Confirm Password do not match.");
-          return;
-        }else{
-        axios
-          .post("http://localhost:5001/", data)
-          .then((res) => {
-            if (res.data.message === "Email not exist") {
-              toast.error(res.data.message);
-            } else {
-              toast.success("Password Reset successfully");
-              toast.success("Back to Login"); 
-              setdata({
-                email: "",
-                password: "",
-                cpassword: "",
-              });
-              navigate("/");
-            }
-          })
-          .catch((error) => {
-            console.error("An error occurred:", error);
-            toast.error("An error occurred while processing your request.");
-          });
-        }
-      };
 
-      
+        if (data.email === "" || data.password === "" || data.cpassword === "") {
+            toast.error("Please enter all details.");
+            return;
+        } else if (data.password !== data.cpassword) {
+            toast.error("Password and Confirm Password do not match.");
+            return;
+        } else {
+            axios
+                .put("http://localhost:5001/forgat-password", data)
+                .then((res) => {
+                    if (res.data.message === "Email not exist") {
+                        toast.error(res.data.message);
+                    } else {
+                        toast.success("Password Reset successfully");
+                        toast.success("Back to Login");
+                        setdata({
+                            email: "",
+                            password: "",
+                            cpassword: "",
+                        });
+                        navigate("/");
+                    }
+                })
+                .catch((error) => {
+                    console.error("An error occurred:", error);
+                    toast.error("An error occurred while processing your request.");
+                });
+        }
+    };
+
+
 
     // console.log(data);
     return (

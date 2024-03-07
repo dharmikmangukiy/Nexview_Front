@@ -40,7 +40,7 @@ import UserReqList from "./Dashboard/UserReqList";
 import Total from "./Dashboard/Total";
 import FHome from "./ClientSite/Favorite/FHome";
 import Profile from "./Pages/Profile";
-
+import { Auth } from './faceLogin/components/Auth'
 
 function useScrollToTop() {
   const { pathname } = useLocation();
@@ -97,11 +97,11 @@ function App() {
   if (login === "true" || login === null || login === 0) {
     return (
       <Routes>
+        {/* <Route path='/' element={<Auth />} /> */}
         <Route path="/" element={<Login setLogin={setLogin} />} />
         <Route path="/Registration" element={<Registration />} />
         <Route path="forget_password" element={<ForgetPassword />} />
         <Route path="*" element={<Navigate to="/" replace />} />
-					{/* <Route path='/camera' element={<AuthContainer><Auth /></AuthContainer>} /> */}
 
       </Routes>
     );
@@ -122,7 +122,7 @@ function App() {
           <Route path="/Trending_Today" element={<Trending_Today />} />
           <Route path="/up_comming" element={<UpComming />} />
           <Route path="/PlanForm" element={<PlanForm />} />
-          {/* <Route path="/" element={<Step1 />} /> */}
+          <Route path="/" element={<Step1 />} />
           <Route path="/step3" element={<Step3 />} />
           <Route path="/favorite" element={<FHome />} />
           <Route path="/Profile" element={<Profile />} />

@@ -8,9 +8,22 @@ import KeyIcon from "@mui/icons-material/Key";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { PictureControls } from "../faceLogin/components/PictureControls";
+import { Camera } from "../faceLogin/components/Camera";
+import { useSelector } from "react-redux";
+import { getAuthError, getScreenshot } from "../faceLogin/features/auth/authSlice";
+import { getFaces } from "../faceLogin/features/auth/facenetSlice";
+import { Loader } from "../faceLogin/components/Loader";
 
 const Login = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState(1);
+  const screenshot = useSelector(getScreenshot)
+  const error = useSelector(getAuthError)
+  const faces = useSelector(getFaces)
+  const handleTabClick = (tabIndex) => {
+    setActiveTab(tabIndex);
+  };
   const [data, setdata] = useState({
     email: "",
     password: "",
@@ -40,28 +53,48 @@ const Login = () => {
 
   const sign_in = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:5001/login", {
-        email: data.email,
-        password: data.password,
-      })
-      .then((res) => {
-        console.log(res);
-        sessionStorage.setItem('User_id', JSON.stringify(res.data.data._id));
-        if (data.email == res.data.data.email && data.password) {
-          toast.success("Login successful");
-          localStorage.setItem("login", false);
-          localStorage.setItem("popUp", true)
-          handleLoginSuccess(res.data.data.role);
-        } else if (res.data.data.message === "Username or password is wrong!") {
-          toast.error(res.data.data.message);
-        } else {
-          toast.error("Please enter both email and password.");
-        }
-      })
-      .catch((error) => {
-        console.error("An error occurred:", error);
-      });
+    if (activeTab == 2) {
+      if (faces && screenshot) {
+        axios
+          .post("http://localhost:5001/face-login", {
+            ...data, screenshot, descriptor: Object.values(faces[0].descriptor)
+          })
+          .then((res) => {
+            console.log(res);
+            sessionStorage.setItem('User_id', JSON.stringify(res.data.data._id));
+            toast.success("Login successful");
+            localStorage.setItem("login", false);
+            localStorage.setItem("popUp", true)
+            handleLoginSuccess(res.data.data.role);
+          })
+          .catch((error) => {
+            console.error("An error occurred:", error);
+          });
+      }
+    } else {
+      axios
+        .post("http://localhost:5001/login", {
+          email: data.email,
+          password: data.password,
+        })
+        .then((res) => {
+          console.log(res);
+          sessionStorage.setItem('User_id', JSON.stringify(res.data.data._id));
+          if (data.email == res.data.data.email && data.password) {
+            toast.success("Login successful");
+            localStorage.setItem("login", false);
+            localStorage.setItem("popUp", true)
+            handleLoginSuccess(res.data.data.role);
+          } else if (res.data.data.message === "Username or password is wrong!") {
+            toast.error(res.data.data.message);
+          } else {
+            toast.error("Please enter both email and password.");
+          }
+        })
+        .catch((error) => {
+          console.error("An error occurred:", error);
+        });
+    }
   };
 
   return (
@@ -72,70 +105,132 @@ const Login = () => {
         <div className="login-wrap">
           <div className="login-html">
             <div className="text-center mb-3">
-              <img
-                class="rounded-circle shadow  rounded "
-                alt="avatar2"
-                height={110}
-                src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-              />
+              <div style={{ height: '138px', position: 'relative', width: '100%', display: 'flex', justifyContent: 'center' }}>
+                <Camera isLogin={true} />
+              </div>
               <hr />
               <div>
                 <span className="text_format">Welcome !</span>
               </div>
             </div>
+
             <div className="login-form">
               <div className="sign-in-htm">
-                <div className="group">
-                  <label for="user" className="label">
-                    Email
-                  </label>
-                  <Box
-                    className="input"
-                    sx={{ display: "flex", alignItems: "flex-end" }}
+                <ul className="nav nav-tabs mb-3" id="ex1" role="tablist">
+                  <li className="nav-item" role="presentation">
+                    <a
+                      style={{
+                        fontSize: '1.4rem',
+                        background: 'transparent',
+                        color: 'white',
+                      }}
+                      className={`nav-link ${activeTab === 1 ? 'active' : ''}`}
+                      id="ex1-tab-1"
+                      role="tab"
+                      aria-controls="ex1-tabs-1"
+                      aria-selected={activeTab === 1 ? 'true' : 'false'}
+                      onClick={() => handleTabClick(1)}
+                    >
+                      Authentication
+                    </a>
+                  </li>
+                  <li className="nav-item" role="presentation">
+                    <a
+                      style={{
+                        fontSize: '1.4rem',
+                        background: 'transparent',
+                        color: 'white',
+                      }}
+                      className={`nav-link ${activeTab === 2 ? 'active' : ''}`}
+                      id="ex1-tab-2"
+                      role="tab"
+                      aria-controls="ex1-tabs-2"
+                      aria-selected={activeTab === 2 ? 'true' : 'false'}
+                      onClick={() => handleTabClick(2)}
+                    >
+                      Face Recognition
+                    </a>
+                  </li>
+                </ul>
+                <div className="tab-content" id="ex1-content">
+                  <div
+                    className={`tab-pane fade ${activeTab === 1 ? 'show active' : ''}`}
+                    id="ex1-tabs-1"
+                    role="tabpanel"
+                    aria-labelledby="ex1-tab-1"
                   >
-                    <AccountCircle
-                      sx={{ color: "white", my: 0.5, mb: "8px " }}
-                    />
-                    <FormControl fullWidth sx={{ mr: "6%" }}>
-                      <TextField
-                        sx={{
-                          border: "none",
-                          "& fieldset": { border: "none" },
-                        }}
-                        id="input-with-sx"
-                        name="email"
-                        value={data.email}
-                        onChange={input}
-                        className="Text_field"
-                      />
-                    </FormControl>
-                  </Box>
-                </div>
-                <div className="group">
-                  <label for="pass" className="label">
-                    Password
-                  </label>
-                  <Box
-                    className="input"
-                    sx={{ display: "flex", alignItems: "flex-end" }}
+                    <div className="group">
+                      <label for="user" className="label">
+                        Email
+                      </label>
+                      <Box
+                        className="input"
+                        sx={{ display: "flex", alignItems: "flex-end" }}
+                      >
+                        <AccountCircle
+                          sx={{ color: "white", my: 0.5, mb: "8px " }}
+                        />
+                        <FormControl fullWidth sx={{ mr: "6%" }}>
+                          <TextField
+                            sx={{
+                              border: "none",
+                              "& fieldset": { border: "none" },
+                            }}
+                            id="input-with-sx"
+                            name="email"
+                            value={data.email}
+                            onChange={input}
+                            className="Text_field"
+                          />
+                        </FormControl>
+                      </Box>
+                    </div>
+                    <div className="group">
+                      <label for="pass" className="label">
+                        Password
+                      </label>
+                      <Box
+                        className="input"
+                        sx={{ display: "flex", alignItems: "flex-end" }}
+                      >
+                        <KeyIcon sx={{ color: "white", my: 0.5, mb: "8px " }} />
+                        <FormControl fullWidth sx={{ mr: "6%" }}>
+                          <TextField
+                            sx={{
+                              border: "none",
+                              "& fieldset": { border: "none" },
+                            }}
+                            id="password"
+                            name="password"
+                            type="password"
+                            className="Text_field"
+                            value={data.password}
+                            onChange={input}
+                          />
+                        </FormControl>
+                      </Box>
+                    </div>
+                  </div>
+                  <div
+                    className={`tab-pane fade ${activeTab === 2 ? 'show active' : ''}`}
+                    id="ex1-tabs-2"
+                    role="tabpanel"
+                    aria-labelledby="ex1-tab-2"
                   >
-                    <KeyIcon sx={{ color: "white", my: 0.5, mb: "8px " }} />
-                    <FormControl fullWidth sx={{ mr: "6%" }}>
-                      <TextField
-                        sx={{
-                          border: "none",
-                          "& fieldset": { border: "none" },
-                        }}
-                        id="password"
-                        name="password"
-                        type="password"
-                        className="Text_field"
-                        value={data.password}
-                        onChange={input}
-                      />
-                    </FormControl>
-                  </Box>
+                    <div className="group">
+                      <label for="pass" className="label">
+                        Capture face image
+                      </label>
+                      <Box
+                        className="input"
+                        sx={{ display: "flex", alignItems: "flex-end" }}
+                      >
+                        <PictureControls />
+                      </Box>
+                    </div>
+                  </div>
                 </div>
+
                 <div className="group pt-2">
                   <div style={{ marginLeft: "5%" }} className="foot-lnk">
                     <NavLink to="forget_password">Forgot Password ? </NavLink >
@@ -163,6 +258,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <Loader />
     </div>
   );
 };

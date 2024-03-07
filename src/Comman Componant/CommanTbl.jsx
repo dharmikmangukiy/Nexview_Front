@@ -39,7 +39,7 @@ function CommanTbl(prop) {
               variant="outlined"
               className="btn_decorate"
               onClick={prop.handleClickOpen}
-              style={{display:prop.style}}
+              style={{ display: prop.style }}
             >
               ADD {prop.headName}
             </Button>

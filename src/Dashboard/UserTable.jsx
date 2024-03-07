@@ -125,7 +125,7 @@ function UserTable() {
     overview: "",
     release_date: "",
     original_language: "",
-    genre_ids: [ 36, 10751, 10770, 16, 10402, 53, 28, 14, 27, 12, 35, 18, 80, 9648, 99, 10749, 37, 10752, 878],
+    genre_ids: [36, 10751, 10770, 16, 10402, 53, 28, 14, 27, 12, 35, 18, 80, 9648, 99, 10749, 37, 10752, 878],
     status: "Released",
     tagline: "Unite or fall.",
     director: "Johny Since",
@@ -186,7 +186,7 @@ function UserTable() {
     vote_average: "",
     overview: "",
     original_language: "",
-    genre_ids: [ 36, 10751, 10770, 16, 10402, 53, 28, 14, 27, 12, 35, 18, 80, 9648, 99, 10749, 37, 10752, 878],
+    genre_ids: [36, 10751, 10770, 16, 10402, 53, 28, 14, 27, 12, 35, 18, 80, 9648, 99, 10749, 37, 10752, 878],
     status: "Released",
     tagline: "Unite or fall.",
     director: "-",
@@ -296,7 +296,7 @@ function UserTable() {
           overview: res.data.overview,
           release_date: res.data.release_date,
           original_language: res.data.original_language,
-          genre_ids: [ 36, 10751, 10770, 16, 10402, 53, 28, 14, 27, 12, 35, 18, 80, 9648, 99, 10749, 37, 10752, 878],
+          genre_ids: [36, 10751, 10770, 16, 10402, 53, 28, 14, 27, 12, 35, 18, 80, 9648, 99, 10749, 37, 10752, 878],
           status: "Released",
           tagline: "Unite or fall.",
           director: "Johny Since",
@@ -322,28 +322,28 @@ function UserTable() {
             { id: 12, name: 'Adventure' }
             ,
             { id: 35, name: 'Comedy' }
-      
+
             ,
             { id: 18, name: 'Drama' }
-      
+
             ,
             { id: 80, name: 'Crime' }
-      
+
             ,
             { id: 9648, name: 'Mystery' }
-      
+
             ,
             { id: 99, name: 'Documentary' }
-      
+
             ,
             { id: 10749, name: 'Romance' }
-      
+
             ,
             { id: 37, name: 'Western' }
-      
+
             ,
             { id: 10752, name: 'War' }
-      
+
             ,
             { id: 878, name: 'Science Fiction' }
           ],
@@ -367,7 +367,7 @@ function UserTable() {
           vote_average: res.data.vote_average,
           overview: res.data.overview,
           original_language: res.data.original_language,
-          genre_ids: [ 36, 10751, 10770, 16, 10402, 53, 28, 14, 27, 12, 35, 18, 80, 9648, 99, 10749, 37, 10752, 878],
+          genre_ids: [36, 10751, 10770, 16, 10402, 53, 28, 14, 27, 12, 35, 18, 80, 9648, 99, 10749, 37, 10752, 878],
           status: "Released",
           tagline: "Unite or fall.",
           director: "-",
@@ -393,28 +393,28 @@ function UserTable() {
             { id: 12, name: 'Adventure' }
             ,
             { id: 35, name: 'Comedy' }
-      
+
             ,
             { id: 18, name: 'Drama' }
-      
+
             ,
             { id: 80, name: 'Crime' }
-      
+
             ,
             { id: 9648, name: 'Mystery' }
-      
+
             ,
             { id: 99, name: 'Documentary' }
-      
+
             ,
             { id: 10749, name: 'Romance' }
-      
+
             ,
             { id: 37, name: 'Western' }
-      
+
             ,
             { id: 10752, name: 'War' }
-      
+
             ,
             { id: 878, name: 'Science Fiction' }
           ],
@@ -513,7 +513,7 @@ function UserTable() {
     });
   };
   const PopUpContent = () => {
- if (Action == "Edit") {
+    if (Action == "Edit") {
       if (headName === "Prime User") {
         return (
           <>
@@ -698,7 +698,7 @@ function UserTable() {
   };
 
   const PopUpAction = () => {
- if (Action == "Edit") {
+    if (Action == "Edit") {
       return (
         <>
           <Button variant="outlined" color="error" onClick={handleClose}>

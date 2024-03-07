@@ -9,13 +9,26 @@ import { NavLink, Navigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import EmailIcon from "@mui/icons-material/Email";
+import { Camera } from "../faceLogin/components/Camera";
+import { PictureControls } from "../faceLogin/components/PictureControls";
+import { Loader } from "../faceLogin/components/Loader";
+import { useSelector } from "react-redux";
+import { getAuthError, getScreenshot } from "../faceLogin/features/auth/authSlice";
+import { getFaces } from "../faceLogin/features/auth/facenetSlice";
+import { useNavigate } from "react-router-dom";
 
 const Registration = () => {
+  const navigate = useNavigate();
+
   const [data, setdata] = useState({
     email: "",
     password: "",
     name: "",
   });
+
+  const screenshot = useSelector(getScreenshot)
+  const error = useSelector(getAuthError)
+  const faces = useSelector(getFaces)
 
   const input = (e) => {
     let name = e.target.name;
@@ -29,29 +42,35 @@ const Registration = () => {
   };
   const sign_in = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:5001/register", data)
-      .then((res) => {
-        // console.log(res);
-        if (data.email !== "" && data.password !== "" && data.name !== "") {
-          if (res.data.message === "This email is already taken.") {
-            toast.error(res.data.message);
+    if (faces && screenshot) {
+      axios
+        .post("http://localhost:5001/register", {
+          ...data, screenshot, descriptor: Object.values(faces[0].descriptor)
+        })
+        .then((res) => {
+          // console.log(res);
+          if (data.email !== "" && data.password !== "" && data.name !== "") {
+            if (res.data.message === "This email is already taken.") {
+              toast.error(res.data.message);
+            } else {
+              toast.success("Register successful");
+              toast("Back to Login");
+              setdata({
+                email: "",
+                password: "",
+                name: "",
+              });
+            }
+            navigate('/');
+            window.location.reload();
           } else {
-            toast.success("Register successful");
-            toast("Back to Login");
-            setdata({
-              email: "",
-              password: "",
-              name: "",
-            });
+            toast.error("Please enter all details.");
           }
-        } else {
-          toast.error("Please enter all details.");
-        }
-      })
-      .catch((error) => {
-        console.error("An error occurred:", error);
-      });
+        })
+        .catch((error) => {
+          console.error("An error occurred:", error);
+        });
+    }
   };
   // console.log(data);
   return (
@@ -59,15 +78,12 @@ const Registration = () => {
       <div className="container">
         <img src="public/Images/Netflix-Logo.png" alt="logo" height="80px" />
         <ToastContainer />
-        <div className="login-wrap">
+        <div className="resi-wrap">
           <div className="login-html">
             <div className="text-center mb-3">
-              <img
-                class="rounded-circle shadow  rounded "
-                alt="avatar2"
-                height={110}
-                src="../public/Images/netflix_icon_161073.png"
-              />
+              <div style={{ height: '138px', position: 'relative', width: '100%', display: 'flex', justifyContent: 'center' }}>
+                <Camera />
+              </div>
               <hr />
               <div>
                 <span className="text_format">REGISTRATION</span>
@@ -150,6 +166,17 @@ const Registration = () => {
                     </FormControl>
                   </Box>
                 </div>
+                <div className="group">
+                  <label for="pass" className="label">
+                    Capture face image
+                  </label>
+                  <Box
+                    className="input"
+                    sx={{ display: "flex", alignItems: "flex-end" }}
+                  >
+                    <PictureControls />
+                  </Box>
+                </div>
 
                 <div className="group">
                   <button
@@ -173,6 +200,7 @@ const Registration = () => {
           </div>
         </div>
       </div>
+      <Loader />
     </div>
   );
 };
