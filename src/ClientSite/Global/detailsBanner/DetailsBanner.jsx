@@ -297,7 +297,7 @@ const DetailsBanner = ({ video, crew }) => {
                                   token: JSON.parse(
                                     sessionStorage.getItem("token")
                                   ),
-                                  Id: id,
+                                  id: id,
                                   states: "false",
                                   type: mediaType,
                                 })
