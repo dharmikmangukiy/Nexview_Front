@@ -77,8 +77,8 @@ export const Preview = (props) => {
                 {
                     screenshot && (
                         <>
-                            <canvas id="preview-canvas" ref={canvasRef} style={styles.canvas}>Your browser does not support the HTML canvas tag.</canvas>
-                            <img className="" ref={previewRef} src={screenshot} alt="preview" style={{ ...styles.preview, borderRadius: '50%', ...(activeSource !== 'webcam' ? { marginLeft: '35px' } : {}) }} />
+                            <canvas id="preview-canvas" ref={canvasRef} style={{...styles.canvas, ...(activeSource !== 'webcam' ? { marginLeft: '-25px' } : {})}}>Your browser does not support the HTML canvas tag.</canvas>
+                            <img className="" ref={previewRef} src={screenshot} alt="preview" style={{ ...styles.preview, borderRadius: '50%', ...(activeSource !== 'webcam' ? { marginLeft: '-25px' } : {}) }} />
                         </>
                     )
                 }
