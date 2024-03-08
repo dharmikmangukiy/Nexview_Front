@@ -305,13 +305,13 @@ a {
   .for_hide {
     display: none !important;
   }
-  .border_max {
+  .border_max{
     width: 48% !important;
     margin-bottom: 10px;
   }
 }
 @media only screen and (max-width: 450px) {
-  .border_max {
+  .border_max{
     width: 100% !important;
     margin-bottom: 10px;
   }
@@ -322,6 +322,7 @@ a {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   width: 24%;
+  
 }
 .box_premium {
   border-radius: 10px 10px 0 0;
@@ -373,7 +374,7 @@ a {
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.Next_button {
+.Next_button{
   margin-top: 20px;
   border-radius: 5px;
   background-color: rgb(229, 9, 20);
@@ -383,9 +384,10 @@ a {
   padding: 15px 100px;
   cursor: pointer;
   margin: 5px;
+
 }
 
-.nothnaks_button {
+.nothnaks_button{
   margin: 5px;
   margin-top: 20px;
   border-radius: 5px;
@@ -396,10 +398,10 @@ a {
   padding: 15px 100px;
   cursor: pointer;
 }
-.profilecontent .css-luj5ib-JoyCardOverflow-root {
-  background-color: rgb(173, 15, 23) !important;
+.profilecontent .css-luj5ib-JoyCardOverflow-root{
+  background-color:rgb(173, 15, 23)  !important;
 }
-.ttextt_search {
+.ttextt_search{
   border-radius: 20px;
   padding: 0 20px;
   font-size: 20px;
@@ -409,7 +411,7 @@ a {
   color: #deeafc;
   border: none;
 }
-.paymentTab {
+.paymentTab{
   background-color: rgb(255 255 255 / 17%);
   border: 2px solid #ccc;
   border-radius: 5px;
@@ -418,16 +420,18 @@ a {
   display: flex;
   justify-content: space-between;
   margin: 5px 0;
-  transition: position 0.5s ease-in;
+  transition: position .5s ease-in;
   width: 50%;
+
+  
 }
-.mopNameAndLogos {
+.mopNameAndLogos{
   align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  height: auto;
-  justify-content: flex-start;
-  padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    justify-content: flex-start;
+    padding: 15px ;
 }
 
 .payment-title {
@@ -465,7 +469,7 @@ a {
   grid-column-gap: 10px;
   grid-template-columns: auto auto;
   grid-template-rows: 90px 90px 90px;
-  grid-template-areas: "name name" "number number" "expiration security";
+  grid-template-areas: "name name""number number""expiration security";
   max-width: 400px;
   /* padding: 20px; */
   color: #707070;
@@ -528,7 +532,7 @@ input {
   border-radius: 22px;
 }
 
-#generatecard {
+#generatecard{
   cursor: pointer;
   float: right;
   font-size: 12px;
@@ -537,22 +541,22 @@ input {
   background-color: red;
   border-radius: 4px;
   cursor: pointer;
-  float: right;
+  float:right;
 }
 
 /* CHANGEABLE CARD ELEMENTS */
 .creditcard .lightcolor,
 .creditcard .darkcolor {
-  -webkit-transition: fill 0.5s;
-  transition: fill 0.5s;
+  -webkit-transition: fill .5s;
+  transition: fill .5s;
 }
 
 .creditcard .lightblue {
-  fill: #03a9f4;
+  fill: #03A9F4;
 }
 
 .creditcard .lightbluedark {
-  fill: #0288d1;
+  fill: #0288D1;
 }
 
 .creditcard .red {
@@ -625,11 +629,11 @@ input {
 }
 
 #cardfront .st2 {
-  fill: #ffffff;
+  fill: #FFFFFF;
 }
 
 #cardfront .st3 {
-  font-family: "Source Code Pro", monospace;
+  font-family: 'Source Code Pro', monospace;
   font-weight: 600;
 }
 
@@ -638,7 +642,7 @@ input {
 }
 
 #cardfront .st5 {
-  font-family: "Source Code Pro", monospace;
+  font-family: 'Source Code Pro', monospace;
   font-weight: 400;
 }
 
@@ -648,7 +652,7 @@ input {
 
 #cardfront .st7 {
   opacity: 0.6;
-  fill: #ffffff;
+  fill: #FFFFFF;
 }
 
 #cardfront .st8 {
@@ -660,7 +664,7 @@ input {
 }
 
 #cardfront .st10 {
-  font-family: "Source Code Pro", monospace;
+  font-family: 'Source Code Pro', monospace;
   font-weight: 300;
 }
 
@@ -669,13 +673,13 @@ input {
 }
 
 #cardfront .st12 {
-  fill: #4c4c4c;
+  fill: #4C4C4C;
 }
 
 /* BACK OF CARD */
 #cardback .st0 {
   fill: none;
-  stroke: #0f0f0f;
+  stroke: #0F0F0F;
   stroke-miterlimit: 10;
 }
 
@@ -684,19 +688,19 @@ input {
 }
 
 #cardback .st3 {
-  fill: #f2f2f2;
+  fill: #F2F2F2;
 }
 
 #cardback .st4 {
-  fill: #d8d2db;
+  fill: #D8D2DB;
 }
 
 #cardback .st5 {
-  fill: #c4c4c4;
+  fill: #C4C4C4;
 }
 
 #cardback .st6 {
-  font-family: "Source Code Pro", monospace;
+  font-family: 'Source Code Pro', monospace;
   font-weight: 400;
 }
 
@@ -709,7 +713,7 @@ input {
 }
 
 #cardback .st9 {
-  fill: #ffffff;
+  fill: #FFFFFF;
 }
 
 #cardback .st10 {
@@ -717,11 +721,11 @@ input {
 }
 
 #cardback .st11 {
-  fill: #eaeaea;
+  fill: #EAEAEA;
 }
 
 #cardback .st12 {
-  font-family: "Rock Salt", cursive;
+  font-family: 'Rock Salt', cursive;
 }
 
 #cardback .st13 {

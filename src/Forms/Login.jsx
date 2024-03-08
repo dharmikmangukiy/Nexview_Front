@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Box from "@mui/material/Box";
 import AccountCircle from "@mui/icons-material/AccountCircle";
@@ -15,12 +15,18 @@ import { getAuthError, getScreenshot } from "../faceLogin/features/auth/authSlic
 import { getFaces } from "../faceLogin/features/auth/facenetSlice";
 import { Loader } from "../faceLogin/components/Loader";
 
+import { useDispatch } from "react-redux";
+import {
+  loginChnage,
+  authorChnage,
+} from "../ClientSite/Global/store/homeSlice";
 const Login = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState(1);
   const screenshot = useSelector(getScreenshot)
   const error = useSelector(getAuthError)
-  const faces = useSelector(getFaces)
+  const faces = useSelector(getFaces);
+  const dispatch = useDispatch();
   const handleTabClick = (tabIndex) => {
     setActiveTab(tabIndex);
   };
@@ -46,29 +52,71 @@ const Login = () => {
     }, 2000);
   }
 
-  const handleLoginSuccess = (role) => {
-    localStorage.setItem("Author", role);
-    handleClick()
+  const [ip, setIP] = useState("");
+
+  const getData = async () => {
+    const res = await axios.get("https://api.ipify.org/?format=json");
+    // console.log(res.data);
+    setIP(res.data.ip);
   };
 
+  useEffect(() => {
+    getData();
+  }, []);
+
   const sign_in = (e) => {
+    
     e.preventDefault();
     if (activeTab == 2) {
       if (faces && screenshot) {
+        
         axios
           .post("http://localhost:5001/face-login", {
-            ...data, screenshot, descriptor: Object.values(faces[0].descriptor)
+            ...data, screenshot, descriptor: Object.values(faces[0].descriptor),ip: ip
           })
           .then((res) => {
-            console.log(res);
-            sessionStorage.setItem('User_id', JSON.stringify(res.data.data._id));
+            sessionStorage.setItem("token", JSON.stringify(res.data.token));
+          dispatch(authorChnage(res?.data?.user?.role));
+          dispatch(loginChnage(false));
+          localStorage.setItem("popUp", true);sessionStorage.setItem('User_id', JSON.stringify(res.data.user._id));
             toast.success("Login successful");
             localStorage.setItem("login", false);
             localStorage.setItem("popUp", true)
-            handleLoginSuccess(res.data.data.role);
+            // handleLoginSuccess(res.data);
+            localStorage.setItem("Author", res.data.user.role);
+            axios
+    .post("http://localhost:5001/me", {
+      token: res.data.token,
+    })
+    .then((res1) => {
+      console.log(res1.data);
+     
+      if (res1.status == 200) {
+        if (
+          res1.data.type == "freeUser" &&
+          res1.data.paymentStatus !== "pending"
+        ) {
+          navigate("/home");
+        } else if (res1.data.paymentStatus == null) {
+          navigate("/Step1");
+          // handleClick();
+        } else if (res1.data.paymentStatus == "pending") {
+          navigate("/final_pay");
+          // handleClick();
+        }
+      }
+    })
+    .catch((error) => {
+      console.error("Exception:", error);
+      localStorage.setItem("login", true);
+      navigate("/");
+      dispatch(loginChnage(true));
+      sessionStorage.clear();
+      window.location.reload();
+    });
           })
           .catch((error) => {
-            console.error("An error occurred:", error);
+            console.log("An error occurred:", error);
           });
       }
     } else {
@@ -76,23 +124,57 @@ const Login = () => {
         .post("http://localhost:5001/login", {
           email: data.email,
           password: data.password,
+          ip: ip,
         })
         .then((res) => {
           console.log(res);
-          sessionStorage.setItem('User_id', JSON.stringify(res.data.data._id));
+          sessionStorage.setItem("token", JSON.stringify(res.data.token));
           if (data.email == res.data.data.email && data.password) {
             toast.success("Login successful");
             localStorage.setItem("login", false);
             localStorage.setItem("popUp", true)
-            handleLoginSuccess(res.data.data.role);
+            dispatch(authorChnage(res?.data?.data?.role));
+            dispatch(loginChnage(false));
+            handleLoginSuccess(res.data);
           } else if (res.data.data.message === "Username or password is wrong!") {
             toast.error(res.data.data.message);
           } else {
             toast.error("Please enter both email and password.");
           }
+          localStorage.setItem("Author", res.data.data.role);
+            axios
+    .post("http://localhost:5001/me", {
+      token: res.data.token,
+    })
+    .then((res1) => {
+      
+      console.log(res1.data);
+      if (res1.status == 200) {
+        if (
+          res1.data.type == "freeUser" &&
+          res1.data.paymentStatus !== "pending"
+        ) {
+          navigate("/home");
+        } else if (res1.data.paymentStatus == null) {
+          navigate("/Step1");
+          // handleClick();
+        } else if (res1.data.paymentStatus == "pending") {
+          navigate("/final_pay");
+          // handleClick();
+        }
+      }
+    })
+    .catch((error) => {
+      console.error("Exception:", error);
+      localStorage.setItem("login", true);
+      navigate("/");
+      dispatch(loginChnage(true));
+      sessionStorage.clear();
+      window.location.reload();
+    });
         })
         .catch((error) => {
-          console.error("An error occurred:", error);
+          console.log("An error occurred:", error);
         });
     }
   };
@@ -233,7 +315,7 @@ const Login = () => {
 
                 <div className="group pt-2">
                   <div style={{ marginLeft: "5%" }} className="foot-lnk">
-                    <NavLink to="forget_password">Forgot Password ? </NavLink >
+                  <NavLink to="forget_password">Forgot Password ? </NavLink>
                   </div>
                 </div>
                 <div className="group">

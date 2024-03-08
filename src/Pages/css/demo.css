@@ -52,7 +52,7 @@
   margin-right: 10px;
 }
 .down:before{content: "\f019"}
-.back:before{content:"\f112"}
+/* .back:before{content:"\f112"} */
 
 .cd__credit{
     padding: 12px;

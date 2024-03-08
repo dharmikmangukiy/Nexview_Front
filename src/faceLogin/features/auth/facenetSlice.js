@@ -85,7 +85,7 @@ export const getFacenetStatus = state => state.facenet.status
 export const getFacenetError = state => state.facenet.error
 export const getFacenetMessage = state => state.facenet.message
 export const getOutline = state => state.facenet.outline
-export const getFaces = state => state.facenet.faces
+export const getFaces = state => state.facenet?.faces
 
 export const { setStyles, setFacenetError, setFacenetMessage, setOutline } = facenetSlice.actions
 export default facenetSlice.reducer

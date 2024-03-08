@@ -5,7 +5,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 import KeyIcon from "@mui/icons-material/Key";
-import { NavLink, Navigate } from "react-router-dom";
+import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import EmailIcon from "@mui/icons-material/Email";
@@ -15,7 +15,6 @@ import { Loader } from "../faceLogin/components/Loader";
 import { useSelector } from "react-redux";
 import { getAuthError, getScreenshot } from "../faceLogin/features/auth/authSlice";
 import { getFaces } from "../faceLogin/features/auth/facenetSlice";
-import { useNavigate } from "react-router-dom";
 
 const Registration = () => {
   const navigate = useNavigate();

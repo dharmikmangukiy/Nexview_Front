@@ -17,6 +17,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   getApiConfiguration,
   getGenres,
+  loginChnage,
 } from "../src/ClientSite/Global/store/homeSlice";
 import Details from "./ClientSite/Global/Details";
 import Trending_Today from "./ClientSite/Global/Trending today/Trending_Today";
@@ -40,7 +41,7 @@ import UserReqList from "./Dashboard/UserReqList";
 import Total from "./Dashboard/Total";
 import FHome from "./ClientSite/Favorite/FHome";
 import Profile from "./Pages/Profile";
-import { Auth } from './faceLogin/components/Auth'
+import Notification from "./Dashboard/Notification";
 
 function useScrollToTop() {
   const { pathname } = useLocation();
@@ -49,14 +50,40 @@ function useScrollToTop() {
   }, [pathname]);
 }
 function App() {
-  const [login, setLogin] = useState(localStorage.getItem("login"));
-  const [Author, setAuthor] = useState(localStorage.getItem("Author"));
+  const uLoca = localStorage.getItem("login");
+  const user = useSelector((state) => state.home.login);
+  const [login, setLogin] = useState(uLoca);
+
+  const uLocaAuthor = localStorage.getItem("Author");
+  const userAuthor = useSelector((state) => state.home.author);
+  const [loginAuthor, setloginAuthor] = useState(uLocaAuthor);
   useScrollToTop();
+
+  useEffect(() => {
+    setloginAuthor(userAuthor);
+  }, [userAuthor]);
+
+  useEffect(() => {
+    if (uLocaAuthor == "" || uLocaAuthor == null || uLocaAuthor == undefined) {
+      setloginAuthor(localStorage.getItem("Author"));
+    }
+  }, [uLocaAuthor]);
+
+  useEffect(() => {
+    setLogin(user);
+  }, [user]);
+
+  useEffect(() => {
+    if (uLoca == "" || uLoca == null || uLoca == undefined) {
+      setLogin(true);
+    }
+  }, [uLoca]);
 
   const dispatch = useDispatch();
   useEffect(() => {
     fetchApiConfig();
     genresCall();
+    dispatch(loginChnage(login));
   }, []);
 
   const fetchApiConfig = () => {
@@ -83,37 +110,27 @@ function App() {
     const data = await Promise.all(promises);
     dispatch(getGenres(data[1]));
   };
-  const [GetUser, setGetUser] = useState();
-  // useEffect(() => {
-  //   axios
-  //     .post("http://localhost:5001/me", {
-  //       _id: JSON.parse(sessionStorage.getItem('User_id')),
-  //     })
-  //     .then((res) => {
-  //       setGetUser(res.data);
-  //     })
-  // }, [])
-  // console.log(Author);
-  if (login === "true" || login === null || login === 0) {
+
+  // console.log(localStorage.getItem("Author"));
+  if (login === "true" || login === null || login === 0|| login === true) {
     return (
       <Routes>
-        {/* <Route path='/' element={<Auth />} /> */}
         <Route path="/" element={<Login setLogin={setLogin} />} />
         <Route path="/Registration" element={<Registration />} />
         <Route path="forget_password" element={<ForgetPassword />} />
         <Route path="*" element={<Navigate to="/" replace />} />
-
+        {/* <Route path='/camera' element={<AuthContainer><Auth /></AuthContainer>} /> */}
       </Routes>
     );
-  } else if (Author == "admin") {
+  } else if (localStorage.getItem("Author") == "admin") {
     return (
       <div className="app">
         <Routes>
           <Route path="*" element={<Navigate to="/" replace />} />
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/total" element={<Dashboard />} />
           <Route path="/use_table" element={<UserTable />} />
           <Route path="/user_req" element={<UserReqList />} />
-          <Route path="/total" element={<Total />} />
+          <Route path="/" element={<Total />} />
           <Route path="/terms_of_use" element={<TermsOfUse />} />
           <Route path="/Privacy" element={<Privacy />} />
           <Route path="/About" element={<About />} />
@@ -122,9 +139,10 @@ function App() {
           <Route path="/Trending_Today" element={<Trending_Today />} />
           <Route path="/up_comming" element={<UpComming />} />
           <Route path="/PlanForm" element={<PlanForm />} />
-          <Route path="/" element={<Step1 />} />
+          {/* <Route path="/" element={<Step1 />} /> */}
           <Route path="/step3" element={<Step3 />} />
           <Route path="/favorite" element={<FHome />} />
+          <Route path="/notificaion" element={<Notification />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/step4" element={<Step4 />} />
           <Route path="/final_pay" element={<Step6 />} />
@@ -140,7 +158,7 @@ function App() {
       <div className="app">
         <Routes>
           <Route path="*" element={<Navigate to="/" replace />} />
-          <Route path="/home" element={<AppClient />} />
+          <Route path="/" element={<AppClient />} />
           <Route path="/terms_of_use" element={<TermsOfUse />} />
           <Route path="/Privacy" element={<Privacy />} />
           <Route path="/About" element={<About />} />
@@ -149,7 +167,7 @@ function App() {
           <Route path="/Trending_Today" element={<Trending_Today />} />
           <Route path="/up_comming" element={<UpComming />} />
           <Route path="/PlanForm" element={<PlanForm />} />
-          <Route path="/" element={<Step1 />} />
+          <Route path="/Step1" element={<Step1 />} />
           <Route path="/step3" element={<Step3 />} />
           <Route path="/favorite" element={<FHome />} />
           <Route path="/Profile" element={<Profile />} />

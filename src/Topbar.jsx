@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, IconButton, useTheme } from "@mui/material";
 import InputBase from "@mui/material/InputBase";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
@@ -14,10 +14,14 @@ import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import SearchIcon from "@mui/icons-material/Search";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
+import axios from "axios";
 
 const Topbar = () => {
+  const [Favorites, setFavorites] = useState([]);
+  const [loading, setLoading] = useState();
   function handleClick() {
     localStorage.setItem("login", true);
+    sessionStorage.clear();
     window.location.reload();
   }
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -28,6 +32,32 @@ const Topbar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  
+  useEffect(() => {
+    setLoading(true);
+   
+    axios
+      .post("http://localhost:5001/me", {
+        token: JSON.parse(sessionStorage.getItem("token")),
+      })
+      .then((res) => {
+        if (res.status == 200) {
+          // console.log(res.data);
+          setFavorites(res.data);
+          setLoading(false);
+        }
+      })
+      .catch((error) => {
+        console.error("Exception:", error);
+        localStorage.setItem("login", true);
+        navigate("/");
+        dispatch(loginChnage(true));
+        sessionStorage.clear();
+        window.location.reload();
+      });
+  }, []);
+
   return (
     <Box className="topBar_css container-fluid">
       <div className="d-flex justify-content-between align-items-center px-4">
@@ -53,7 +83,7 @@ const Topbar = () => {
               alt="Avatar"
               class="avatar"
             />{" "}
-            <span className="mx-2 username"> Dharmik </span>
+            <span className="mx-2 username">  </span>
           </IconButton>
         </Box>
       </div>
@@ -99,20 +129,20 @@ const Topbar = () => {
             class="avatar"
             style={{ height: "36px", width: "36px", marginRight: "10px" }}
           />{" "}
-          Profile
+           {Favorites?.name}
         </MenuItem>
         <Divider />
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
             <PersonAdd fontSize="small" />
           </ListItemIcon>
-          Add another account
+          {Favorites?.email}
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
-          Settings
+          {Favorites?.IP}
         </MenuItem>
         <MenuItem
           onClick={() => {

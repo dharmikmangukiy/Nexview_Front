@@ -3,13 +3,33 @@ import Header from "../ClientSite/Global/Header";
 import Footer from "../ClientSite/Global/Footer";
 import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlineRounded";
 import DoneAllRoundedIcon from "@mui/icons-material/DoneAllRounded";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Step1() {
+  const navigate = useNavigate();
+  const Update = (e) => {
+    e.preventDefault();
+    axios
+      .put("http://localhost:5001/free-user", {
+        type: "freeUser",
+        token: JSON.parse(sessionStorage.getItem("token")),
+      })
+      .then((res) => {
+        // if (res.message == "User Converted  to Free Plan Successfully") {
+        //   navigate("/home");
+        // }
+        navigate("/home");
+
+      })
+      .catch((error) => {
+        console.error("An error occurred:", error);
+      });
+  };
 
   return (
     <>
-      <div className="client_conteint" style={{height:"100vh"}}>
+      <div className="client_conteint" style={{ height: "100vh" }}>
         {/* <Header /> */}
         <div
           className="text-white container contentWrapper text-center"
@@ -58,8 +78,8 @@ function Step1() {
             </div>
           </div>
           <div className="text-center pt-4">
-          {/* to="/home" */}
-          <NavLink >
+            {/* to="/home" */}
+            <NavLink onClick={(e) => Update(e)}>
               <button className="Next_button">Free Trail</button>
             </NavLink>
             <NavLink to="/PlanForm">

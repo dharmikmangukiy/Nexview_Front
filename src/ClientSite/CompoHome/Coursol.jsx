@@ -10,10 +10,12 @@ function Coursol() {
   const { url } = useSelector((state) => state.home);
   const { data, loading } = useFetch("/discover/movie");
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [Seconds, setSeconds] = useState(true);
   const sliderRef = useRef(null);
   const thumbnailRef = useRef(null);
   const carouselRef = useRef(null);
   const [first, setfirst] = useState();
+  
   useEffect(() => {
     setfirst(
       data ? [...data].sort(() => Math.random() - 0.5).slice(0, 10) : []
@@ -23,7 +25,7 @@ function Coursol() {
   useEffect(() => {
     const runNextAuto = setTimeout(() => {
       showSlider("next");
-    }, 5000);
+    }, 7000);
 
     return () => clearTimeout(runNextAuto);
   }, [currentIndex]);
@@ -47,8 +49,8 @@ function Coursol() {
     setTimeout(() => {
       carouselRef.current.classList.remove("next");
       carouselRef.current.classList.remove("prev");
-      clearTimeout(runNextAuto);
-    }, 5000);
+      // clearTimeout(runNextAuto);
+    }, 7000);
 
     // clearTimeout(runNextAuto);
     const runNextAutoTimeout = setTimeout(() => {
@@ -63,62 +65,67 @@ function Coursol() {
 
   return (
     <>
+     {!!loading ?
+     <div className="text-center p-5 d-flex align-items-center justify-content-center" style={{height:"98vh"}}>
+      <img src="../../../public/Images/Animation.gif" alt="" />
+     </div>
+     : 
       <div className="carousell" ref={carouselRef}>
-        <div className="list" ref={sliderRef}>
-          {first?.map((item, index) => (
-            <div
-              className={`item ${index === currentIndex ? "active" : ""}`}
-              key={item.id}
-            >
-              <img
-                src={`${url.backdrop}${item.backdrop_path}`}
-                alt={item.original_title}
-              />
-              <div className="content">
-                <div className="author">NEXVIEW</div>
-                <div className="title">{item.original_title}</div>
-                <div className="topic">{item.release_date}</div>
-                <div className="des">{item.overview}</div>
-                <div className="buttons">
-                  <button onClick={() => navigate(`/movie/${item.id}`)}>
-                    SEE MORE
-                  </button>
-                  <button>SUBSCRIBE</button>
-                </div>
+      <div className="list" ref={sliderRef}>
+        {first?.map((item, index) => (
+          <div
+            className={`item ${index === currentIndex ? "active" : ""}`}
+            key={item.id}
+          >
+            <img
+              src={`${url.backdrop}${item.backdrop_path}`}
+              alt={item.original_title}
+            />
+            <div className="content">
+              <div className="author">NEXVIEW</div>
+              <div className="title">{item.original_title}</div>
+              <div className="topic">{item.release_date}</div>
+              <div className="des">{item.overview}</div>
+              <div className="buttons">
+                <button onClick={() => navigate(`/movie/${item.id}`)}>
+                  SEE MORE
+                </button>
+                <button>SUBSCRIBE</button>
               </div>
             </div>
-          ))}
-        </div>
-
-        <div className="thumbnail" ref={thumbnailRef}>
-          {first?.map((item, index) => (
-            <div
-              className={`item ${index === currentIndex ? "active" : ""}`}
-              key={item.id}
-            >
-              <Img
-                src={`${url.backdrop}${item.poster_path}`}
-                alt={item.original_title}
-              />
-              <div className="content">
-                <div className="title">{item.original_title}</div>
-                <div className="description">Description</div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="arrows">
-          <button id="prev" onClick={() => showSlider("prev")}>
-            🔚
-          </button>
-          <button id="next" onClick={() => showSlider("next")}>
-            🔜
-          </button>
-        </div>
-
-        <div className="time"></div>
+          </div>
+        ))}
       </div>
+
+      <div className="thumbnail" ref={thumbnailRef}>
+        {first?.map((item, index) => (
+          <div
+            className={`item ${index === currentIndex ? "active" : ""}`}
+            key={item.id}
+          >
+            <Img
+              src={`${url.backdrop}${item.poster_path}`}
+              alt={item.original_title}
+            />
+            <div className="content">
+              <div className="title">{item.original_title}</div>
+              <div className="description">Description</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="arrows">
+        <button id="prev" onClick={() => showSlider("prev")}>
+          🔚
+        </button>
+        <button id="next" onClick={() => showSlider("next")}>
+          🔜
+        </button>
+      </div>
+
+      <div className="time"></div>
+    </div>}
     </>
   );
 }

@@ -12,6 +12,7 @@ function CommanTbl(prop) {
   const [newData, setNewData] = useState([]);
   useEffect(() => {
     axios.get(`http://localhost:5001/${prop.url}`).then((res) => {
+      // console.log(res.data);
       if (res.data.message == "error") {
         Navigate("/Dashboard");
       } else {
@@ -39,7 +40,7 @@ function CommanTbl(prop) {
               variant="outlined"
               className="btn_decorate"
               onClick={prop.handleClickOpen}
-              style={{ display: prop.style }}
+              style={{display:prop.style}}
             >
               ADD {prop.headName}
             </Button>

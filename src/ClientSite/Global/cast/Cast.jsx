@@ -7,7 +7,7 @@ import avatar from "../../../../public/Images/avatar.png";
 
 const Cast = ({ data, loading }) => {
     const { url } = useSelector((state) => state.home);
-console.log(data);
+// console.log(data);
     const skeleton = () => {
         return (
             <div className="skItem">

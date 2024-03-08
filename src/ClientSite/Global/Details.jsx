@@ -22,7 +22,7 @@ const Details = () => {
   const {data1: credits, loading: creditsLoading } = useFetch2(
     `/${mediaType}/${id}/credits`
   );
-console.log(credits?.cast);
+// console.log(credits?.cast);
   return (
     <div>
       <Header />

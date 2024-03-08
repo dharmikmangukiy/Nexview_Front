@@ -8,17 +8,19 @@ import TextField from "@mui/material/TextField";
 import DrawIcon from "@mui/icons-material/Draw";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import TodayIcon from "@mui/icons-material/Today";
-import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import NewDate from "../Comman Componant/NewDate";
+import { NavLink } from "react-router-dom";
 const Profile = () => {
   const themes = ["orange", "purple", "green", "blue"];
   const [currentTheme, setCurrentTheme] = useState(
     themes[Math.floor(Math.random() * themes.length)]
   );
-  const [isWrapperOpen, setIsWrapperOpen] = useState(false);
 
-  const toggleWrapper = () => {
-    setIsWrapperOpen(!isWrapperOpen);
-  };
+  const [isWrapperOpen, setIsWrapperOpen] = useState(false);
 
   const switchTheme = (e) => {
     themes.forEach((theme) => {
@@ -34,9 +36,95 @@ const Profile = () => {
     document.body.classList.add(`theme-${currentTheme}`);
   }, [currentTheme]);
 
+  const [data, setdata] = useState({
+    name: "",
+  });
+
+  const input = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    setdata((prevalue) => {
+      return {
+        ...prevalue,
+        [name]: value,
+      };
+    });
+  };
+
+  const [Favorites, setFavorites] = useState([]);
+  const [loadingggg, setLoadingggg] = useState();
+
+  useEffect(() => {
+    // setLoadingggg(true);
+    axios
+      .post("http://localhost:5001/me", {
+        token: JSON.parse(sessionStorage.getItem("token")),
+      })
+      .then((res) => {
+        if (res.status == 200) {
+          console.log(res.data);
+          setFavorites(res.data);
+          const filteredMovies = res.data.favorite.filter(
+            (movie) => movie.id === id
+          );
+          // setLoadingggg(false);
+          console.log(filteredMovies);
+        }
+      })
+      .catch((error) => {
+        console.error("Exception:", error);
+        // localStorage.setItem("login", true);
+        // navigate("/");
+        // dispatch(loginChnage(true));
+        // sessionStorage.clear();
+        // window.location.reload();
+      });
+  }, [loadingggg,isWrapperOpen]);
+
+  const toggleWrapper = () => {
+    setIsWrapperOpen(!isWrapperOpen);
+    setdata({
+      name: Favorites?.name,
+    });
+    setBase64Image(Favorites?.profile)
+  };
+
+  const [base64Image, setBase64Image] = useState("");
+
+  const convertImage = (event) => {
+    const file = event.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        const base64 = e.target.result;
+        setBase64Image(base64);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const submit = () => {
+    setLoadingggg(true);
+    axios
+      .put("http://localhost:5001/user-profile", {
+        token: JSON.parse(sessionStorage.getItem("token")),
+        name: data.name,
+        profileImage: base64Image,
+      })
+      .then((res) => {
+        toast(res.data.message);
+        setIsWrapperOpen(false);
+      });
+  };
   const myStyle = {
-    background:
-      '#8f6ed5 url("https://cdn-icons-png.flaticon.com/512/3135/3135715.png") center center no-repeat',
+    // background: `#8f6ed5 url("https://cdn-icons-png.flaticon.com/512/3135/3135715.png") center center no-repeat`,
+    background: Favorites?.profile
+      ? `#8f6ed5 url(${Favorites.profile}) center center no-repeat`
+      : `#8f6ed5 url("https://cdn-icons-png.flaticon.com/512/3135/3135715.png") center center no-repeat`,
+
     width: "12rem", // <-- wrap the value in quotes
     height: "12rem", // <-- wrap the value in quotes
     position: "absolute", // <-- wrap the value in quotes
@@ -51,6 +139,7 @@ const Profile = () => {
 
   return (
     <div className="bodyy_profile">
+      <ToastContainer />
       <Header />
       <main className="cd__main">
         <div className="profile-page">
@@ -58,11 +147,15 @@ const Profile = () => {
             <div className="content__cover">
               {/* <div className="content__avatar" /> */}
               <div className="content__avatar2 containerp " style={myStyle}>
-                <div  style={{ display: isWrapperOpen ? "" : "none" }}>
-                <input type="file" className="input_image" />
-                <div class="middle">
-                 <AddPhotoAlternateIcon/>
-                </div>
+                <div style={{ display: isWrapperOpen ? "" : "none" }}>
+                  <input
+                    type="file"
+                    className="input_image"
+                    onChange={convertImage}
+                  />
+                  <div class="middle">
+                    <AddPhotoAlternateIcon />
+                  </div>
                 </div>
               </div>
               <div className="content__bull">
@@ -74,31 +167,34 @@ const Profile = () => {
               </div>
             </div>
             <div className="content__actions">
-              <a href="#">
+              <NavLink to="/favorite">
                 <FavoriteIcon />
-                <span>Favorie</span>
-              </a>
-              <a href="#">
+                <span> {Favorites?.favorite?.length}</span>
+              </NavLink>
+              <NavLink to="#">
                 <TodayIcon />
-                <span>End Date</span>
-              </a>
+                <span>
+                  {" "}
+                  <NewDate newDate={Favorites?.planEndDate} />{" "}
+                </span>
+              </NavLink>
             </div>
             <div className="content__title">
               <h1>
-                Samantha Jones{" "}
+                {Favorites?.name}
                 <DrawIcon
                   onClick={toggleWrapper}
                   style={{ cursor: "pointer" }}
                 />
               </h1>
-              <span>New York, United States</span>
+              <span> {Favorites?.email}</span>
             </div>
             <div className="content__description">
               <p
                 style={{ textDecoration: " underline" }}
                 className="pb-4 text-danger"
               >
-                <b>🎊 Prime User 🎊</b>
+                <b>🎊 {Favorites?.type} 🎊</b>
               </p>
 
               <Box
@@ -110,9 +206,12 @@ const Profile = () => {
               >
                 <TextField
                   fullWidth
+                  name="name"
                   label="User Name"
                   id="User Name"
                   variant="filled"
+                  value={data.name}
+                  onChange={input}
                 />
               </Box>
             </div>
@@ -121,11 +220,11 @@ const Profile = () => {
               className="content__button"
               style={{ display: isWrapperOpen ? "" : "none" }}
             >
-              <a className="button" href="#">
+              <NavLink className="button" onClick={submit}>
                 <div className="button__border" />
                 <div className="button__bg" />
                 Submit
-              </a>
+              </NavLink>
             </div>
           </div>
           <div className="bg">

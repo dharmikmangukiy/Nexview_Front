@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PosterFallback from "../../../../public/Images/no-poster.png";
 import ContentWrapper from "../../contentWrapper/ContentWrapper";
@@ -14,16 +15,21 @@ import { PlayIcon } from "./Playbtn";
 import VideoPopup from "../../videoPopup/VideoPopup";
 import useFetch2 from "../../../Componants/hooks/useFetch2";
 import StarsIcon from "@mui/icons-material/Stars";
+import axios from "axios";
+import { loginChnage } from "../store/homeSlice";
 
 const DetailsBanner = ({ video, crew }) => {
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
+  const [FavButton, setFavButton] = useState(false);
   const [videoId, setVideoId] = useState(null);
+  const [Favorites, setFavorites] = useState([]);
 
   const { mediaType, id } = useParams();
   const { data, loading } = useFetch(`/${mediaType}/${id}`);
   const { data1 } = useFetch2(`/${mediaType}/${id}`);
 
-  console.log(data1);
+  // console.log(data1);
 
   const { url } = useSelector((state) => state.home);
 
@@ -40,8 +46,33 @@ const DetailsBanner = ({ video, crew }) => {
     return `${hours}h${minutes > 0 ? ` ${minutes}m` : ""}`;
   };
 
+  useEffect(() => {
+    axios
+      .post("http://localhost:5001/me", {
+        token: JSON.parse(sessionStorage.getItem("token")),
+      })
+      .then((res) => {
+        if (res.status == 200) {
+          console.log(res.data);
+          setFavorites(res.data);
+          const filteredMovies = res.data.favorite.filter(
+            (movie) => movie.id == id
+          );
+          setFavButton(filteredMovies?.length > 0);
+        }
+      })
+      .catch((error) => {
+        console.error("Exception:", error);
+        // localStorage.setItem("login", true);
+        // navigate("/");
+        // dispatch(loginChnage(true));
+        // sessionStorage.clear();
+        // window.location.reload();
+      });
+  }, [FavButton]);
   return (
     <div className="detailsBanner">
+      <ToastContainer />
       {data1 ? (
         <>
           {!data ? (
@@ -209,12 +240,19 @@ const DetailsBanner = ({ video, crew }) => {
                     <Genres data={_genres} />
 
                     <div className="roww">
-                      <CircleRating rating={data.vote_average.toFixed(1)} />
+                      <CircleRating rating={data?.vote_average?.toFixed(1)} />
                       <div
                         className="playbtn"
                         onClick={() => {
-                          setShow(true);
-                          setVideoId(video.key);
+                          if (
+                            Favorites.type == "freeUser" &&
+                            data.isPrime == true
+                          ) {
+                            navigate("/PlanForm");
+                          } else {
+                            setShow(true);
+                            setVideoId(video.key);
+                          }
                         }}
                       >
                         <PlayIcon />
@@ -226,12 +264,57 @@ const DetailsBanner = ({ video, crew }) => {
                       <div className="heading">Overview</div>
                       <div className="description">{data.overview}</div>
                       <div>
-                        <button className="btn_custom">
-                          Add to <FavoriteBorderIcon />
-                        </button>
-                        <button className="btn_custom_r1">
-                          Remove to <FavoriteBorderIcon />
-                        </button>
+                        {!FavButton ? (
+                          <button
+                            className="btn_custom"
+                            onClick={() => {
+                              axios
+                                .post("http://localhost:5001/favorite", {
+                                  token: JSON.parse(
+                                    sessionStorage.getItem("token")
+                                  ),
+                                  id: id,
+                                  states: "true",
+                                  type: mediaType,
+                                })
+                                .then((res) => {
+                                  toast(res.data.message);
+                                  setFavButton(false);
+                                })
+                                .catch((error) => {
+                                  console.error("Exception:", error);
+                                });
+                            }}
+                          >
+                            Add to <FavoriteBorderIcon />
+                          </button>
+                        ) : (
+                          <button
+                            className="btn_custom_r1"
+                            onClick={() => {
+                              axios
+                                .post("http://localhost:5001/favorite", {
+                                  token: JSON.parse(
+                                    sessionStorage.getItem("token")
+                                  ),
+                                  Id: id,
+                                  states: "false",
+                                  type: mediaType,
+                                })
+                                .then((res) => {
+                                  if (res.status == 200) {
+                                    toast(res.data.message);
+                                    setFavButton(true);
+                                  }
+                                })
+                                .catch((error) => {
+                                  console.error("Exception:", error);
+                                });
+                            }}
+                          >
+                            Remove to <FavoriteBorderIcon />
+                          </button>
+                        )}
                       </div>
                     </div>
 

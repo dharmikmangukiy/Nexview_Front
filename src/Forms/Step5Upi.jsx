@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import Header from "../ClientSite/Global/Header";
 import Footer from "../ClientSite/Global/Footer";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Img from "../Componants/lazyLoadImage/Img";
+import axios from "axios";
 function Step5Upi() {
+  const navigate=useNavigate()
   const [data, setdata] = useState({
-    email: "",
-    plane: "",
-    applicaion: "",
-    transacion: "",
+    plan: "",
+    application: "",
+    trationId: "",
   });
 
   const input = (e) => {
@@ -23,13 +24,26 @@ function Step5Upi() {
       };
     });
   };
-  console.log(data);
+
   const sign_in = (e) => {
     e.preventDefault();
-    if (!data.email || !data.plane || !data.transacion || !data.applicaion) {
+    const param = new FormData();
+    if (
+      !data.plan ||
+      !data.application ||
+      !data.trationId 
+    ) {
       toast.error("All fields are required");
     } else {
-      toast.success("done");
+      axios.post(`http://localhost:5001/payment`, {...data,
+      token: JSON.parse(sessionStorage.getItem('token')),}).then((res) => {
+        if (res.data.message == "User Not Found") {
+          toast.error(res.data.message);
+        } else {
+          toast.success("Payment success");
+          navigate("/final_pay")
+        }
+      });
     }
   };
   return (
@@ -61,10 +75,10 @@ function Step5Upi() {
             <div>
               <label htmlFor="palne"> Select Plan</label> <br />
               <select
-                name="plane"
+                name="plan"
                 id=""
                 className="form-control p-3"
-                value={data.plane}
+                value={data.plan}
                 onChange={input}
               >
                 <option value="Premium"> Premium ₹ 649</option>
@@ -76,10 +90,10 @@ function Step5Upi() {
             <div>
               <label htmlFor="applicaion"> Select Your UPI App</label> <br />
               <select
-                name="applicaion"
+                name="application"
                 id=""
                 className="form-control p-3"
-                value={data.applicaion}
+                value={data.application}
                 onChange={input}
               >
                 <option value="Google Pay"> Google Pay</option>
@@ -89,25 +103,15 @@ function Step5Upi() {
                 <option value="Amazon Pay"> Amazon Pay</option>
               </select>
             </div>
-            <div>
-              <label htmlFor="email">Enter Email ID</label> <br />
-              <input
-                name="email"
-                type="text"
-                className="form-control p-3"
-                placeholder="nexview@gmail.com"
-                value={data.email}
-                onChange={input}
-              />
-            </div>
+
             <div>
               <label htmlFor="transacion">Enter Transaction ID</label> <br />
               <input
-                name="transacion"
+                name="trationId"
                 type="text"
                 className="form-control p-3"
                 placeholder="93DJ2231ADD35672D."
-                value={data.transacion}
+                value={data.trationId}
                 onChange={input}
               />
             </div>

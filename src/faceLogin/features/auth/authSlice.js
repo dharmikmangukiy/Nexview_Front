@@ -267,11 +267,11 @@ export const getActiveTab = state => state.auth.activeTab
 export const getActiveSource = state => state.auth.activeSource
 export const getCameraStatus = state => state.auth.cameraStatus
 export const getIsFlashing = state => state.auth.isFlashing
-export const getScreenshot = state => state.auth.request.screenshot
-export const getRequest = state => state.auth.request
+export const getScreenshot = state => state.auth?.request?.screenshot
+export const getRequest = state => state.auth?.request
 export const getUser = state => (localStorage.getItem('user') != null) ? JSON.parse(localStorage.getItem('user')) : state.auth.user
-export const getAuthError = state => state.auth.error
-export const getURL = state => state.auth.request.url
+export const getAuthError = state => state.auth?.error
+export const getURL = state => state.auth?.request?.url
 
 export const { setActiveTab, setActiveSource, setCameraStatus, setIsFlashing, setScreenshot, setRegisterName, setRegisterEmail, setRegisterPassword, setRegisterRepeatPassword, setLoginEmail, setLoginPassword, setUser, resetAuthState, setAuthError, setURL } = authSlice.actions
 export default authSlice.reducer

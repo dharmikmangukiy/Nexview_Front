@@ -60,7 +60,10 @@ aside {
     margin: 0;
     padding: 20px 0;
   }
-  
+  .w-48{
+    width: 48%;
+    height: 175px;
+  }
   body {
     font-family: 'Roboto';
     width: 100%;

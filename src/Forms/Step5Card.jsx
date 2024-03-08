@@ -1,15 +1,16 @@
+import axios from "axios";
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Img from "../Componants/lazyLoadImage/Img";
 function Step5Card() {
+  const navigate=useNavigate()
   const [data, setdata] = useState({
-    email: "",
-    plane: "",
+    plan: "",
     name: "",
-    securitycode: "",
-    expirationdate: "",
+    cvv: "",
+    expiration: "",
     cardnumber: "",
   });
 
@@ -23,25 +24,35 @@ function Step5Card() {
       };
     });
   };
-  console.log(data);
+
   const sign_in = (e) => {
     e.preventDefault();
+    const param = new FormData();
     if (
-      !data.email ||
-      !data.plane ||
+      // !data.email ||
+      !data.plan ||
       !data.name ||
-      !data.securitycode ||
-      !data.expirationdate ||
+      !data.cvv ||
+      !data.expiration ||
       !data.cardnumber
     ) {
       toast.error("All fields are required");
-    }else{
-        toast.success("done");
+    } else {
+      axios.post(`http://localhost:5001/payment`, {...data,
+      token: JSON.parse(sessionStorage.getItem('token')),}).then((res) => {
+        if (res.data.message == "User Not Found") {
+          toast.error(res.data.message);
+        } else {
+          toast.success("Payment success");
+          navigate("/final_pay")
+        }
+      });
     }
   };
+
   return (
     <>
-    <ToastContainer/>
+      <ToastContainer />
       <div className="client_conteint">
         {/* <Header /> */}
         <div
@@ -377,9 +388,9 @@ function Step5Card() {
                   <label htmlFor="expirationdate">Expiration (mm/yy)</label>
                   <input
                     id="expirationdate"
-                    name="expirationdate"
+                    name="expiration"
                     type="text"
-                    value={data.expirationdate}
+                    value={data.expiration}
                     onChange={input}
                     pattern="[0-9]*"
                     inputMode="numeric"
@@ -390,9 +401,9 @@ function Step5Card() {
                   <label htmlFor="securitycode">Security Code</label>
                   <input
                     id="securitycode"
-                    name="securitycode"
+                    name="cvv"
                     type="number"
-                    value={data.securitycode}
+                    value={data.cvv}
                     onChange={input}
                     pattern="[0-9]*"
                     inputMode="numeric"
@@ -401,7 +412,7 @@ function Step5Card() {
                 </div>
               </div>
             </div>
-            <div>
+            {/* <div>
               <label htmlFor="palne">Enter Email ID</label> <br />
               <input
                 name="email"
@@ -411,14 +422,14 @@ function Step5Card() {
                 value={data.email}
                 onChange={input}
               />
-            </div>
+            </div> */}
             <div>
               <label htmlFor="palne"> Select Plan</label> <br />
               <select
-                name="plane"
+                name="plan"
                 id=""
                 className="form-control"
-                value={data.plane}
+                value={data.plan}
                 onChange={input}
               >
                 <option value="Premium"> Premium ₹ 649</option>

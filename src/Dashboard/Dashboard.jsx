@@ -669,7 +669,7 @@ function Dashboard() {
                 onChange={input}
                 name="backdrop_path"
               />
-              {console.log('AddMovies.isPrime', AddMovies.isPrime)}
+              {/* {console.log('AddMovies.isPrime', AddMovies.isPrime)} */}
               <FormControlLabel
                 sx={{ mx: "2%", width: "300px", marginTop: '10px' }}
                 control={
@@ -788,7 +788,7 @@ function Dashboard() {
                 onChange={TVinput}
                 name="backdrop_path"
               />
-              {console.log('AddMovies.isPrime', TVSeries.isPrime)}
+              {/* {console.log('AddMovies.isPrime', TVSeries.isPrime)} */}
 
               <FormControlLabel
                 sx={{ mx: "2%", width: "300px", marginTop: '10px' }}
@@ -882,7 +882,7 @@ function Dashboard() {
                 onChange={input}
                 name="backdrop_path"
               />
-              {console.log('AddMovies.isPrime', AddMovies.isPrime)}
+              {/* {console.log('AddMovies.isPrime', AddMovies.isPrime)} */}
               <FormControlLabel
                 sx={{ mx: "2%", width: "300px", marginTop: '10px' }}
                 control={
@@ -989,7 +989,7 @@ function Dashboard() {
                 onChange={TVinput}
                 name="backdrop_path"
               />
-              {console.log('AddMovies.isPrime', TVSeries.isPrime)}
+              {/* {console.log('AddMovies.isPrime', TVSeries.isPrime)} */}
 
               <FormControlLabel
                 sx={{ mx: "2%", width: "300px", marginTop: '10px' }}
@@ -1111,28 +1111,40 @@ function Dashboard() {
     {
       name: "Name",
       selector: (row) => row.original_title,
+      sortable: true,
+      reorder: true,
     },
     {
       name: "Status",
       selector: (row) => row.status,
+      sortable: true,
+      reorder: true,
     },
     {
       name: 'Prime',
       selector: (row) => (
         row.isPrime ? <span style={{ color: 'green' }}>Prime</span> : <span style={{ color: 'red' }}>Non Prime</span>
       ),
+      sortable: true,
+      reorder: true,
     },
     {
       name: "Release Date",
       selector: (row) => row.release_date,
+      sortable: true,
+      reorder: true,
     },
     {
       name: "Rating",
       selector: (row) => row.vote_average,
+      sortable: true,
+      reorder: true,
     },
     {
       name: "Language",
       selector: (row) => row.original_language,
+      sortable: true,
+      reorder: true,
     },
 
     {
@@ -1182,28 +1194,40 @@ function Dashboard() {
     {
       name: "Name",
       selector: (row) => row.original_name,
+      sortable: true,
+      reorder: true,
     },
     {
       name: "Status",
       selector: (row) => row.status,
+      sortable: true,
+      reorder: true,
     },
     {
       name: 'Prime',
       selector: (row) => (
         row.isPrime ? <span style={{ color: 'green' }}>Prime</span> : <span style={{ color: 'red' }}>Non Prime</span>
       ),
+      sortable: true,
+      reorder: true,
     },
     {
       name: "Runtime",
       selector: (row) => row.runtime,
+      sortable: true,
+      reorder: true,
     },
     {
       name: "Rating",
       selector: (row) => row.vote_average,
+      sortable: true,
+      reorder: true,
     },
     {
       name: "Language",
       selector: (row) => row.original_language,
+      sortable: true,
+      reorder: true,
     },
 
     {
@@ -1347,7 +1371,7 @@ function Dashboard() {
               </div>
             </div>
             <div class="sticky-button navigation_button">
-              <Fab variant="extended" href="/AppClient" target="_blank">
+              <Fab variant="extended" href="/AppClient" >
                 <NavigationIcon sx={{ mr: 1 }} />
                 Visit Client Side
               </Fab>

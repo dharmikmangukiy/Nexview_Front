@@ -30,7 +30,7 @@ function Step6() {
           </div>
           <div className="pt-3">STEP 3 OF 3</div>
           <h1 className="pt-3">Your Application is Under Review</h1>
-          <span className="text-secondary">*Please Login After 5 Minues.</span>
+          <span className="text-secondary">*Please Login After 5 Minutes.</span>
 
           <div className="text-center pt-4">
             <NavLink onClick={handleClick}>
