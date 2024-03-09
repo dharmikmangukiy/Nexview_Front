@@ -281,7 +281,7 @@ const DetailsBanner = ({ video, crew }) => {
                                 })
                                 .then((res) => {
                                   toast(res.data.message);
-                                  setFavButton(false);
+                                  setFavButton(!false);
                                 })
                                 .catch((error) => {
                                   console.error("Exception:", error);
@@ -304,10 +304,8 @@ const DetailsBanner = ({ video, crew }) => {
                                   type: mediaType,
                                 })
                                 .then((res) => {
-                                  if (res.status == 200) {
-                                    toast(res.data.message);
-                                    setFavButton(true);
-                                  }
+                                  toast(res.data.message);
+                                  setFavButton(!true);
                                 })
                                 .catch((error) => {
                                   console.error("Exception:", error);

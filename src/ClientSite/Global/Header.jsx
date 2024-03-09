@@ -45,7 +45,7 @@ const Header = () => {
     
     socket.on("productDeleted", (productId) => {
       setData((prev) => prev.filter((product) => product.productId !== productId)); // Filtering directly
-      var audio = document.getElementById("audioWITHDREW");
+      var audio = document.getElementById("audioAbeYYaar");
       audio.play();
     });
 
