@@ -19,11 +19,6 @@ import axios from "axios";
 const Topbar = () => {
   const [Favorites, setFavorites] = useState([]);
   const [loading, setLoading] = useState();
-  function handleClick() {
-    localStorage.setItem("login", true);
-    sessionStorage.clear();
-    window.location.reload();
-  }
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const ProfileOpen = (event) => {
@@ -148,7 +143,9 @@ const Topbar = () => {
         </MenuItem>
         <MenuItem
           onClick={() => {
-            handleClick();
+            localStorage.setItem("login", true);
+    sessionStorage.clear();
+    window.location.reload();
             handleClose();
           }}
         >

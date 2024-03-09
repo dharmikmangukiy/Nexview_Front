@@ -53,12 +53,6 @@ const Header = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
-
-  function handleClick() {
-    localStorage.setItem("login", true);
-    sessionStorage.clear();
-    window.location.reload();
-  }
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEll, setAnchorEll] = React.useState(null);
 
@@ -338,7 +332,9 @@ const Header = () => {
 
           <MenuItem
             onClick={() => {
-              handleClick();
+              localStorage.setItem("login", true);
+              sessionStorage.clear();
+              window.location.reload();
               handleClose();
             }}
           >

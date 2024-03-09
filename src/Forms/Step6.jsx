@@ -7,11 +7,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 function Step6() {
     const naviagte = useNavigate();
-    function handleClick() {
-        localStorage.setItem("login", true);
-        window.location.reload();
-        naviagte("/")
-      }
   return (
     <>
       <div className="client_conteint" style={{height:"100vh"}}>
@@ -33,7 +28,11 @@ function Step6() {
           <span className="text-secondary">*Please Login After 5 Minutes.</span>
 
           <div className="text-center pt-4">
-            <NavLink onClick={handleClick}>
+            <NavLink onClick={()=>{
+                      localStorage.setItem("login", true);
+                      window.location.reload();
+                      naviagte("/")
+            }}>
               <button className="Next_button">Back To Login</button>
             </NavLink>
           </div>
