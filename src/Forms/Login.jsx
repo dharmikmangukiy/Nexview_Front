@@ -93,11 +93,13 @@ const Login = () => {
       })
       .catch((error) => {
         console.error("Exception:", error);
-        localStorage.setItem("login", true);
-        navigate("/");
-        dispatch(loginChnage(true));
-        sessionStorage.clear();
-        window.location.reload();
+        if (error.response && error.response.status === 402) {
+          localStorage.setItem("login", true);
+          navigate("/");
+          dispatch(loginChnage(true));
+          sessionStorage.clear();
+          window.location.reload();
+        }
       });
   };
 
@@ -142,8 +144,6 @@ const Login = () => {
           })
           .then((res) => {
             sessionStorage.setItem("token", JSON.stringify(res.data.token));
-            console.log(res.data.data);
-            // debugger
             if (res.data.message == "Username or password is wrong!") {
               toast.error(res.data.message);
             } else if (data.email == res.data.data.email && data.password) {

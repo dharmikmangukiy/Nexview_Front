@@ -73,7 +73,7 @@ input:-webkit-autofill:active {
   border-bottom: 3px solid rgba(255, 255, 255, 1);
 }
 .form-container {
-  padding: 0 40px 60px;
+  /* padding: 0 40px 60px; */
 }
 .login100-form {
   display: none;

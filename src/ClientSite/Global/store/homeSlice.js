@@ -5,8 +5,8 @@ export const homeSlice = createSlice({
     initialState: {
         url: {},
         genres: {},
-        login:true,
-        author:"customer"
+        login:localStorage.getItem('login'),
+        author:localStorage.getItem('Author')
     },
     reducers: {
         getApiConfiguration: (state, action) => {

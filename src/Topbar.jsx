@@ -50,12 +50,14 @@ const Topbar = () => {
       })
       .catch((error) => {
         console.error("Exception:", error);
-        localStorage.setItem("login", true);
-        navigate("/");
-        dispatch(loginChnage(true));
-        sessionStorage.clear();
-        window.location.reload();
-      });
+        if (error.response && error.response.status === 402) {
+          localStorage.setItem("login", true);
+          navigate("/");
+          dispatch(loginChnage(true));
+          sessionStorage.clear();
+          window.location.reload();
+        }
+      })
   }, []);
 
   return (
