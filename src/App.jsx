@@ -122,7 +122,7 @@ function App() {
         {/* <Route path='/camera' element={<AuthContainer><Auth /></AuthContainer>} /> */}
       </Routes>
     );
-  } else if (localStorage.getItem("Author") == "admin") {
+  } else if (loginAuthor == "admin") {
     return (
       <div className="app">
         <Routes>
