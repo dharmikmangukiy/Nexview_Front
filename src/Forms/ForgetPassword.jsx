@@ -48,7 +48,10 @@ const ForgetPassword = () => {
               password: "",
               otp: "",
             });
+            setTimeout(function () {
             navigate("/");
+              window.location.reload();
+          }, 3000);
           }
         })
         .catch((error) => {

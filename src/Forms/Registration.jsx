@@ -13,7 +13,10 @@ import { Camera } from "../faceLogin/components/Camera";
 import { PictureControls } from "../faceLogin/components/PictureControls";
 import { Loader } from "../faceLogin/components/Loader";
 import { useSelector } from "react-redux";
-import { getAuthError, getScreenshot } from "../faceLogin/features/auth/authSlice";
+import {
+  getAuthError,
+  getScreenshot,
+} from "../faceLogin/features/auth/authSlice";
 import { getFaces } from "../faceLogin/features/auth/facenetSlice";
 
 const Registration = () => {
@@ -25,9 +28,9 @@ const Registration = () => {
     name: "",
   });
 
-  const screenshot = useSelector(getScreenshot)
-  const error = useSelector(getAuthError)
-  const faces = useSelector(getFaces)
+  const screenshot = useSelector(getScreenshot);
+  const error = useSelector(getAuthError);
+  const faces = useSelector(getFaces);
 
   const input = (e) => {
     let name = e.target.name;
@@ -39,37 +42,50 @@ const Registration = () => {
       };
     });
   };
+  console.log(faces,screenshot);
   const sign_in = (e) => {
     e.preventDefault();
+    if (data.email == "" || data.name == "" || data.password == ""|| faces=="" || screenshot=="") {
+      toast.error("Please enter all details.");
+    } else {
     if (faces && screenshot) {
-      axios
-        .post("http://localhost:5001/register", {
-          ...data, screenshot, descriptor: Object.values(faces[0].descriptor)
-        })
-        .then((res) => {
-          // console.log(res);
-          if (data.email !== "" && data.password !== "" && data.name !== "") {
-            if (res.data.message === "This email is already taken.") {
-              toast.error(res.data.message);
-            } else {
-              toast.success("Register successful");
-              toast("Back to Login");
-              setdata({
-                email: "",
-                password: "",
-                name: "",
-              });
+        axios
+          .post("http://localhost:5001/register", {
+            ...data,
+            screenshot,
+            descriptor: Object.values(faces[0].descriptor),
+          })
+          .then((res) => {
+            // console.log(res);
+            if (data.email !== "" && data.password !== "" && data.name !== "") {
+              if (res.data.message === "This email is already taken.") {
+                toast.error(res.data.message);
+              } else {
+                toast.success("Register successful");
+                toast("Back to Login");
+                setdata({
+                  email: "",
+                  password: "",
+                  name: "",
+                });
+              }
+              setTimeout(function () {
+              navigate("/");
+                window.location.reload();
+            }, 3000);
             }
-            navigate('/');
-            window.location.reload();
-          } else {
-            toast.error("Please enter all details.");
-          }
-        })
-        .catch((error) => {
-          console.error("An error occurred:", error);
-        });
-    }
+          })
+          .catch((error) => {
+            console.error("An error occurred:", error);
+            toast.error(error.response.data);
+            setTimeout(function () {
+            navigate("/");
+
+              window.location.reload();
+          }, 3000);
+          });
+        }
+      }
   };
   // console.log(data);
   return (
@@ -80,7 +96,15 @@ const Registration = () => {
         <div className="resi-wrap">
           <div className="login-html">
             <div className="text-center mb-3">
-              <div style={{ height: '138px', position: 'relative', width: '100%', display: 'flex', justifyContent: 'center' }}>
+              <div
+                style={{
+                  height: "138px",
+                  position: "relative",
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
                 <Camera />
               </div>
               <hr />

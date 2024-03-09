@@ -5,7 +5,7 @@ import LoadingImage from "./images/face_id.gif"
 export const Loader = () => {
 
     const status = useSelector(getFacenetStatus);
-    console.log('status', status);
+    // console.log('status', status);
     return (
         <div className="loader" style={status === 'pending' ? { visibility: 'visible', opacity: 1 } : { visibility: 'hidden', opacity: 0 }}>
             <div className="loader-dialog" style={status === 'pending' ? { marginTop: '5rem' } : { marginTop: '-14rem' }}>

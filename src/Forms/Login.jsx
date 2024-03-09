@@ -11,7 +11,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { PictureControls } from "../faceLogin/components/PictureControls";
 import { Camera } from "../faceLogin/components/Camera";
 import { useSelector } from "react-redux";
-import { getAuthError, getScreenshot } from "../faceLogin/features/auth/authSlice";
+import {
+  getAuthError,
+  getScreenshot,
+} from "../faceLogin/features/auth/authSlice";
 import { getFaces } from "../faceLogin/features/auth/facenetSlice";
 import { Loader } from "../faceLogin/components/Loader";
 
@@ -23,8 +26,8 @@ import {
 const Login = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState(1);
-  const screenshot = useSelector(getScreenshot)
-  const error = useSelector(getAuthError)
+  const screenshot = useSelector(getScreenshot);
+  const error = useSelector(getAuthError);
   const faces = useSelector(getFaces);
   const dispatch = useDispatch();
   const handleTabClick = (tabIndex) => {
@@ -64,118 +67,98 @@ const Login = () => {
     getData();
   }, []);
 
+  const handleLoginSuccess = (role) => {
+    localStorage.setItem("Author", role);
+    console.log(role);
+    axios
+      .post("http://localhost:5001/me", {
+        token: JSON.parse(sessionStorage.getItem("token")),
+      })
+      .then((res) => {
+        console.log(res.data);
+        if (res.status == 200) {
+          if (
+            res.data.type == "freeUser" &&
+            res.data.paymentStatus !== "pending"
+          ) {
+            navigate("/home");
+          } else if (res.data.paymentStatus == null) {
+            navigate("/Step1");
+            // handleClick();
+          } else if (res.data.paymentStatus == "pending") {
+            navigate("/final_pay");
+            // handleClick();
+          }
+        }
+      })
+      .catch((error) => {
+        console.error("Exception:", error);
+        localStorage.setItem("login", true);
+        navigate("/");
+        dispatch(loginChnage(true));
+        sessionStorage.clear();
+        window.location.reload();
+      });
+  };
+
   const sign_in = (e) => {
-    
     e.preventDefault();
     if (activeTab == 2) {
       if (faces && screenshot) {
-        
         axios
           .post("http://localhost:5001/face-login", {
-            ...data, screenshot, descriptor: Object.values(faces[0].descriptor),ip: ip
+            ...data,
+            screenshot,
+            descriptor: Object.values(faces[0].descriptor),
+            ip: ip,
           })
           .then((res) => {
+            console.log(res);
             sessionStorage.setItem("token", JSON.stringify(res.data.token));
-          dispatch(authorChnage(res?.data?.user?.role));
-          dispatch(loginChnage(false));
-          localStorage.setItem("popUp", true);sessionStorage.setItem('User_id', JSON.stringify(res.data.user._id));
+            handleLoginSuccess(res.data.user.role);
+            dispatch(authorChnage(res?.data?.user?.role));
+            dispatch(loginChnage(false));
+            sessionStorage.setItem(
+              "User_id",
+              JSON.stringify(res.data.user._id)
+            );
             toast.success("Login successful");
             localStorage.setItem("login", false);
-            localStorage.setItem("popUp", true)
-            // handleLoginSuccess(res.data);
-            localStorage.setItem("Author", res.data.user.role);
-            axios
-    .post("http://localhost:5001/me", {
-      token: res.data.token,
-    })
-    .then((res1) => {
-      console.log(res1.data);
-     
-      if (res1.status == 200) {
-        if (
-          res1.data.type == "freeUser" &&
-          res1.data.paymentStatus !== "pending"
-        ) {
-          navigate("/home");
-        } else if (res1.data.paymentStatus == null) {
-          navigate("/Step1");
-          // handleClick();
-        } else if (res1.data.paymentStatus == "pending") {
-          navigate("/final_pay");
-          // handleClick();
-        }
-      }
-    })
-    .catch((error) => {
-      console.error("Exception:", error);
-      localStorage.setItem("login", true);
-      navigate("/");
-      dispatch(loginChnage(true));
-      sessionStorage.clear();
-      window.location.reload();
-    });
           })
           .catch((error) => {
             console.log("An error occurred:", error);
+            toast.error(error.response.data.error);
           });
       }
     } else {
-      axios
-        .post("http://localhost:5001/login", {
-          email: data.email,
-          password: data.password,
-          ip: ip,
-        })
-        .then((res) => {
-          console.log(res);
-          sessionStorage.setItem("token", JSON.stringify(res.data.token));
-          if (data.email == res.data.data.email && data.password) {
-            toast.success("Login successful");
-            localStorage.setItem("login", false);
-            localStorage.setItem("popUp", true)
-            dispatch(authorChnage(res?.data?.data?.role));
-            dispatch(loginChnage(false));
-            handleLoginSuccess(res.data);
-          } else if (res.data.data.message === "Username or password is wrong!") {
-            toast.error(res.data.data.message);
-          } else {
-            toast.error("Please enter both email and password.");
-          }
-          localStorage.setItem("Author", res.data.data.role);
-            axios
-    .post("http://localhost:5001/me", {
-      token: res.data.token,
-    })
-    .then((res1) => {
-      
-      console.log(res1.data);
-      if (res1.status == 200) {
-        if (
-          res1.data.type == "freeUser" &&
-          res1.data.paymentStatus !== "pending"
-        ) {
-          navigate("/home");
-        } else if (res1.data.paymentStatus == null) {
-          navigate("/Step1");
-          // handleClick();
-        } else if (res1.data.paymentStatus == "pending") {
-          navigate("/final_pay");
-          // handleClick();
-        }
+      if (data.email == "" || data.password == "") {
+        toast.error("Please enter both email and password.");
+      } else {
+        axios
+          .post("http://localhost:5001/login", {
+            email: data.email,
+            password: data.password,
+            ip: ip,
+          })
+          .then((res) => {
+            sessionStorage.setItem("token", JSON.stringify(res.data.token));
+            console.log(res.data.data);
+            // debugger
+            if (res.data.message == "Username or password is wrong!") {
+              toast.error(res.data.message);
+            } else if (data.email == res.data.data.email && data.password) {
+              toast.success("Login successful");
+              handleLoginSuccess(res.data.data.role);
+              localStorage.setItem("login", false);
+              dispatch(authorChnage(res?.data?.data?.role));
+              dispatch(loginChnage(false));
+            }
+          })
+          .catch((error) => {
+            console.log("An error occurred:", error);
+            toast.error("An error occurred");
+          });
       }
-    })
-    .catch((error) => {
-      console.error("Exception:", error);
-      localStorage.setItem("login", true);
-      navigate("/");
-      dispatch(loginChnage(true));
-      sessionStorage.clear();
-      window.location.reload();
-    });
-        })
-        .catch((error) => {
-          console.log("An error occurred:", error);
-        });
     }
   };
 
@@ -187,7 +170,15 @@ const Login = () => {
         <div className="login-wrap">
           <div className="login-html">
             <div className="text-center mb-3">
-              <div style={{ height: '138px', position: 'relative', width: '100%', display: 'flex', justifyContent: 'center' }}>
+              <div
+                style={{
+                  height: "138px",
+                  position: "relative",
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
                 <Camera isLogin={true} />
               </div>
               <hr />
@@ -202,15 +193,15 @@ const Login = () => {
                   <li className="nav-item" role="presentation">
                     <a
                       style={{
-                        fontSize: '1.4rem',
-                        background: 'transparent',
-                        color: 'white',
+                        fontSize: "1.4rem",
+                        background: "transparent",
+                        color: "white",
                       }}
-                      className={`nav-link ${activeTab === 1 ? 'active' : ''}`}
+                      className={`nav-link ${activeTab === 1 ? "active" : ""}`}
                       id="ex1-tab-1"
                       role="tab"
                       aria-controls="ex1-tabs-1"
-                      aria-selected={activeTab === 1 ? 'true' : 'false'}
+                      aria-selected={activeTab === 1 ? "true" : "false"}
                       onClick={() => handleTabClick(1)}
                     >
                       Authentication
@@ -219,15 +210,15 @@ const Login = () => {
                   <li className="nav-item" role="presentation">
                     <a
                       style={{
-                        fontSize: '1.4rem',
-                        background: 'transparent',
-                        color: 'white',
+                        fontSize: "1.4rem",
+                        background: "transparent",
+                        color: "white",
                       }}
-                      className={`nav-link ${activeTab === 2 ? 'active' : ''}`}
+                      className={`nav-link ${activeTab === 2 ? "active" : ""}`}
                       id="ex1-tab-2"
                       role="tab"
                       aria-controls="ex1-tabs-2"
-                      aria-selected={activeTab === 2 ? 'true' : 'false'}
+                      aria-selected={activeTab === 2 ? "true" : "false"}
                       onClick={() => handleTabClick(2)}
                     >
                       Face Recognition
@@ -236,7 +227,9 @@ const Login = () => {
                 </ul>
                 <div className="tab-content" id="ex1-content">
                   <div
-                    className={`tab-pane fade ${activeTab === 1 ? 'show active' : ''}`}
+                    className={`tab-pane fade ${
+                      activeTab === 1 ? "show active" : ""
+                    }`}
                     id="ex1-tabs-1"
                     role="tabpanel"
                     aria-labelledby="ex1-tab-1"
@@ -294,7 +287,9 @@ const Login = () => {
                     </div>
                   </div>
                   <div
-                    className={`tab-pane fade ${activeTab === 2 ? 'show active' : ''}`}
+                    className={`tab-pane fade ${
+                      activeTab === 2 ? "show active" : ""
+                    }`}
                     id="ex1-tabs-2"
                     role="tabpanel"
                     aria-labelledby="ex1-tab-2"
@@ -315,7 +310,7 @@ const Login = () => {
 
                 <div className="group pt-2">
                   <div style={{ marginLeft: "5%" }} className="foot-lnk">
-                  <NavLink to="forget_password">Forgot Password ? </NavLink>
+                    <NavLink to="forget_password">Forgot Password ? </NavLink>
                   </div>
                 </div>
                 <div className="group">

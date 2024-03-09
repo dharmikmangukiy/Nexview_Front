@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { getActiveTab, getAuthError, getRequest, getScreenshot, registerUser, setAuthError, setRegisterEmail, setRegisterName, setRegisterPassword, setRegisterRepeatPassword } from "../features/auth/authSlice"
 import { Navigate } from "react-router-dom";
 import { getFaces } from "../features/auth/facenetSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Register = ({ enableInput }) => {
 
@@ -85,7 +87,7 @@ export const Register = ({ enableInput }) => {
 
     return (
         <form className={'login100-form ' + (activeTab === 'register' ? 'active' : '')}>
-
+<ToastContainer/>
             <div className="my-wrap-input wrap-input50 wrap-input50-m" onClick={() => enableInput('name')}>
                 <input
                     type="text"
