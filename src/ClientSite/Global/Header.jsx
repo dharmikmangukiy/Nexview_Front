@@ -33,18 +33,22 @@ const Header = () => {
   const [OPP, setOPP] = useState(false);
   const [maxWidth, setMaxWidth] = React.useState("lg");
   const { url } = useSelector((state) => state.home);
-  const { data } = useFetch(`/notification`);
+  const { data ,setData} = useFetch(`/notification`);
   // console.log(data);
   useEffect(() => {
     const socket = io("http://localhost:5001");
     socket.on("product", (productData) => {
-      console.log("Received product data:", productData);
+      setData((prev) => [...prev, productData]); // Pushing new data directly
       var audio = document.getElementById("audioWITHDREW");
       audio.play();
     });
+    
     socket.on("productDeleted", (productId) => {
-      console.log("Product deleted:", productId);
+      setData((prev) => prev.filter((product) => product.productId !== productId)); // Filtering directly
+      var audio = document.getElementById("audioWITHDREW");
+      audio.play();
     });
+
     return () => {
       socket.disconnect();
     };
