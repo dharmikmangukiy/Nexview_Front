@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "https://nexviewback.vercel.app";
+// const BASE_URL = "https://nexviewback.vercel.app";
+const BASE_URL = "http://localhost:5001";
 
 export const fetchDataFromApi = async (url) => {
   try {

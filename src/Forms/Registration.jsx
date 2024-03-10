@@ -91,11 +91,11 @@ const Registration = () => {
           .catch((error) => {
             console.error("An error occurred:", error);
             toast.error(error.response.data);
-            setTimeout(function () {
-              navigate("/");
+            // setTimeout(function () {
+            //   navigate("/");
 
-              window.location.reload();
-            }, 3000);
+            //   window.location.reload();
+            // }, 3000);
           });
       }
     }
