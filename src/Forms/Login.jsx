@@ -23,7 +23,10 @@ import {
   loginChnage,
   authorChnage,
 } from "../ClientSite/Global/store/homeSlice";
+import { Base_URL } from "../../Global";
+import { CircularProgress } from "@mui/material";
 const Login = () => {
+  const [Processor, setProcessor] = useState(false);
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState(1);
   const screenshot = useSelector(getScreenshot);
@@ -71,7 +74,7 @@ const Login = () => {
     localStorage.setItem("Author", role);
     console.log(role);
     axios
-      .post("http://localhost:5001/me", {
+      .post(`${Base_URL}/me`, {
         token: JSON.parse(sessionStorage.getItem("token")),
       })
       .then((res) => {
@@ -107,14 +110,17 @@ const Login = () => {
     e.preventDefault();
     if (activeTab == 2) {
       if (faces && screenshot) {
+        setProcessor(true);
         axios
-          .post("http://localhost:5001/face-login", {
+          .post(`${Base_URL}/face-login`, {
             ...data,
             screenshot,
             descriptor: Object.values(faces[0].descriptor),
             ip: ip,
           })
           .then((res) => {
+            setProcessor(false);
+
             console.log(res);
             sessionStorage.setItem("token", JSON.stringify(res.data.token));
             handleLoginSuccess(res.data.user.role);
@@ -136,13 +142,17 @@ const Login = () => {
       if (data.email == "" || data.password == "") {
         toast.error("Please enter both email and password.");
       } else {
+        setProcessor(true);
+
         axios
-          .post("http://localhost:5001/login", {
+          .post(`${Base_URL}/login`, {
             email: data.email,
             password: data.password,
             ip: ip,
           })
           .then((res) => {
+            setProcessor(false);
+
             sessionStorage.setItem("token", JSON.stringify(res.data.token));
             if (res.data.message == "Username or password is wrong!") {
               toast.error(res.data.message);
@@ -319,7 +329,13 @@ const Login = () => {
                     className="button"
                     onClick={(e) => sign_in(e)}
                   >
-                    SIGN IN
+                    {Processor == true ? (
+                      <div style={{ margin: "-10px" }}>
+                        <CircularProgress color="inherit" />
+                      </div>
+                    ) : (
+                      "SIGN IN"
+                    )}
                   </button>
                 </div>
                 <div className="group pt-2">

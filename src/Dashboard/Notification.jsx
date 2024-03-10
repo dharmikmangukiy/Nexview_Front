@@ -29,6 +29,7 @@ import Sidebar from "./Sidebar";
 import Slide from "@mui/material/Slide";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { NativeSelect } from "@mui/material";
+import { Base_URL } from "../../Global";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -204,7 +205,7 @@ function Notification() {
           color="success"
           onClick={() => {
             axios
-              .post(`http://localhost:5001/notification`, {
+              .post(`${Base_URL}/notification`, {
                 status: "true",
                 id: data.id,
                 type: data.type,
@@ -317,7 +318,7 @@ function Notification() {
             color="error"
             onClick={() => {
               axios
-                .post(`http://localhost:5001/notification`, {
+                .post(`${Base_URL}/notification`, {
                   status: "false",
                   id: Row.productId,
                   type: Row.mediaType,

@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Img from "../Componants/lazyLoadImage/Img";
 import axios from "axios";
+import { Base_URL } from "../../Global";
 function Step5Upi() {
   const navigate=useNavigate()
   const [data, setdata] = useState({
@@ -35,7 +36,7 @@ function Step5Upi() {
     ) {
       toast.error("All fields are required");
     } else {
-      axios.post(`http://localhost:5001/payment`, {...data,
+      axios.post(`${Base_URL}/payment`, {...data,
       token: JSON.parse(sessionStorage.getItem('token')),}).then((res) => {
         if (res.data.message == "User Not Found") {
           toast.error(res.data.message);

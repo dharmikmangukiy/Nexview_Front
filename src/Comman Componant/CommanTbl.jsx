@@ -5,13 +5,14 @@ import axios from "axios";
 import { Navigate } from "react-router-dom";
 import Spinner from "../ClientSite/Global/spinner/Spinner";
 import useFetch from "../Componants/hooks/useFetch";
+import { Base_URL } from "../../Global";
 
 function CommanTbl(prop) {
   const { loading } = useFetch();
   const [DashData, setDashData] = useState([]);
   const [newData, setNewData] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:5001/${prop.url}`).then((res) => {
+    axios.get(`${Base_URL}/${prop.url}`).then((res) => {
       // console.log(res.data);
       if (res.data.message == "error") {
         Navigate("/Dashboard");

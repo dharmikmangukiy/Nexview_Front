@@ -5,13 +5,14 @@ import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlin
 import DoneAllRoundedIcon from "@mui/icons-material/DoneAllRounded";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Base_URL } from "../../Global";
 
 function Step1() {
   const navigate = useNavigate();
   const Update = (e) => {
     e.preventDefault();
     axios
-      .put("http://localhost:5001/free-user", {
+      .put(`${Base_URL}/free-user`, {
         type: "freeUser",
         token: JSON.parse(sessionStorage.getItem("token")),
       })

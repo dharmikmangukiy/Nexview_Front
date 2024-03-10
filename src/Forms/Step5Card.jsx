@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Base_URL } from "../../Global";
 import Img from "../Componants/lazyLoadImage/Img";
 function Step5Card() {
   const navigate=useNavigate()
@@ -38,7 +39,7 @@ function Step5Card() {
     ) {
       toast.error("All fields are required");
     } else {
-      axios.post(`http://localhost:5001/payment`, {...data,
+      axios.post(`${Base_URL}/payment`, {...data,
       token: JSON.parse(sessionStorage.getItem('token')),}).then((res) => {
         if (res.data.message == "User Not Found") {
           toast.error(res.data.message);

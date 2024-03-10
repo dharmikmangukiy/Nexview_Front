@@ -18,6 +18,8 @@ import {
   getScreenshot,
 } from "../faceLogin/features/auth/authSlice";
 import { getFaces } from "../faceLogin/features/auth/facenetSlice";
+import { Base_URL } from "../../Global";
+import { CircularProgress } from "@mui/material";
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -31,6 +33,7 @@ const Registration = () => {
   const screenshot = useSelector(getScreenshot);
   const error = useSelector(getAuthError);
   const faces = useSelector(getFaces);
+  const [Processor, setProcessor] = useState(false);
 
   const input = (e) => {
     let name = e.target.name;
@@ -42,20 +45,30 @@ const Registration = () => {
       };
     });
   };
-  console.log(faces,screenshot);
+  console.log(faces, screenshot);
   const sign_in = (e) => {
     e.preventDefault();
-    if (data.email == "" || data.name == "" || data.password == ""|| faces=="" || screenshot=="") {
+    if (
+      data.email == "" ||
+      data.name == "" ||
+      data.password == "" ||
+      faces == "" ||
+      screenshot == ""
+    ) {
       toast.error("Please enter all details.");
     } else {
-    if (faces && screenshot) {
+      if (faces && screenshot) {
+        setProcessor(true);
+
         axios
-          .post("http://localhost:5001/register", {
+          .post(`${Base_URL}/register`, {
             ...data,
             screenshot,
             descriptor: Object.values(faces[0].descriptor),
           })
           .then((res) => {
+            setProcessor(true);
+
             // console.log(res);
             if (data.email !== "" && data.password !== "" && data.name !== "") {
               if (res.data.message === "This email is already taken.") {
@@ -70,22 +83,22 @@ const Registration = () => {
                 });
               }
               setTimeout(function () {
-              navigate("/");
+                navigate("/");
                 window.location.reload();
-            }, 3000);
+              }, 3000);
             }
           })
           .catch((error) => {
             console.error("An error occurred:", error);
             toast.error(error.response.data);
             setTimeout(function () {
-            navigate("/");
+              navigate("/");
 
               window.location.reload();
-          }, 3000);
+            }, 3000);
           });
-        }
       }
+    }
   };
   // console.log(data);
   return (
@@ -207,7 +220,13 @@ const Registration = () => {
                     className="button"
                     onClick={(e) => sign_in(e)}
                   >
-                    SIGN UP
+                    {Processor == true ? (
+                      <div style={{ margin: "-10px" }}>
+                        <CircularProgress color="inherit" />
+                      </div>
+                    ) : (
+                      "SIGN UP"
+                    )}
                   </button>
                 </div>
                 <div className="group pt-2">

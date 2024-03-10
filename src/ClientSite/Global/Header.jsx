@@ -20,6 +20,7 @@ import io from "socket.io-client";
 import axios from "axios";
 import useFetch from "../../Componants/hooks/useFetch";
 import { useSelector } from "react-redux";
+import { Base_URL } from "../../../Global";
 
 const Header = () => {
   const [show, setShow] = useState("top");
@@ -36,7 +37,7 @@ const Header = () => {
   const { data ,setData} = useFetch(`/notification`);
   // console.log(data);
   useEffect(() => {
-    const socket = io("http://localhost:5001");
+    const socket = io(`${Base_URL}`);
     socket.on("product", (productData) => {
       setData((prev) => [...prev, productData]); // Pushing new data directly
       var audio = document.getElementById("audioWITHDREW");
@@ -121,7 +122,7 @@ const Header = () => {
     setLoading(true);
    
     axios
-      .post("http://localhost:5001/me", {
+      .post(`${Base_URL}/me`, {
         token: JSON.parse(sessionStorage.getItem("token")),
       })
       .then((res) => {

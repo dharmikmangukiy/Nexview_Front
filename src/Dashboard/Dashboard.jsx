@@ -32,6 +32,7 @@ import useFetch from "../Componants/hooks/useFetch";
 import axios from "axios";
 import Sidebar from "./Sidebar";
 import { Checkbox, FormControlLabel } from "@mui/material";
+import { Base_URL } from "../../Global";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -268,7 +269,7 @@ function Dashboard() {
   const DeleteData = async () => {
     try {
       const response = await axios.delete(
-        `http://localhost:5001/product/${StoreID}`
+        `${Base_URL}/product/${StoreID}`
       );
       console.log("Movie deleted successfully:", response.data);
       toast.success("Deleted Successfully");
@@ -280,7 +281,7 @@ function Dashboard() {
   const TV_DeleteData = async () => {
     try {
       const response = await axios.delete(
-        `http://localhost:5001/tvproduct/${StoreID}`
+        `${Base_URL}/tvproduct/${StoreID}`
       );
       console.log("Movie deleted successfully:", response.data);
       toast.success("Deleted Successfully");
@@ -303,7 +304,7 @@ function Dashboard() {
       AddMovies.id !== ""
     ) {
       axios
-        .post("http://localhost:5001/products", AddMovies)
+        .post("${Base_URL}/products", AddMovies)
         .then((res) => {
           console.log("ADD request successful:", res.data);
           toast.success("Movie Add successfully");
@@ -341,7 +342,7 @@ function Dashboard() {
       TVSeries.id !== ""
     ) {
       axios
-        .post("http://localhost:5001/tvproducts", TVSeries)
+        .post("${Base_URL}/tvproducts", TVSeries)
         .then((res) => {
           console.log("ADD request successful:", res.data);
           toast.success("TV Show Add successfully");
@@ -368,7 +369,7 @@ function Dashboard() {
   const Get_One = (id) => {
     setStoreID(id);
     axios
-      .get(`http://localhost:5001/movie/${id}`)
+      .get(`${Base_URL}/movie/${id}`)
       .then((res) => {
         console.log("get request successful:", res.data);
         setAddMovies({
@@ -441,7 +442,7 @@ function Dashboard() {
   const Get_TV = (id) => {
     setStoreID(id);
     axios
-      .get(`http://localhost:5001/tv/${id}`)
+      .get(`${Base_URL}/tv/${id}`)
       .then((res) => {
         console.log("get request successful:", res.data);
         setTVSeries({
@@ -523,7 +524,7 @@ function Dashboard() {
       AddMovies.original_language !== ""
     ) {
       axios
-        .put(`http://localhost:5001/product/${StoreID}`, AddMovies)
+        .put(`${Base_URL}/product/${StoreID}`, AddMovies)
         .then((res) => {
           console.log("Update request successful:", res.data);
           toast.success("Movie Update successfully");
@@ -560,7 +561,7 @@ function Dashboard() {
       TVSeries.original_language !== ""
     ) {
       axios
-        .put(`http://localhost:5001/tvproduct/${StoreID}`, TVSeries)
+        .put(`${Base_URL}/tvproduct/${StoreID}`, TVSeries)
         .then((res) => {
           console.log("Update request successful:", res.data);
           toast.success("TV Show Update successfully");

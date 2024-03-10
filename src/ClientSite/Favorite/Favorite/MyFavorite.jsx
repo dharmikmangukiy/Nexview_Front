@@ -21,7 +21,7 @@ function MyFavorite() {
     setLoading(true);
    
     axios
-      .post("http://localhost:5001/me", {
+      .post(`${Base_URL}/me` {
         token: JSON.parse(sessionStorage.getItem("token")),
       })
       .then((res) => {

@@ -15,6 +15,7 @@ import Logout from "@mui/icons-material/Logout";
 import SearchIcon from "@mui/icons-material/Search";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import axios from "axios";
+import { Base_URL } from "../Global";
 
 const Topbar = () => {
   const [Favorites, setFavorites] = useState([]);
@@ -33,7 +34,7 @@ const Topbar = () => {
     setLoading(true);
    
     axios
-      .post("http://localhost:5001/me", {
+      .post(`${Base_URL}/me`, {
         token: JSON.parse(sessionStorage.getItem("token")),
       })
       .then((res) => {

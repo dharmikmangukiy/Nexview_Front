@@ -6,6 +6,7 @@ import ContentWrapper from "../contentWrapper/ContentWrapper";
 import MovieCard from "../Global/movieCard/MovieCard";
 import Spinner from "../Global/spinner/Spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { Base_URL } from "../../../Global";
 
 function MyFavorite() {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ function MyFavorite() {
    
     setLoading(true);
     axios
-      .post("http://localhost:5001/me", {
+      .post(`${Base_URL}/me`, {
         token: JSON.parse(sessionStorage.getItem("token")),
       })
       .then((res) => {

@@ -9,6 +9,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import EmailIcon from "@mui/icons-material/Email";
+import { Base_URL } from "../../Global";
 
 const ForgetPassword = () => {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ const ForgetPassword = () => {
       return;
     } else {
       axios
-        .put("http://localhost:5001/forgat-password", data)
+        .put(`${Base_URL}/forgat-password`, data)
         .then((res) => {
           if (res.data.message === "Email not exist") {
             toast.error(res.data.message);

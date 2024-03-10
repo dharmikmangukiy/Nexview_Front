@@ -14,6 +14,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NewDate from "../Comman Componant/NewDate";
 import { NavLink } from "react-router-dom";
+import { Base_URL } from "../../Global";
 const Profile = () => {
   const themes = ["orange", "purple", "green", "blue"];
   const [currentTheme, setCurrentTheme] = useState(
@@ -57,7 +58,7 @@ const Profile = () => {
   useEffect(() => {
     // setLoadingggg(true);
     axios
-      .post("http://localhost:5001/me", {
+      .post(`${Base_URL}/me`, {
         token: JSON.parse(sessionStorage.getItem("token")),
       })
       .then((res) => {
@@ -111,7 +112,7 @@ const Profile = () => {
   const submit = () => {
     setLoadingggg(true);
     axios
-      .put("http://localhost:5001/user-profile", {
+      .put(`${Base_URL}/user-profile`, {
         token: JSON.parse(sessionStorage.getItem("token")),
         name: data.name,
         profileImage: base64Image,

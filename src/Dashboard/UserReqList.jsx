@@ -20,6 +20,7 @@ import useFetch from "../Componants/hooks/useFetch";
 import axios from "axios";
 import Sidebar from "./Sidebar";
 import Slide from "@mui/material/Slide";
+import { Base_URL } from "../../Global";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -223,7 +224,7 @@ function UserReqList() {
             variant="outlined"
             onClick={() => {
               axios
-                .put(`http://localhost:5001/payment/${ID}`, { status: true })
+                .put(`${Base_URL}/payment/${ID}`, { status: true })
                 .then((res) => {
                   if (res.data.message == "User Not Found") {
                     toast.error(res.data.message);
@@ -241,7 +242,7 @@ function UserReqList() {
             color="error"
             onClick={() => {
               axios
-                .put(`http://localhost:5001/payment/${ID}`, { status: false })
+                .put(`${Base_URL}/payment/${ID}`, { status: false })
                 .then((res) => {
                   if (res.data.message == "User Not Found") {
                     toast.error(res.data.message);

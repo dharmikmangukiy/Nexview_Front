@@ -17,6 +17,7 @@ import useFetch2 from "../../../Componants/hooks/useFetch2";
 import StarsIcon from "@mui/icons-material/Stars";
 import axios from "axios";
 import { loginChnage } from "../store/homeSlice";
+import { Base_URL } from "../../../../Global";
 
 const DetailsBanner = ({ video, crew }) => {
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ const DetailsBanner = ({ video, crew }) => {
 
   useEffect(() => {
     axios
-      .post("http://localhost:5001/me", {
+      .post(`${Base_URL}/me`, {
         token: JSON.parse(sessionStorage.getItem("token")),
       })
       .then((res) => {
@@ -271,7 +272,7 @@ const DetailsBanner = ({ video, crew }) => {
                             className="btn_custom"
                             onClick={() => {
                               axios
-                                .post("http://localhost:5001/favorite", {
+                                .post(`${Base_URL}/favorite`, {
                                   token: JSON.parse(
                                     sessionStorage.getItem("token")
                                   ),
@@ -295,7 +296,7 @@ const DetailsBanner = ({ video, crew }) => {
                             className="btn_custom_r1"
                             onClick={() => {
                               axios
-                                .post("http://localhost:5001/favorite", {
+                                .post(`${Base_URL}/favorite`, {
                                   token: JSON.parse(
                                     sessionStorage.getItem("token")
                                   ),
