@@ -156,7 +156,7 @@ const Profile = () => {
                     className="input_image"
                     onChange={convertImage}
                   />
-                  <div class="middle">
+                  <div className="middle">
                     <AddPhotoAlternateIcon />
                   </div>
                 </div>

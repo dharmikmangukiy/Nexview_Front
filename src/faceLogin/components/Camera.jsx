@@ -92,14 +92,14 @@ export const Camera = ({ isLogin }) => {
                 </>
                 : isLogin ?
                     <img
-                        class="rounded-circle shadow  rounded "
+                        className="rounded-circle shadow  rounded "
                         alt="avatar2"
                         height={135}
                         src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
                     />
                     :
                     <img
-                        class="rounded-circle shadow  rounded "
+                        className="rounded-circle shadow  rounded "
                         alt="avatar2"
                         height={150}
                         src="../public/Images/netflix_icon_161073.png"

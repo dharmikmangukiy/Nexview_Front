@@ -13,7 +13,7 @@ import "./style.scss";
 
 const Footer = () => {
     return (
-        <footer className="footer">
+        <footer className="footer" data-testid="footer">
             <ContentWrapper>
                 <ul className="menuItems">
                     <li className="menuItem"><NavLink to="/terms_of_use">Terms Of Use</NavLink></li>
