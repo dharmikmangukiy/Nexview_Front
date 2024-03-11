@@ -10,10 +10,13 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import EmailIcon from "@mui/icons-material/Email";
 import { Base_URL } from "../../Global";
+import { CircularProgress } from "@mui/material";
 
 const ForgetPassword = () => {
   const navigate = useNavigate();
   const [first, setfirst] = useState(false);
+  const [Processor, setProcessor] = useState(false);
+  const [otpLoader, setotpLoader] = useState(false);
   const [data, setdata] = useState({
     email: "",
     password: "",
@@ -37,22 +40,27 @@ const ForgetPassword = () => {
       toast.error("Please enter all details.");
       return;
     } else {
+      setProcessor(true);
       axios
         .put(`${Base_URL}/forgat-password`, data)
         .then((res) => {
+          setProcessor(false);
           if (res.data.message === "Email not exist") {
             toast.error(res.data.message);
-          } else {
-            toast.success("Password Reset successfully");
+          } else if (res.data.message === "OTP Not Valid.") {
+            toast.error(res.data.message);
+          } else  {
+            toast.success("Password updated successfully.");
+
             setdata({
               email: "",
               password: "",
               otp: "",
             });
             setTimeout(function () {
-            navigate("/");
+              navigate("/");
               window.location.reload();
-          }, 3000);
+            }, 3000);
           }
         })
         .catch((error) => {
@@ -132,13 +140,35 @@ const ForgetPassword = () => {
                       />
                     </FormControl>
                   </Box>
-                  <span
-                    className="d-flex justify-content-end otp_btn"
-                    onClick={() => {
-                      setfirst(true);
-                    }}
-                  >
-                    Send OTP
+                  <span className="d-flex justify-content-end otp_btn mt-1">
+                    <span
+                      className="bg-danger text-white rounded-1 px-2 py-1"
+                      onClick={() => {
+                        if (
+                          data.email === "" ||
+                          data.password === ""
+                        ) {
+                          toast.error("Please enter all details.");
+                          return;
+                        } else {
+                          setotpLoader(true);
+                          axios
+                            .post(`${Base_URL}/sendEmail`, {
+                              email: data.email,
+                            })
+                            .then((res) => {
+                              setotpLoader(false);
+                              toast(res.data.message);
+                              setfirst(true);
+                            })
+                            .catch((error) => {
+                              console.error("Exception:", error);
+                            });
+                        }
+                      }}
+                    >
+                      {otpLoader == true ? "OTP Sending..." : "Send OTP"}
+                    </span>
                   </span>
                 </div>
                 {/* <div className="group">
@@ -199,7 +229,13 @@ const ForgetPassword = () => {
                     className="button"
                     onClick={(e) => sign_in(e)}
                   >
-                    Submit
+                    {Processor == true ? (
+                      <div style={{ margin: "-10px" }}>
+                        <CircularProgress color="inherit" />
+                      </div>
+                    ) : (
+                      "Submit"
+                    )}
                   </button>
                 </div>
                 <div className="group pt-2">
