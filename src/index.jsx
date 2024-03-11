@@ -5,7 +5,7 @@ import "./index.css";
 import "../src/ClientSite/Global/style.scss"
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store } from "../src/ClientSite/Global/store/store.js";
+import { store } from "./ClientSite/Global/store/store.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
