@@ -53,7 +53,7 @@ const Profile = () => {
   };
 
   const [Favorites, setFavorites] = useState([]);
-  const [loadingggg, setLoadingggg] = useState();
+  const [loadingggg, setLoadingggg] = useState(false);
 
   useEffect(() => {
     // setLoadingggg(true);
@@ -82,14 +82,14 @@ const Profile = () => {
           window.location.reload();
         }
       });
-  }, [loadingggg,isWrapperOpen]);
+  }, [loadingggg, isWrapperOpen]);
 
   const toggleWrapper = () => {
     setIsWrapperOpen(!isWrapperOpen);
     setdata({
       name: Favorites?.name,
     });
-    setBase64Image(Favorites?.profile)
+    setBase64Image(Favorites?.profile);
   };
 
   const [base64Image, setBase64Image] = useState("");
@@ -119,6 +119,8 @@ const Profile = () => {
       })
       .then((res) => {
         toast(res.data.message);
+        setLoadingggg(false);
+
         setIsWrapperOpen(false);
       });
   };
@@ -226,7 +228,7 @@ const Profile = () => {
               <NavLink className="button" onClick={submit}>
                 <div className="button__border" />
                 <div className="button__bg" />
-                Submit
+                {loadingggg == true ? "Loading..." : "Submit"}
               </NavLink>
             </div>
           </div>

@@ -1,5 +1,5 @@
-// const BACKEND_URL = 'https://nexviewback.vercel.app/'
-const BACKEND_URL = 'http://localhost:5001';
+const BACKEND_URL = 'https://nexviewback.vercel.app'
+// const BACKEND_URL = 'http://localhost:5001';
 
 // BASE AUTH
 const AUTH_URL = '/api/auth'
