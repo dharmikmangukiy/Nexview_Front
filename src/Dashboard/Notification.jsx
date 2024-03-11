@@ -349,7 +349,7 @@ function Notification() {
           id="customized-dialog-title"
           onClose={handleClose}
         >
-          {Action} {headName}
+         {headName}
         </BootstrapDialogTitle>
         <DialogContent dividers>{PopUpContent()}</DialogContent>
         <DialogActions>{PopUpAction()}</DialogActions>
