@@ -276,6 +276,7 @@ function Dashboard() {
       DeletePopUp();
     } catch (error) {
       console.error("Error deleting movie:", error);
+      toast.error("Error deleting movie");
     }
   };
   const TV_DeleteData = async () => {
@@ -287,7 +288,9 @@ function Dashboard() {
       toast.success("Deleted Successfully");
       DeletePopUp();
     } catch (error) {
-      console.error("Error deleting movie:", error);
+      console.error("Error deleting TV:", error);
+      toast.error("Error deleting TV");
+
     }
   };
   const New_Movie_ADD = () => {
@@ -304,27 +307,30 @@ function Dashboard() {
       AddMovies.id !== ""
     ) {
       axios
-        .post("${Base_URL}/products", AddMovies)
+        .post(`${Base_URL}/products`, AddMovies)
         .then((res) => {
           console.log("ADD request successful:", res.data);
           toast.success("Movie Add successfully");
+          handleClose();
+          setAddMovies(
+            AddMovies.original_title == "",
+            AddMovies.poster_path == "",
+            AddMovies.vote_average == "",
+            AddMovies.id !== "",
+            AddMovies.overview == "",
+            AddMovies.runtime == "",
+            AddMovies.backdrop_path == "",
+            AddMovies.isPrime == false,
+            AddMovies.release_date == "",
+            AddMovies.original_language == ""
+          );
         })
         .catch((error) => {
           console.error("Error making ADD request:", error);
+          toast.error("Error making ADD request");
+
         });
-      handleClose();
-      setAddMovies(
-        AddMovies.original_title == "",
-        AddMovies.poster_path == "",
-        AddMovies.vote_average == "",
-        AddMovies.id !== "",
-        AddMovies.overview == "",
-        AddMovies.runtime == "",
-        AddMovies.backdrop_path == "",
-        AddMovies.isPrime == false,
-        AddMovies.release_date == "",
-        AddMovies.original_language == ""
-      );
+     
     } else {
       toast.warn("Please first enter all detail");
     }
@@ -342,26 +348,28 @@ function Dashboard() {
       TVSeries.id !== ""
     ) {
       axios
-        .post("${Base_URL}/tvproducts", TVSeries)
+        .post(`${Base_URL}/tvproducts`, TVSeries)
         .then((res) => {
           console.log("ADD request successful:", res.data);
           toast.success("TV Show Add successfully");
+          handleClose();
+          setTVSeries(
+            TVSeries.original_name == "",
+            TVSeries.poster_path == "",
+            TVSeries.vote_average == "",
+            TVSeries.id !== "",
+            TVSeries.overview == "",
+            TVSeries.runtime == "",
+            TVSeries.backdrop_path == "",
+            TVSeries.isPrime == false,
+            TVSeries.original_language == ""
+          );
         })
         .catch((error) => {
           console.error("Error making ADD request:", error);
+          toast.error("Error making ADD request");
         });
-      handleClose();
-      setTVSeries(
-        TVSeries.original_name == "",
-        TVSeries.poster_path == "",
-        TVSeries.vote_average == "",
-        TVSeries.id !== "",
-        TVSeries.overview == "",
-        TVSeries.runtime == "",
-        TVSeries.backdrop_path == "",
-        TVSeries.isPrime == false,
-        TVSeries.original_language == ""
-      );
+   
     } else {
       toast.warn("Please first enter all detail");
     }
@@ -528,23 +536,25 @@ function Dashboard() {
         .then((res) => {
           console.log("Update request successful:", res.data);
           toast.success("Movie Update successfully");
-
+          handleClose();
+          setAddMovies(
+            AddMovies.original_title == "",
+            AddMovies.poster_path == "",
+            AddMovies.vote_average == "",
+            AddMovies.overview == "",
+            AddMovies.runtime == "",
+            AddMovies.backdrop_path == "",
+            AddMovies.isPrime == false,
+            AddMovies.release_date == "",
+            AddMovies.original_language == ""
+          );
         })
         .catch((error) => {
           console.error("Error making Update request:", error);
+          toast.error("Error making Update request");
+
         });
-      handleClose();
-      setAddMovies(
-        AddMovies.original_title == "",
-        AddMovies.poster_path == "",
-        AddMovies.vote_average == "",
-        AddMovies.overview == "",
-        AddMovies.runtime == "",
-        AddMovies.backdrop_path == "",
-        AddMovies.isPrime == false,
-        AddMovies.release_date == "",
-        AddMovies.original_language == ""
-      );
+    
     } else {
       toast.warn("Please first enter all detail");
     }
@@ -565,21 +575,24 @@ function Dashboard() {
         .then((res) => {
           console.log("Update request successful:", res.data);
           toast.success("TV Show Update successfully");
+          handleClose();
+          setTVSeries(
+            TVSeries.original_name == "",
+            TVSeries.poster_path == "",
+            TVSeries.vote_average == "",
+            TVSeries.overview == "",
+            TVSeries.runtime == "",
+            TVSeries.backdrop_path == "",
+            TVSeries.isPrime == false,
+            TVSeries.original_language == ""
+          );
         })
         .catch((error) => {
           console.error("Error making Update request:", error);
+          toast.error("Error making Update request");
+
         });
-      handleClose();
-      setTVSeries(
-        TVSeries.original_name == "",
-        TVSeries.poster_path == "",
-        TVSeries.vote_average == "",
-        TVSeries.overview == "",
-        TVSeries.runtime == "",
-        TVSeries.backdrop_path == "",
-        TVSeries.isPrime == false,
-        TVSeries.original_language == ""
-      );
+     
     } else {
       toast.warn("Please first enter all detail");
     }
