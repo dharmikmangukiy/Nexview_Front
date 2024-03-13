@@ -1,49 +1,160 @@
-//step 1: get DOM
-let nextDom = document.getElementById('next');
-let prevDom = document.getElementById('prev');
+let left_btn = document.getElementsByClassName('bi-chevron-left')[0];
+let right_btn = document.getElementsByClassName('bi-chevron-right')[0];
+let cards = document.getElementsByClassName('cards')[0];
+let search = document.getElementsByClassName('search')[0];
+let search_input = document.getElementById('search_input');
 
-let carouselDom = document.querySelector('.carousell');
-let SliderDom = carouselDom.querySelector('.carousell .list');
-let thumbnailBorderDom = document.querySelector('.carousell .thumbnail');
-let thumbnailItemsDom = thumbnailBorderDom.querySelectorAll('.item');
-let timeDom = document.querySelector('.carousell .time');
+left_btn.addEventListener('click', () => {
+    cards.scrollLeft -= 140;
+})
+right_btn.addEventListener('click', () => {
+    cards.scrollLeft += 140;
+})
 
-thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
-let timeRunning = 3000;
-let timeAutoNext = 7000;
+let json_url = "movie.json";
 
-nextDom.onclick = function(){
-    showSlider('next');    
-}
+fetch(json_url).then(Response => Response.json())
+    .then((data) => {
+        data.forEach((ele, i) => {
+            let { name, imdb, date, sposter, bposter, genre, url } = ele;
+            let card = document.createElement('a');
+            card.classList.add('card');
+            card.href = url;
+            card.innerHTML = `
+            <img src="${sposter}" alt="${name}" class="poster">
+            <div class="rest_card">
+                <img src="${bposter}" alt="">
+                <div class="cont">
+                    <h4>${name}</h4>
+                    <div class="sub">
+                        <p>${genre}, ${date}</p>
+                        <h3><span>IMDB</span><i class="bi bi-star-fill"></i> ${imdb}</h3>
+                    </div>
+                </div>
+            </div>
+            `
+            cards.appendChild(card);
+        });
 
-prevDom.onclick = function(){
-    showSlider('prev');    
-}
-let runTimeOut;
-let runNextAuto = setTimeout(() => {
-    next.click();
-}, timeAutoNext)
-function showSlider(type){
-    let  SliderItemsDom = SliderDom.querySelectorAll('.carousell .list .item');
-    let thumbnailItemsDom = document.querySelectorAll('.carousell .thumbnail .item');
-    
-    if(type === 'next'){
-        SliderDom.appendChild(SliderItemsDom[0]);
-        thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
-        carouselDom.classList.add('next');
-    }else{
-        SliderDom.prepend(SliderItemsDom[SliderItemsDom.length - 1]);
-        thumbnailBorderDom.prepend(thumbnailItemsDom[thumbnailItemsDom.length - 1]);
-        carouselDom.classList.add('prev');
-    }
-    clearTimeout(runTimeOut);
-    runTimeOut = setTimeout(() => {
-        carouselDom.classList.remove('next');
-        carouselDom.classList.remove('prev');
-    }, timeRunning);
+        document.getElementById('title').innerText = data[0].name;
+        document.getElementById('gen').innerText = data[0].genre;
+        document.getElementById('date').innerText = data[0].date;
+        document.getElementById('rate').innerHTML = `<span>IMDB</span><i class="bi bi-star-fill"></i> ${data[0].imdb}`;
 
-    clearTimeout(runNextAuto);
-    runNextAuto = setTimeout(() => {
-        next.click();
-    }, timeAutoNext)
-}
+        // search data  load 
+        data.forEach(element => {
+            let { name, imdb, date, sposter, genre, url } = element;
+            let card = document.createElement('a');
+            card.classList.add('card');
+            card.href = url;
+            card.innerHTML = `
+            <img src="${sposter}" alt="">
+                        <div class="cont">
+                            <h3>${name} </h3>
+                            <p>${genre}, ${date} , <span>IMDB</span><i class="bi bi-star-fill"></i> ${imdb}</p>
+                        </div>
+            `
+            search.appendChild(card);
+        });
+
+        // search filter  
+
+        search_input.addEventListener('keyup', () => {
+            let filter = search_input.value.toUpperCase();
+            let a = search.getElementsByTagName('a');
+
+            for (let index = 0; index < a.length; index++) {
+                let b = a[index].getElementsByClassName('cont')[0];
+                // console.log(a.textContent)
+                let TextValue = b.textContent || b.innerText;
+                if (TextValue.toUpperCase().indexOf(filter) > -1) {
+                    a[index].style.display = "flex";
+                    search.style.visibility = "visible";
+                    search.style.opacity = 1;
+                } else {
+                    a[index].style.display = "none";
+                }
+                if (search_input.value == 0) {
+                    search.style.visibility = "hidden";
+                    search.style.opacity = 0;
+                }
+            }
+        })
+
+        let video = document.getElementsByTagName('video')[0];
+        let play = document.getElementById('play');
+        play.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+                play.innerHTML = `Play <i class="bi bi-pause-fill"></i>`
+            } else {
+                video.pause();
+                play.innerHTML = `Watch <i class="bi bi-play-fill"></i>`
+            }
+        })
+
+        let series = document.getElementById('series');
+        let movies = document.getElementById('movies');
+
+        series.addEventListener('click', () => {
+            cards.innerHTML = '';
+
+            let series_array = data.filter(ele => {
+                return ele.type === "series";
+            });
+
+            series_array.forEach((ele, i) => {
+                let { name, imdb, date, sposter, bposter, genre, url } = ele;
+                let card = document.createElement('a');
+                card.classList.add('card');
+                card.href = url;
+                card.innerHTML = `
+                <img src="${sposter}" alt="${name}" class="poster">
+                <div class="rest_card">
+                    <img src="${bposter}" alt="">
+                    <div class="cont">
+                        <h4>${name}</h4>
+                        <div class="sub">
+                            <p>${genre}, ${date}</p>
+                            <h3><span>IMDB</span><i class="bi bi-star-fill"></i> ${imdb}</h3>
+                        </div>
+                    </div>
+                </div>
+                `
+                cards.appendChild(card);
+            });
+
+
+        })
+        movies.addEventListener('click', () => {
+            cards.innerHTML = '';
+
+            let movie_array = data.filter(ele => {
+                return ele.type === "movie";
+            });
+
+            movie_array.forEach((ele, i) => {
+                let { name, imdb, date, sposter, bposter, genre, url } = ele;
+                let card = document.createElement('a');
+                card.classList.add('card');
+                card.href = url;
+                card.innerHTML = `
+                <img src="${sposter}" alt="${name}" class="poster">
+                <div class="rest_card">
+                    <img src="${bposter}" alt="">
+                    <div class="cont">
+                        <h4>${name}</h4>
+                        <div class="sub">
+                            <p>${genre}, ${date}</p>
+                            <h3><span>IMDB</span><i class="bi bi-star-fill"></i> ${imdb}</h3>
+                        </div>
+                    </div>
+                </div>
+                `
+                cards.appendChild(card);
+            });
+
+
+        })
+
+    });

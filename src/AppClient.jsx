@@ -7,13 +7,14 @@ import Popular from "./ClientSite/CompoHome/Popular";
 import TopRated from "./ClientSite/CompoHome/TopRated";
 import Coursol from "./ClientSite/CompoHome/Coursol";
 import SmallSection from "./ClientSite/Global/Trending today/SmallSection";
+import NewCoursol from "./ClientSite/CompoHome/NewCoursol";
 
 const AppClient = () => {
   return (
     <>
       <div className="client_conteint">
         <Header />
-        <Coursol />
+        <NewCoursol/>
         <SmallSection/>
         <Trending />
         <Popular />

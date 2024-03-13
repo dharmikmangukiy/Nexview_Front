@@ -3,7 +3,7 @@
 /* carousell */
 .carousell{
     height: 100vh;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
     width: 100vw;
     overflow: hidden;
     position: relative;

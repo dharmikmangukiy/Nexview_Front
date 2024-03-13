@@ -203,13 +203,13 @@ window.onload = function () {
       let randomNumber = Math.floor(Math.random() * testCards.length);
       cardnumber_mask.unmaskedValue = testCards[randomNumber];
     };
-    generatecard.addEventListener("click", function () {
+    generatecard?.addEventListener("click", function () {
       randomCard();
     });
   
     // CREDIT CARD IMAGE JS
     document.querySelector(".preload").classList.remove("preload");
-    document.querySelector(".creditcard").addEventListener("click", function () {
+    document.querySelector(".creditcard")?.addEventListener("click", function () {
       if (this.classList.contains("flipped")) {
         this.classList.remove("flipped");
       } else {
@@ -218,7 +218,7 @@ window.onload = function () {
     });
   
     //On Input Change Events
-    name.addEventListener("input", function () {
+    name?.addEventListener("input", function () {
       if (name.value.length == 0) {
         document.getElementById("svgname").innerHTML = "John Doe";
         document.getElementById("svgnameback").innerHTML = "John Doe";
@@ -255,19 +255,19 @@ window.onload = function () {
     });
   
     //On Focus Events
-    name.addEventListener("focus", function () {
+    name?.addEventListener("focus", function () {
       document.querySelector(".creditcard").classList.remove("flipped");
     });
   
-    cardnumber.addEventListener("focus", function () {
+    cardnumber?.addEventListener("focus", function () {
       document.querySelector(".creditcard").classList.remove("flipped");
     });
   
-    expirationdate.addEventListener("focus", function () {
+    expirationdate?.addEventListener("focus", function () {
       document.querySelector(".creditcard").classList.remove("flipped");
     });
   
-    securitycode.addEventListener("focus", function () {
+    securitycode?.addEventListener("focus", function () {
       document.querySelector(".creditcard").classList.add("flipped");
     });
   };

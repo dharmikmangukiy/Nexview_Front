@@ -13,7 +13,7 @@ const FAQ = () => {
             <div className="heroBanner">
 
                 <div className="backdrop-img">
-                    <video width="100%" height="" controls autoPlay loop>
+                    <video width="100%" height=""  autoPlay loop>
                         <source src={video_animattion} type="video/mp4" quality="high" />
                         Your browser does not support the video tag.
                     </video>
