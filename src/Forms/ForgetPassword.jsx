@@ -118,7 +118,7 @@ const ForgetPassword = () => {
                 </div>
                 <div className="group">
                   <label for="pass" className="label">
-                    Password
+                   New Password
                   </label>
                   <Box
                     className="input"
