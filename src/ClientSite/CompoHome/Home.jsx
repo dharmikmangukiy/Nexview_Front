@@ -43,7 +43,7 @@ const Home = () => {
         <div className="opacity-layer"></div>
         <ContentWrapper>
           <div className="heroBannerContent">
-            <span className="title">Tranding Movies.</span>
+            <span className="title">Trending Movies.</span>
             <span className="subTitle">
               Millions of movies, TV shows and people to discover. Explore now.
             </span>

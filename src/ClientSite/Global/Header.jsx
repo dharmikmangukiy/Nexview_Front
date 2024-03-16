@@ -161,7 +161,7 @@ const Header = () => {
             </li>
           )}
           <li className="menuItem" onClick={() => navigate("/Trending_Today")}>
-            Tranding Today
+            Trending Today
           </li>
           <li className="menuItem" onClick={() => navigate("/up_comming")}>
             Up Comming

@@ -57,11 +57,11 @@ function AboutExtraTest() {
   <div className="question">
     <h1>Frequently Asked Questions</h1>
     <div className="quest">
-      <div className="textbox">What is Netflix?</div>
+      <div className="textbox">What is Nexview?</div>
       <i className="las la-plus" />
     </div>
     <div className="quest">
-      <div className="textbox">How much does Netflix cost?</div>
+      <div className="textbox">How much does Nexview cost?</div>
       <i className="las la-plus" />
     </div>
     <div className="quest">
@@ -73,11 +73,11 @@ function AboutExtraTest() {
       <i className="las la-plus" />
     </div>
     <div className="quest">
-      <div className="textbox">What can I watch on Netflix??</div>
+      <div className="textbox">What can I watch on Nexview??</div>
       <i className="las la-plus" />
     </div>
     <div className="quest">
-      <div className="textbox">What is Netflix?</div>
+      <div className="textbox">What is Nexview?</div>
       <i className="las la-plus" />
     </div>
     <div className="search1">

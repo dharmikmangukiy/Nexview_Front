@@ -1,3 +1,4 @@
+import { CircularProgress } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import { Navigate, NavLink, useNavigate } from "react-router-dom";
@@ -7,6 +8,8 @@ import { Base_URL } from "../../Global";
 import Img from "../Componants/lazyLoadImage/Img";
 function Step5Card() {
   const navigate=useNavigate()
+  const [Processor, setProcessor] = useState(false);
+
   const [data, setdata] = useState({
     plan: "",
     name: "",
@@ -39,8 +42,12 @@ function Step5Card() {
     ) {
       toast.error("All fields are required");
     } else {
+      setProcessor(true)
+
       axios.post(`${Base_URL}/payment`, {...data,
       token: JSON.parse(sessionStorage.getItem('token')),}).then((res) => {
+        setProcessor(false)
+
         if (res.data.message == "User Not Found") {
           toast.error(res.data.message);
         } else {
@@ -455,7 +462,13 @@ function Step5Card() {
             <div className="text-center pt-2">
               {/* to="/final_pay"  */}
               <NavLink onClick={(e) => sign_in(e)}>
-                <button className="Next_button">Start Membership</button>
+                <button className="Next_button">{Processor == true ? (
+                    <div style={{ margin: "-10px" }}>
+                      <CircularProgress color="inherit" />
+                    </div>
+                  ) : (
+                    "Start Membership"
+                  )}</button>
               </NavLink>
               <p className="text-secondary">
                 *This page is protected by Google reCAPTCHA to ensure you're not

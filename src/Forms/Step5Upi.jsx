@@ -7,8 +7,10 @@ import "react-toastify/dist/ReactToastify.css";
 import Img from "../Componants/lazyLoadImage/Img";
 import axios from "axios";
 import { Base_URL } from "../../Global";
+import { CircularProgress } from "@mui/material";
 function Step5Upi() {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
+  const [Processor, setProcessor] = useState(false);
   const [data, setdata] = useState({
     plan: "",
     application: "",
@@ -29,28 +31,31 @@ function Step5Upi() {
   const sign_in = (e) => {
     e.preventDefault();
     const param = new FormData();
-    if (
-      !data.plan ||
-      !data.application ||
-      !data.trationId 
-    ) {
+    if (!data.plan || !data.application || !data.trationId) {
       toast.error("All fields are required");
     } else {
-      axios.post(`${Base_URL}/payment`, {...data,
-      token: JSON.parse(sessionStorage.getItem('token')),}).then((res) => {
-        if (res.data.message == "User Not Found") {
-          toast.error(res.data.message);
-        } else {
-          toast.success("Payment success");
-          navigate("/final_pay")
-        }
-      });
+      setProcessor(true)
+      axios
+        .post(`${Base_URL}/payment`, {
+          ...data,
+          token: JSON.parse(sessionStorage.getItem("token")),
+        })
+        .then((res) => {
+      setProcessor(false)
+
+          if (res.data.message == "User Not Found") {
+            toast.error(res.data.message);
+          } else {
+            toast.success("Payment success");
+            navigate("/final_pay");
+          }
+        });
     }
   };
   return (
     <>
       <div className="client_conteint">
-        <ToastContainer/>
+        <ToastContainer />
         {/* <Header /> */}
         <div
           className="text-white  contentWrapper  w-50"
@@ -131,7 +136,15 @@ function Step5Upi() {
             </div>
             <div className="text-center pt-2">
               <NavLink onClick={(e) => sign_in(e)}>
-                <button className="Next_button">Start Membership</button>
+                <button className="Next_button">
+                  {Processor == true ? (
+                    <div style={{ margin: "-10px" }}>
+                      <CircularProgress color="inherit" />
+                    </div>
+                  ) : (
+                    "Start Membership"
+                  )}
+                </button>
               </NavLink>
               <p className="text-secondary">
                 *This page is protected by Google reCAPTCHA to ensure you're not
