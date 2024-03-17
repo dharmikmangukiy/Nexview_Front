@@ -112,7 +112,7 @@ function App() {
   };
 
   // console.log(localStorage.getItem("Author"));
-  if (login === "true" || login === null || login === 0|| login === true) {
+  if (login === "true" || login === null || login === 0|| login === true || login === "") {
     return (
       <Routes>
         <Route path="/" element={<Login setLogin={setLogin} />} />

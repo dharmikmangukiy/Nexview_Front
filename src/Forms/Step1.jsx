@@ -6,22 +6,27 @@ import DoneAllRoundedIcon from "@mui/icons-material/DoneAllRounded";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Base_URL } from "../../Global";
+import { CircularProgress } from "@mui/material";
 
 function Step1() {
   const navigate = useNavigate();
+  const [Processor, setProcessor] = useState(false);
+
   const Update = (e) => {
     e.preventDefault();
+    setProcessor(true);
     axios
       .put(`${Base_URL}/free-user`, {
         type: "freeUser",
         token: JSON.parse(sessionStorage.getItem("token")),
       })
       .then((res) => {
+        setProcessor(false);
+
         // if (res.message == "User Converted  to Free Plan Successfully") {
         //   navigate("/home");
         // }
         navigate("/home");
-
       })
       .catch((error) => {
         console.error("An error occurred:", error);
@@ -81,7 +86,15 @@ function Step1() {
           <div className="text-center pt-4">
             {/* to="/home" */}
             <NavLink onClick={(e) => Update(e)}>
-              <button className="Next_button">Free Trail</button>
+              <button className="Next_button">
+                {Processor == true ? (
+                  <div style={{ margin: "-10px" }}>
+                    <CircularProgress color="inherit" />
+                  </div>
+                ) : (
+                  "Free Trail"
+                )}
+              </button>
             </NavLink>
             <NavLink to="/PlanForm">
               <button className="Next_button">NEXT</button>
